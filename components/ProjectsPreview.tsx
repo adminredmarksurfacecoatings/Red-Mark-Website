@@ -1,10 +1,10 @@
 'use client'
 
+import { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// Manually curated preview - max 4 images
-const previewImages = [
+const imagePool = [
   {
     id: 1,
     image: '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
@@ -25,9 +25,40 @@ const previewImages = [
     image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_05_15-PM.png',
     alt: 'Project Preview 4',
   },
+  {
+    id: 5,
+    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_08_02-PM.png',
+    alt: 'Project Preview 5',
+  },
+  {
+    id: 6,
+    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_09_48-PM.png',
+    alt: 'Project Preview 6',
+  },
+  {
+    id: 7,
+    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
+    alt: 'Project Preview 7',
+  },
+  {
+    id: 8,
+    image: '/Finishes/ChatGPT-Image-Feb-5-2026-05_09_59-PM.png',
+    alt: 'Project Preview 8',
+  },
 ]
 
-export default function ProjectsPreview() {
+type ProjectsPreviewProps = {
+  onImageClick?: (gallery: { src: string; alt: string }[], index: number) => void
+}
+
+export default function ProjectsPreview({ onImageClick }: ProjectsPreviewProps) {
+  const previewImages = useMemo(() => {
+    const shuffled = [...imagePool].sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, 4)
+  }, [])
+
+  const gallery = previewImages.map((item) => ({ src: item.image, alt: item.alt }))
+
   return (
     <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
@@ -36,7 +67,7 @@ export default function ProjectsPreview() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'baseline',
-          marginBottom: '4rem',
+          marginBottom: '5rem',
           marginLeft: '10vw',
           marginRight: '10vw',
         }}>
@@ -68,7 +99,7 @@ export default function ProjectsPreview() {
           </Link>
         </div>
 
-        {/* Preview Grid - 4 images, 2x2 on desktop */}
+        {/* Preview Grid - 4 images, relaxed editorial rhythm */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
@@ -83,18 +114,20 @@ export default function ProjectsPreview() {
               key={item.id}
               style={{
                 width: '100%',
-                aspectRatio: '4/3',
+                aspectRatio: item.id % 2 === 0 ? '4/3' : '3.6/4',
                 position: 'relative',
                 overflow: 'hidden',
                 borderRadius: '4px',
                 transition: 'transform 0.3s ease',
                 cursor: 'pointer',
+                marginTop: item.id % 2 === 0 ? '0.85rem' : 0,
+                boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'scale(1.02)'
+                e.currentTarget.style.transform = 'translateY(-4px)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'scale(1)'
+                e.currentTarget.style.transform = 'translateY(0)'
               }}
             >
               <Image
@@ -104,7 +137,9 @@ export default function ProjectsPreview() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                 style={{
                   objectFit: 'cover',
+                  cursor: onImageClick ? 'zoom-in' : 'pointer',
                 }}
+                onClick={() => onImageClick?.(gallery, previewImages.findIndex((img) => img.id === item.id))}
               />
             </div>
           ))}

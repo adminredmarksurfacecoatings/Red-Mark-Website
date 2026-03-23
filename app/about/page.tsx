@@ -3,8 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About - Red Mark Surface Coatings',
-  description: 'A surface coatings company focused on mineral finishes, textures, and architectural materials.',
+  title: 'About',
+  description:
+    'Learn the story, material philosophy, and craftsmanship behind Red Mark mineral finishes.',
 }
 
 export default function AboutPage() {

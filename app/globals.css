@@ -239,6 +239,128 @@ img {
   border-color: var(--oxide-red) !important;
 }
 
+/* Hide navbar while fullscreen image modal is open */
+body.image-modal-open .site-nav {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+/* Footer link + layout styling (kept global to support Server Components) */
+.site-footer .footer-link {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  opacity: 0.82;
+  position: relative;
+  transition: opacity 0.25s ease;
+}
+
+.site-footer .footer-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+  transition: width 0.25s ease;
+}
+
+.site-footer .footer-link:hover {
+  opacity: 1;
+  color: var(--text-secondary);
+}
+
+.site-footer .footer-link:hover::after {
+  width: 100%;
+}
+
+/* Homepage pacing refinement */
+.home-page .page-section {
+  padding-top: 95px;
+  padding-bottom: 95px;
+}
+
+.home-page .page-section h2 {
+  margin-bottom: 2rem;
+}
+
+.for-pro-mini-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(106, 30, 30, 0.2) !important;
+}
+
+/* Global premium motion system */
+.motion-reveal-target {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.motion-reveal-target.motion-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle image tactility */
+@media (hover: hover) and (pointer: fine) {
+  main section img {
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  main section a:hover img,
+  main section div:hover > img,
+  main section button:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.03) contrast(1.02);
+    box-shadow: 0 8px 26px rgba(30, 30, 30, 0.12);
+  }
+}
+
+/* Premium button interactions */
+.btn,
+button,
+a.btn {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background-color 0.28s ease, color 0.28s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover,
+  button:hover,
+  a.btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(25, 25, 25, 0.08);
+  }
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .btn:active,
+  button:active,
+  a.btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .motion-reveal-target {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .finishes-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -334,5 +456,22 @@ img {
     gap: 3rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  .site-footer .footer-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.8rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .home-page .page-section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .why-red-mark-grid,
+  .for-pro-mini-grid,
+  .real-project-grid {
+    grid-template-columns: 1fr !important;
   }
 }

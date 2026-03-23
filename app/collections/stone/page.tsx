@@ -5,8 +5,9 @@ import StoneCollectionGallery from '@/components/StoneCollectionGallery'
 import StoneFinishGrid from '@/components/StoneFinishGrid'
 
 export const metadata: Metadata = {
-  title: 'Stone Collection - Red Mark Surface Coatings',
-  description: 'Layered mineral surfaces designed to bring architectural depth and natural movement to modern spaces.',
+  title: 'Stone Collection',
+  description:
+    'Layered mineral surfaces with tonal movement and architectural depth for contemporary interior and exterior spaces.',
 }
 
 export default function StoneCollectionPage() {

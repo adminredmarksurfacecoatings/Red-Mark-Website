@@ -4,8 +4,9 @@ import ExteriorCollectionGallery from '@/components/ExteriorCollectionGallery'
 import ExteriorFinishGrid from '@/components/ExteriorFinishGrid'
 
 export const metadata: Metadata = {
-  title: 'Exterior Collection - Red Mark Surface Coatings',
-  description: 'Durable mineral surfaces engineered for refined architectural exteriors.',
+  title: 'Exterior Collection',
+  description:
+    'Durable mineral finish systems engineered for refined architectural exteriors and long-term performance.',
 }
 
 export default function ExteriorCollectionPage() {

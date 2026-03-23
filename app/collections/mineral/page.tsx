@@ -5,8 +5,9 @@ import MineralCollectionGallery from '@/components/MineralCollectionGallery'
 import MineralFinishGrid from '@/components/MineralFinishGrid'
 
 export const metadata: Metadata = {
-  title: 'Mineral Collection - Red Mark Surface Coatings',
-  description: 'Soft mineral surfaces with subtle tonal movement and breathable matte character.',
+  title: 'Mineral Collection',
+  description:
+    'Soft mineral finishes with breathable matte texture and subtle tonal variation for calm architectural spaces.',
 }
 
 export default function MineralCollectionPage() {

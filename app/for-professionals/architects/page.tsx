@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'For Architects - Red Mark Surface Coatings',
-  description: 'Surface materials designed to work with architecture, light, and spatial atmosphere.',
+  title: 'For Architects',
+  description:
+    'Surface systems for architects seeking depth, light responsiveness, and refined material expression.',
 }
 
 const whatWeProvide = [

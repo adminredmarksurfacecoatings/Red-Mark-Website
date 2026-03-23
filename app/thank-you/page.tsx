@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Thank You - Red Mark Surface Coatings',
-  description: 'Your message has been sent successfully.',
+  title: 'Thank You',
+  description:
+    'Thank you for contacting Red Mark. Our team will review your inquiry and respond shortly.',
 }
 
 export default function ThankYouPage() {

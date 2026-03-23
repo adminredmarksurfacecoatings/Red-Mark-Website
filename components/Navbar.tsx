@@ -32,6 +32,8 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
+    // Sync immediately on route change so navbar state is correct without requiring manual scroll.
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isStructuredPage])
@@ -51,10 +53,13 @@ export default function Navbar() {
   const navPosition = isStructuredPage ? 'sticky' : 'fixed'
   const navBorder = isStructuredPage ? '1px solid var(--border-subtle)' : 'none'
   const navTextColor = isStructuredPage ? 'var(--text-primary)' : (isScrolled ? 'var(--text-primary)' : '#F5F2ED')
-  const logoFilter = isStructuredPage ? 'none' : (isScrolled ? 'none' : 'brightness(0) invert(1)')
+  const isTransparentNav = !isStructuredPage && !isScrolled
+  const logoFilter = isStructuredPage ? 'none' : (isScrolled ? 'none' : 'brightness(0) invert(1) drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.55))')
 
   return (
-    <nav style={{
+    <nav
+      className={isTransparentNav ? 'site-nav nav--transparent' : 'site-nav nav--solid'}
+      style={{
       position: navPosition,
       top: 0,
       left: 0,
@@ -62,9 +67,11 @@ export default function Navbar() {
       zIndex: 1000,
       backgroundColor: navBackground,
       borderBottom: navBorder,
-      transition: 'background-color 0.3s ease, border-bottom 0.3s ease',
-      backdropFilter: isScrolled || isStructuredPage ? 'blur(10px)' : 'none',
-    }}>
+      boxShadow: isScrolled || isStructuredPage ? '0 10px 30px rgba(20, 20, 20, 0.07)' : 'none',
+      transition: 'background-color 0.3s ease, border-bottom 0.3s ease, box-shadow 0.3s ease',
+      backdropFilter: 'none',
+    }}
+    >
       <div className="container" style={{
         display: 'flex',
         alignItems: 'center',
@@ -74,7 +81,7 @@ export default function Navbar() {
         margin: '0 auto',
       }}>
         {/* Logo - RM Monogram (deep oxide red) */}
-        <Link href="/" style={{
+        <Link href="/" className="logo-link" style={{
           display: 'flex',
           alignItems: 'center',
           paddingRight: '4rem', /* Generous breathing space */
@@ -104,13 +111,14 @@ export default function Navbar() {
         >
           <Link href="/finishes" style={{
             fontSize: '0.875rem',
-            letterSpacing: '0.05em',
-            fontWeight: 400,
+            letterSpacing: '0.07em',
+            fontWeight: 500,
             color: navTextColor,
             textTransform: 'uppercase',
             position: 'relative',
             paddingBottom: '0.5rem',
             transition: 'color 0.2s ease',
+            opacity: isStructuredPage || isScrolled ? 0.88 : 0.88,
           }}
           className="nav-link"
           >
@@ -119,13 +127,14 @@ export default function Navbar() {
           
           <Link href="/projects" style={{
             fontSize: '0.875rem',
-            letterSpacing: '0.05em',
-            fontWeight: 400,
+            letterSpacing: '0.07em',
+            fontWeight: 500,
             color: navTextColor,
             textTransform: 'uppercase',
             position: 'relative',
             paddingBottom: '0.5rem',
             transition: 'color 0.2s ease',
+            opacity: isStructuredPage || isScrolled ? 0.88 : 0.88,
           }}
           className="nav-link"
           >
@@ -157,14 +166,15 @@ export default function Navbar() {
           >
             <Link href="/for-professionals" style={{
               fontSize: '0.875rem',
-              letterSpacing: '0.05em',
-              fontWeight: 400,
+              letterSpacing: '0.07em',
+              fontWeight: 500,
               color: navTextColor,
               textTransform: 'uppercase',
               position: 'relative',
               paddingBottom: '0.5rem',
               cursor: 'pointer',
               transition: 'color 0.2s ease',
+              opacity: isStructuredPage || isScrolled ? 0.88 : 0.88,
             }}
             className="nav-link"
             >
@@ -281,13 +291,14 @@ export default function Navbar() {
           
           <Link href="/about" style={{
             fontSize: '0.875rem',
-            letterSpacing: '0.05em',
-            fontWeight: 400,
+            letterSpacing: '0.07em',
+            fontWeight: 500,
             color: navTextColor,
             textTransform: 'uppercase',
             position: 'relative',
             paddingBottom: '0.5rem',
             transition: 'color 0.2s ease',
+            opacity: isStructuredPage || isScrolled ? 0.88 : 0.88,
           }}
           className="nav-link"
           >
@@ -296,13 +307,14 @@ export default function Navbar() {
           
           <Link href="/contact" style={{
             fontSize: '0.875rem',
-            letterSpacing: '0.05em',
-            fontWeight: 400,
+            letterSpacing: '0.07em',
+            fontWeight: 500,
             color: navTextColor,
             textTransform: 'uppercase',
             position: 'relative',
             paddingBottom: '0.5rem',
             transition: 'color 0.2s ease',
+            opacity: 1,
           }}
           className="nav-link"
           >
@@ -340,20 +352,36 @@ export default function Navbar() {
         }}
         className="mobile-menu"
         >
-          <Link href="/finishes" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem' }}>Finishes</Link>
-          <Link href="/projects" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem' }}>Projects</Link>
-          <Link href="/for-professionals" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem' }}>For Professionals</Link>
-          <Link href="/for-professionals/architects" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '0.875rem', paddingLeft: '1rem' }}>Architects</Link>
-          <Link href="/for-professionals/builders" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '0.875rem', paddingLeft: '1rem' }}>Builders</Link>
-          <Link href="/for-professionals/dealers" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '0.875rem', paddingLeft: '1rem' }}>Dealers</Link>
-          <Link href="/about" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem' }}>About</Link>
-          <Link href="/contact" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem' }}>Contact</Link>
+          <Link href="/finishes" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem', opacity: 0.88 }}>Finishes</Link>
+          <Link href="/projects" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem', opacity: 0.88 }}>Projects</Link>
+          <Link href="/for-professionals" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem', opacity: 0.88 }}>For Professionals</Link>
+          <Link href="/for-professionals/architects" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '0.875rem', paddingLeft: '1rem', opacity: 0.88 }}>Architects</Link>
+          <Link href="/for-professionals/builders" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '0.875rem', paddingLeft: '1rem', opacity: 0.88 }}>Builders</Link>
+          <Link href="/for-professionals/dealers" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '0.875rem', paddingLeft: '1rem', opacity: 0.88 }}>Dealers</Link>
+          <Link href="/about" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem', opacity: 0.88 }}>About</Link>
+          <Link href="/contact" onClick={() => setIsMenuOpen(false)} style={{ color: 'var(--text-primary)', fontSize: '1rem', opacity: 1 }}>Contact</Link>
         </div>
       )}
 
       <style jsx>{`
+        .nav--transparent .logo-link {
+          text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.55);
+        }
+
+        .nav--solid .logo-link {
+          text-shadow: none;
+        }
+
         .nav-link {
           position: relative;
+        }
+
+        .nav--transparent .nav-link {
+          text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.55);
+        }
+
+        .nav--solid .nav-link {
+          text-shadow: none;
         }
         
         .nav-link::after {
@@ -363,8 +391,9 @@ export default function Navbar() {
           left: 0;
           width: 0;
           height: 1px;
-          background-color: var(--oxide-red);
-          transition: width 0.3s ease;
+          background-color: currentColor;
+          opacity: 0.7;
+          transition: width 0.25s ease;
         }
         
         .nav-link:hover::after,

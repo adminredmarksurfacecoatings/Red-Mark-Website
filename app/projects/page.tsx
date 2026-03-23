@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import ProjectsGrid from '@/components/ProjectsGrid'
 
 export const metadata: Metadata = {
-  title: 'Projects - Red Mark Surface Coatings',
-  description: 'A selection of architectural spaces featuring our mineral surfaces.',
+  title: 'Projects',
+  description:
+    'View architectural projects featuring Red Mark mineral finishes across residential, commercial, and hospitality spaces.',
 }
 
 export default function ProjectsPage() {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import ImageModal from '@/components/ImageModal'
 
 // Only images from /public/Finishes/ folder
 const finishesImages = [
@@ -29,6 +30,7 @@ const finishesImages = [
 
 export default function FinishesMasonry() {
   const [isVisible, setIsVisible] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -73,6 +75,7 @@ export default function FinishesMasonry() {
   const column1Images = finishesImages.slice(0, 7) // Tall images
   const column2Images = finishesImages.slice(7, 14) // Medium images (will be stacked)
   const column3Images = finishesImages.slice(14, 20) // Tall images
+  const gallery = finishesImages.map((image, index) => ({ src: image, alt: `Project ${index + 1}` }))
 
   return (
     <section
@@ -143,6 +146,7 @@ export default function FinishesMasonry() {
                   style={{
                     objectFit: 'cover',
                   }}
+                  onClick={() => setActiveImageIndex(index)}
                 />
               </div>
             ))}
@@ -181,6 +185,7 @@ export default function FinishesMasonry() {
                   style={{
                     objectFit: 'cover',
                   }}
+                  onClick={() => setActiveImageIndex(index + 7)}
                 />
               </div>
             ))}
@@ -219,12 +224,20 @@ export default function FinishesMasonry() {
                   style={{
                     objectFit: 'cover',
                   }}
+                  onClick={() => setActiveImageIndex(index + 14)}
                 />
               </div>
             ))}
           </div>
         </div>
       </div>
+      <ImageModal
+        isOpen={activeImageIndex !== null}
+        images={gallery}
+        currentIndex={activeImageIndex || 0}
+        onNavigate={(nextIndex) => setActiveImageIndex(nextIndex)}
+        onClose={() => setActiveImageIndex(null)}
+      />
     </section>
   )
 }

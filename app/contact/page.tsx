@@ -3,8 +3,9 @@ import Image from 'next/image'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact - Red Mark Surface Coatings',
-  description: 'For project inquiries, collaborations, or product information, feel free to reach out.',
+  title: 'Contact',
+  description:
+    'Start a project conversation with Red Mark for material guidance, finish selection, and technical support.',
 }
 
 export default function ContactPage() {

@@ -58,6 +58,18 @@ export default function ContactForm() {
       />
 
       {/* Name Field */}
+      <p
+        style={{
+          fontSize: '0.8125rem',
+          fontFamily: "'Inter', sans-serif",
+          color: '#6A6A6A',
+          letterSpacing: '0.01em',
+        }}
+      >
+        Fields marked with <span style={{ color: '#6A1E1E' }}>*</span> are required.
+      </p>
+
+      {/* Name Field */}
       <div>
         <label
           htmlFor="name"
@@ -77,6 +89,8 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
+          autoComplete="name"
+          placeholder="Your full name"
           style={{
             width: '100%',
             padding: '0.875rem 1rem',
@@ -119,6 +133,8 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
+          autoComplete="email"
+          placeholder="you@company.com"
           style={{
             width: '100%',
             padding: '0.875rem 1rem',
@@ -160,6 +176,9 @@ export default function ContactForm() {
           type="tel"
           id="phone"
           name="phone"
+          autoComplete="tel"
+          inputMode="tel"
+          placeholder="+1 555 123 4567"
           style={{
             width: '100%',
             padding: '0.875rem 1rem',
@@ -249,6 +268,8 @@ export default function ContactForm() {
           type="text"
           id="projectLocation"
           name="projectLocation"
+          autoComplete="address-level2"
+          placeholder="City, Region, Country"
           style={{
             width: '100%',
             padding: '0.875rem 1rem',
@@ -333,6 +354,8 @@ export default function ContactForm() {
           name="message"
           required
           rows={6}
+          minLength={20}
+          placeholder="Share project type, area, timeline, and the finish direction you are considering."
           style={{
             width: '100%',
             padding: '0.875rem 1rem',
@@ -393,9 +416,9 @@ export default function ContactForm() {
         fontWeight: 300,
         color: '#6A6A6A',
         marginTop: '0.5rem',
-        fontStyle: 'italic',
+        lineHeight: 1.6,
       }}>
-        Our team typically responds within 24–48 hours.
+        Our team typically responds within 24–48 hours. Your details remain confidential.
       </p>
     </form>
   )

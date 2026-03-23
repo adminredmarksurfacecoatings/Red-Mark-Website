@@ -1,6 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
+import ImageModal from '@/components/ImageModal'
 
 // Curated selection of 9 images from /public/Finishes/ for the Projects page
 const projectImages = [
@@ -52,6 +54,9 @@ const projectImages = [
 ]
 
 export default function ProjectsGrid() {
+  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
+  const gallery = projectImages.map((project) => ({ src: project.image, alt: `Project ${project.id}` }))
+
   // Distribute images into 3 columns for masonry layout
   const column1 = projectImages.filter((_, i) => i % 3 === 0)
   const column2 = projectImages.filter((_, i) => i % 3 === 1)
@@ -96,6 +101,7 @@ export default function ProjectsGrid() {
               style={{
                 objectFit: 'cover',
               }}
+              onClick={() => setActiveImageIndex(project.id - 1)}
             />
           </div>
         ))}
@@ -130,6 +136,7 @@ export default function ProjectsGrid() {
               style={{
                 objectFit: 'cover',
               }}
+              onClick={() => setActiveImageIndex(project.id - 1)}
             />
           </div>
         ))}
@@ -164,10 +171,18 @@ export default function ProjectsGrid() {
               style={{
                 objectFit: 'cover',
               }}
+              onClick={() => setActiveImageIndex(project.id - 1)}
             />
           </div>
         ))}
       </div>
+      <ImageModal
+        isOpen={activeImageIndex !== null}
+        images={gallery}
+        currentIndex={activeImageIndex || 0}
+        onNavigate={(nextIndex) => setActiveImageIndex(nextIndex)}
+        onClose={() => setActiveImageIndex(null)}
+      />
     </div>
   )
 }

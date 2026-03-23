@@ -1,85 +1,53 @@
 export default function SectionTwo() {
   return (
-    <section
-      className="page-section page-section--first"
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-      }}
-    >
-      {/* Background Image */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundImage: 'url(/section_2.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        zIndex: 0,
-      }}></div>
-      
-      {/* Extremely Subtle Warm Overlay (5-8% opacity) */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.06)',
-        zIndex: 1,
-      }}></div>
-
-      {/* Content Container - Left Aligned */}
-      <div style={{
-        position: 'relative',
-        zIndex: 2,
-        maxWidth: '650px',
-        marginLeft: '10vw',
-        width: '100%',
-      }}>
-        {/* Overlay Panel */}
-        <div style={{
-          backgroundColor: 'rgba(245, 242, 237, 0.89)', /* Soft mineral off-white, 89% opacity - more integrated */
-          padding: '80px', /* 70-90px range, using 80px */
-          borderRadius: '2px', /* Very subtle or sharp edges */
-        }}>
-          <h2 style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+    <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
+      <div
+        className="container"
+        style={{
+          margin: '0 auto',
+          padding: '0 4rem',
+          textAlign: 'center',
+          maxWidth: '980px',
+        }}
+      >
+        <h2
+          style={{
+            fontSize: 'clamp(2.8rem, 5.4vw, 4.6rem)',
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 500,
-            marginBottom: '3rem', /* More breathing room between heading and body */
-            color: '#2B2B2B', /* Deep charcoal */
-            lineHeight: 1.2,
-            letterSpacing: '-0.02em',
-          }}>
-            Surfaces That Breathe With Light
-          </h2>
-          
-          <div style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
-            lineHeight: 2.05, /* Increased by ~8% (from 1.9 to 2.05) for luxury spacing */
+            marginBottom: '2rem',
             color: '#2B2B2B',
+            lineHeight: 1.16,
+            letterSpacing: '-0.02em',
+          }}
+        >
+          Quiet Materials. Enduring Atmosphere.
+        </h2>
+
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 'clamp(1rem, 1.2vw, 1.125rem)',
+            lineHeight: 1.95,
+            color: '#4A4A4A',
             fontWeight: 300,
             letterSpacing: '0.01em',
-          }}>
-            <p style={{
-              marginBottom: '2rem', /* Comfortable paragraph spacing */
-            }}>
-              Natural mineral finishes shaped by hand. Subtle movement, tonal depth, and texture that evolves with time.
-            </p>
-            
-            <p>
-              Crafted in India with a reverence for European material tradition — designed for spaces that feel grounded, warm, and enduring.
-            </p>
-          </div>
-        </div>
+            maxWidth: '760px',
+            margin: '0 auto',
+          }}
+        >
+          Mineral surfaces with soft tonal depth, refined texture, and a calm architectural presence designed to age with grace in contemporary interiors and exteriors.
+        </p>
+
+        <div
+          style={{
+            width: '70px',
+            height: '1px',
+            backgroundColor: 'var(--oxide-red)',
+            opacity: 0.55,
+            margin: '2.75rem auto 0',
+          }}
+        />
       </div>
     </section>
   )
