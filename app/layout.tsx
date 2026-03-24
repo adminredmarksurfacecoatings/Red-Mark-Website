@@ -6,6 +6,9 @@ import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'),
+  verification: {
+    google: '5qy25uPPQVJILHPSEIEFv06LjNvYUxNJpaoPJJ2gYxw',
+  },
   title: {
     default: 'Red Mark Surface Coatings',
     template: '%s | Red Mark Surface Coatings',
