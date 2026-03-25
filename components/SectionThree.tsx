@@ -84,6 +84,7 @@ export default function SectionThree() {
                 alt={featured.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"
+                quality={75}
                 style={{ objectFit: 'cover' }}
               />
             </div>
@@ -152,6 +153,7 @@ export default function SectionThree() {
                   alt={finish.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 35vw"
+                  quality={75}
                   style={{ objectFit: 'cover' }}
                 />
               </div>

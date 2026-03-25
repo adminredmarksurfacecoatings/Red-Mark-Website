@@ -58,6 +58,7 @@ export default function StoneCollectionPage() {
               alt="Stone Collection Feature"
               fill
               sizes="100vw"
+              quality={75}
               style={{
                 objectFit: 'cover',
               }}

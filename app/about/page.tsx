@@ -101,6 +101,7 @@ export default function AboutPage() {
                 alt="Red Mark Surface Coatings"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
+                quality={75}
                 style={{
                   objectFit: 'cover',
                 }}

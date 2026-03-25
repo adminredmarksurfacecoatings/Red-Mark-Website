@@ -30,6 +30,7 @@ export default function RealProjectBlockSection() {
               alt="Real project surface application"
               fill
               sizes="(max-width: 1024px) 100vw, 60vw"
+              quality={75}
               style={{ objectFit: 'cover' }}
             />
           </div>
@@ -51,6 +52,7 @@ export default function RealProjectBlockSection() {
                 alt="Architectural finish in real space"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
+                quality={75}
                 style={{ objectFit: 'cover' }}
               />
             </div>

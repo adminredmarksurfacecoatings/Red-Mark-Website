@@ -91,13 +91,13 @@ export default function Navbar() {
             alt="Red Mark Surface Coatings" 
             width={50} 
             height={50}
+            quality={75}
             style={{ 
               objectFit: 'contain',
               filter: logoFilter,
               opacity: 1,
               transition: 'filter 0.3s ease',
             }}
-            priority
           />
         </Link>
 

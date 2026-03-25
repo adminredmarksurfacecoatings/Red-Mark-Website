@@ -135,6 +135,7 @@ export default function ProjectsPreview({ onImageClick }: ProjectsPreviewProps) 
                 alt={item.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                quality={75}
                 style={{
                   objectFit: 'cover',
                   cursor: onImageClick ? 'zoom-in' : 'pointer',

@@ -21,8 +21,8 @@ export default function AlertBanner() {
         margin: 0,
       }}>
         Have questions? Contact us at{' '}
-        <a href="mailto:info@redmarkcoatings.com" style={{ color: 'var(--lighter-red)' }}>
-          info@redmarkcoatings.com
+        <a href="mailto:info@redmarksurfacecoatings.com" style={{ color: 'var(--lighter-red)' }}>
+          info@redmarksurfacecoatings.com
         </a>
       </p>
       <button

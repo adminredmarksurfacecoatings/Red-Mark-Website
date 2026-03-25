@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+  const whatsappHref =
+    'https://wa.me/918968310500?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20surface%20finishes.%20I%E2%80%99d%20like%20to%20discuss%20a%20project.'
+
   return (
     <>
       {/* Section 1 — Hero */}
@@ -56,6 +59,7 @@ export default function ContactPage() {
               alt="Red Mark Surface Coatings"
               fill
               sizes="100vw"
+              quality={75}
               style={{
                 objectFit: 'cover',
                 filter: 'brightness(0.96) saturate(0.95)',
@@ -134,7 +138,7 @@ export default function ContactPage() {
                     Email
                   </div>
                   <a
-                    href="mailto:admin.redmarksurfacecoatings@gmail.com"
+                    href="mailto:info@redmarksurfacecoatings.com"
                     style={{
                       fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
                       fontFamily: "'Inter', sans-serif",
@@ -147,7 +151,7 @@ export default function ContactPage() {
                     }}
                     className="collection-link"
                   >
-                    admin.redmarksurfacecoatings@gmail.com
+                    info@redmarksurfacecoatings.com
                   </a>
                   <div style={{
                     fontSize: '0.8125rem',
@@ -189,28 +193,41 @@ export default function ContactPage() {
                   >
                     +91 89683 10500
                   </a>
-                </div>
 
-                {/* Location */}
-                <div>
-                  <div style={{
-                    fontSize: '0.875rem',
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 500,
-                    color: '#2B2B2B',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '0.5rem',
-                  }}>
-                    Location
+                  <div
+                    style={{
+                      marginTop: '1.1rem',
+                      fontSize: '0.8125rem',
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 300,
+                      color: '#6A6A6A',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    For faster response
                   </div>
-                  <div style={{
-                    fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 300,
-                    color: '#4A4A4A',
-                  }}>
-                    Ludhiana, Punjab, India
+
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="whatsapp-inquiry-btn"
+                    aria-label="WhatsApp Inquiry: chat now"
+                  >
+                    WhatsApp Inquiry &rarr;
+                  </a>
+
+                  <div
+                    style={{
+                      marginTop: '0.55rem',
+                      fontSize: '0.8125rem',
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 300,
+                      color: '#6A6A6A',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    Direct WhatsApp responses are usually faster.
                   </div>
                 </div>
               </div>

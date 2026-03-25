@@ -95,7 +95,14 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
 
       <div className="image-modal-content" onClick={(event) => event.stopPropagation()}>
         <div className="image-modal-image-wrap">
-          <Image src={activeImage.src} alt={activeImage.alt} fill sizes="90vw" style={{ objectFit: 'contain' }} priority />
+          <Image
+            src={activeImage.src}
+            alt={activeImage.alt}
+            fill
+            sizes="90vw"
+            quality={75}
+            style={{ objectFit: 'contain' }}
+          />
         </div>
       </div>
 

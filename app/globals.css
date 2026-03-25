@@ -234,6 +234,50 @@ img {
   width: 100%;
 }
 
+/* Premium WhatsApp concierge link on Contact page */
+.whatsapp-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--oxide-red);
+  text-decoration: none;
+  opacity: 0.95;
+  line-height: 1.7;
+}
+
+.whatsapp-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  opacity: 1;
+}
+
+/* Premium WhatsApp Inquiry CTA (Contact page) */
+.whatsapp-inquiry-btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid var(--oxide-red);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--oxide-red);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.whatsapp-inquiry-btn:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  opacity: 1;
+}
+
 /* For Professionals page — card link hover */
 .professional-card-link:hover {
   border-color: var(--oxide-red) !important;

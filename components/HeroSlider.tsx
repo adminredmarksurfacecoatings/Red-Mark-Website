@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function HeroSlider() {
   const scrollToNext = () => {
     const heroHeight = window.innerHeight
@@ -27,12 +29,22 @@ export default function HeroSlider() {
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundImage: 'url(/Stone_hero.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center right',
           zIndex: 0,
         }}
-      />
+      >
+        <Image
+          src="/Stone_hero.png"
+          alt=""
+          fill
+          priority
+          quality={75}
+          sizes="100vw"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'right center',
+          }}
+        />
+      </div>
       
       {/* Left-to-right gradient overlay for text readability */}
       <div style={{

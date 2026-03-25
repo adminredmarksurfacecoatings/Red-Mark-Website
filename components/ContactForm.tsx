@@ -3,7 +3,7 @@
 export default function ContactForm() {
   return (
     <form
-      action="https://formsubmit.co/admin.redmarksurfacecoatings@gmail.com"
+      action="https://formsubmit.co/info@redmarksurfacecoatings.com"
       method="POST"
       style={{
         display: 'flex',
@@ -126,13 +126,12 @@ export default function ContactForm() {
             marginBottom: '0.5rem',
           }}
         >
-          Email <span style={{ color: '#6A1E1E' }}>*</span>
+          Email
         </label>
         <input
           type="email"
           id="email"
           name="email"
-          required
           autoComplete="email"
           placeholder="you@company.com"
           style={{
@@ -170,14 +169,15 @@ export default function ContactForm() {
             marginBottom: '0.5rem',
           }}
         >
-          Phone
+          Phone <span style={{ color: '#6A1E1E' }}>*</span>
         </label>
         <input
           type="tel"
           id="phone"
           name="phone"
+          required
           autoComplete="tel"
-          inputMode="tel"
+          inputMode="numeric"
           placeholder="+1 555 123 4567"
           style={{
             width: '100%',
@@ -241,11 +241,11 @@ export default function ContactForm() {
           }}
         >
           <option value="">Select project type</option>
-          <option value="Residential">Residential</option>
-          <option value="Commercial">Commercial</option>
-          <option value="Hospitality">Hospitality</option>
-          <option value="Industrial">Industrial</option>
-          <option value="Other">Other</option>
+          <option value="Residential Interiors">Residential Interiors</option>
+          <option value="Exterior Facades">Exterior Facades</option>
+          <option value="Commercial Spaces">Commercial Spaces</option>
+          <option value="Hospitality Projects">Hospitality Projects</option>
+          <option value="Not Sure / Need Guidance">Not Sure / Need Guidance</option>
         </select>
       </div>
 
@@ -355,7 +355,7 @@ export default function ContactForm() {
           required
           rows={6}
           minLength={20}
-          placeholder="Share project type, area, timeline, and the finish direction you are considering."
+          placeholder="Tell us about your project…"
           style={{
             width: '100%',
             padding: '0.875rem 1rem',
@@ -406,7 +406,7 @@ export default function ContactForm() {
           e.currentTarget.style.color = '#2B2B2B'
         }}
       >
-        Send Message
+        Start Your Project &rarr;
       </button>
 
       {/* Trust Text */}
@@ -418,7 +418,7 @@ export default function ContactForm() {
         marginTop: '0.5rem',
         lineHeight: 1.6,
       }}>
-        Our team typically responds within 24–48 hours. Your details remain confidential.
+        We typically respond within 24 hours. Your details remain confidential.
       </p>
     </form>
   )
