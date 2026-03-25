@@ -1,6 +1,6 @@
  'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import HeroSlider from '@/components/HeroSlider'
 import SectionTwo from '@/components/SectionTwo'
 import SectionThree from '@/components/SectionThree'
@@ -14,6 +14,7 @@ import RealProjectBlockSection from '@/components/RealProjectBlockSection'
 import MicroTestimonialSection from '@/components/MicroTestimonialSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
 import ImageModal from '@/components/ImageModal'
+import NotFoundRedirectPopup from '@/components/NotFoundRedirectPopup'
 
 type ActiveImage = {
   gallery: { src: string; alt: string }[]
@@ -33,6 +34,9 @@ export default function Home() {
 
   return (
     <div className="home-page">
+      <Suspense fallback={null}>
+        <NotFoundRedirectPopup />
+      </Suspense>
       <HeroSlider />
       <SectionTwo />
       <SectionThree />
