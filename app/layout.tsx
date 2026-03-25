@@ -4,8 +4,11 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.redmarksurfacecoatings.com'
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'),
+  metadataBase: new URL(siteUrl),
   verification: {
     google: '5qy25uPPQVJILHPSEIEFv06LjNvYUxNJpaoPJJ2gYxw',
   },
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
     title: 'Red Mark Surface Coatings',
     description:
       'Architectural mineral finishes with depth, texture, and long-term performance for refined spaces.',
-    url: 'https://yourdomain.com',
+    url: siteUrl,
     siteName: 'Red Mark Surface Coatings',
     images: [
       {
