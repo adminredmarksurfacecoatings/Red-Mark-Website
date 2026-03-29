@@ -278,6 +278,142 @@ img {
   opacity: 1;
 }
 
+/* Contact form — unified border + focus (composite fields) */
+.contact-form-composite {
+  min-height: 52px;
+  border: 1px solid rgba(106, 30, 30, 0.2);
+  border-radius: 2px;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  background: transparent;
+}
+
+.contact-form-composite:hover {
+  border-color: rgba(106, 30, 30, 0.28);
+}
+
+.contact-form-composite:focus-within {
+  border-color: var(--oxide-red);
+}
+
+/* Full-width selects (project type) — minimal, on-brand */
+.contact-form-select {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.95rem 2.35rem 0.95rem 1.05rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #2b2b2b;
+  background-color: transparent;
+  border: 1px solid rgba(106, 30, 30, 0.2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234A4A4A' fill-opacity='0.65' d='M3 4.5L6 8l3-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.contact-form-select:hover {
+  border-color: rgba(106, 30, 30, 0.28);
+}
+
+.contact-form-select:focus {
+  border-color: var(--oxide-red);
+  box-shadow: 0 0 0 1px rgba(106, 30, 30, 0.06);
+}
+
+/* Country code in phone row */
+.contact-form-dial-select {
+  flex: 0 0 auto;
+  min-width: 4.5rem;
+  max-width: 32%;
+  padding: 0.95rem 1.85rem 0.95rem 1.05rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #2b2b2b;
+  background-color: transparent;
+  border: none;
+  border-right: 1px solid rgba(106, 30, 30, 0.14);
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234A4A4A' fill-opacity='0.65' d='M3 4.5L6 8l3-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form-dial-select:hover {
+  background-color: rgba(106, 30, 30, 0.03);
+}
+
+/* Surface area — value | unit split */
+.contact-form-surface-split {
+  display: flex;
+  align-items: stretch;
+  min-height: 52px;
+}
+
+.contact-form-surface-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.95rem 1.05rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #2b2b2b;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.contact-form-surface-divider {
+  width: 1px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: rgba(106, 30, 30, 0.14);
+}
+
+.contact-form-unit-select {
+  flex: 0 0 auto;
+  min-width: 7.85rem;
+  width: 34%;
+  max-width: 11rem;
+  padding: 0.95rem 1.9rem 0.95rem 1.05rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: rgba(43, 43, 43, 0.7);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234A4A4A' fill-opacity='0.55' d='M3 4.5L6 8l3-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-form-unit-select:hover {
+  color: rgba(43, 43, 43, 0.85);
+  background-color: rgba(106, 30, 30, 0.03);
+}
+
+.contact-form-unit-select:focus {
+  color: rgba(43, 43, 43, 0.88);
+}
+
+.contact-form-unit-select option {
+  color: #2b2b2b;
+  background-color: var(--bg-primary);
+}
+
 /* For Professionals page — card link hover */
 .professional-card-link:hover {
   border-color: var(--oxide-red) !important;

@@ -173,26 +173,82 @@ export default function ContactPage() {
                     color: '#2B2B2B',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
-                    marginBottom: '0.5rem',
+                    marginBottom: '0.75rem',
                   }}>
                     Phone
                   </div>
-                  <a
-                    href="tel:+918968310500"
-                    style={{
-                      fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: 300,
-                      color: '#4A4A4A',
-                      textDecoration: 'none',
-                      display: 'inline-block',
-                      position: 'relative',
-                      paddingBottom: '0.25rem',
-                    }}
-                    className="collection-link"
-                  >
-                    +91 89683 10500
-                  </a>
+
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.35rem',
+                  }}>
+                    <div>
+                      <div style={{
+                        fontSize: '0.6875rem',
+                        fontFamily: "'Inter', sans-serif",
+                        fontWeight: 400,
+                        color: '#2B2B2B',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.14em',
+                        opacity: 0.6,
+                        marginBottom: '0.4rem',
+                      }}>
+                        India
+                      </div>
+                      <a
+                        href="tel:+918968310500"
+                        style={{
+                          fontSize: 'clamp(1.0625rem, 1.3vw, 1.1875rem)',
+                          fontFamily: "'Inter', sans-serif",
+                          fontWeight: 300,
+                          color: '#2B2B2B',
+                          textDecoration: 'none',
+                          display: 'inline-block',
+                          position: 'relative',
+                          paddingBottom: '0.2rem',
+                          letterSpacing: '0.02em',
+                          opacity: 0.92,
+                        }}
+                        className="collection-link"
+                      >
+                        +91 89683 10500
+                      </a>
+                    </div>
+
+                    <div>
+                      <div style={{
+                        fontSize: '0.6875rem',
+                        fontFamily: "'Inter', sans-serif",
+                        fontWeight: 400,
+                        color: '#2B2B2B',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.14em',
+                        opacity: 0.6,
+                        marginBottom: '0.4rem',
+                      }}>
+                        Canada
+                      </div>
+                      <a
+                        href="tel:+15144464255"
+                        style={{
+                          fontSize: 'clamp(1.0625rem, 1.3vw, 1.1875rem)',
+                          fontFamily: "'Inter', sans-serif",
+                          fontWeight: 300,
+                          color: '#2B2B2B',
+                          textDecoration: 'none',
+                          display: 'inline-block',
+                          position: 'relative',
+                          paddingBottom: '0.2rem',
+                          letterSpacing: '0.02em',
+                          opacity: 0.92,
+                        }}
+                        className="collection-link"
+                      >
+                        +1 514 446 4255
+                      </a>
+                    </div>
+                  </div>
 
                   <div
                     style={{
