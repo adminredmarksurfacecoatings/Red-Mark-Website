@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import FinishesMasonry from '@/components/FinishesMasonry'
 import FinishesCollectionsGrid from '@/components/FinishesCollectionsGrid'
+import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Finishes',
@@ -8,7 +11,8 @@ export const metadata: Metadata = {
     'Explore curated mineral finish collections with layered texture, tonal depth, and architectural character.',
 }
 
-export default function FinishesPage() {
+export default async function FinishesPage() {
+  const finishesImages = await fetchEnabledMediaUrls(folderPathFromId('finishes'))
   return (
     <>
       {/* Hero Section */}
@@ -45,7 +49,7 @@ export default function FinishesPage() {
       <FinishesCollectionsGrid />
 
       {/* Editorial Masonry Grid */}
-      <FinishesMasonry />
+      <FinishesMasonry images={finishesImages} />
 
     </>
   )

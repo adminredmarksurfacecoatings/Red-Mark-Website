@@ -51,11 +51,22 @@ const galleryImages = [
   },
 ]
 
-export default function ExteriorCollectionGallery() {
+type ExteriorCollectionGalleryProps = {
+  images?: string[]
+}
+
+export default function ExteriorCollectionGallery({ images }: ExteriorCollectionGalleryProps) {
+  const source = (images && images.length > 0 ? images : galleryImages.map((item) => item.image)).map(
+    (image, index) => ({
+      id: index + 1,
+      image,
+      aspectRatio: index % 2 === 0 ? ('3/4' as const) : ('4/3' as const),
+    }),
+  )
   // Distribute images into 3 columns for masonry layout
-  const column1 = galleryImages.filter((_, i) => i % 3 === 0)
-  const column2 = galleryImages.filter((_, i) => i % 3 === 1)
-  const column3 = galleryImages.filter((_, i) => i % 3 === 2)
+  const column1 = source.filter((_, i) => i % 3 === 0)
+  const column2 = source.filter((_, i) => i % 3 === 1)
+  const column3 = source.filter((_, i) => i % 3 === 2)
 
   return (
     <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>

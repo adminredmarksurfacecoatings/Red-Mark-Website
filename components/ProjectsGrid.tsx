@@ -53,14 +53,25 @@ const projectImages = [
   },
 ]
 
-export default function ProjectsGrid() {
+type ProjectsGridProps = {
+  images?: string[]
+}
+
+export default function ProjectsGrid({ images }: ProjectsGridProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
-  const gallery = projectImages.map((project) => ({ src: project.image, alt: `Project ${project.id}` }))
+  const sourceImages = (images && images.length > 0 ? images : projectImages.map((item) => item.image)).map(
+    (image, index) => ({
+      id: index + 1,
+      image,
+      aspectRatio: index % 2 === 0 ? ('3/4' as const) : ('4/3' as const),
+    }),
+  )
+  const gallery = sourceImages.map((project) => ({ src: project.image, alt: `Project ${project.id}` }))
 
   // Distribute images into 3 columns for masonry layout
-  const column1 = projectImages.filter((_, i) => i % 3 === 0)
-  const column2 = projectImages.filter((_, i) => i % 3 === 1)
-  const column3 = projectImages.filter((_, i) => i % 3 === 2)
+  const column1 = sourceImages.filter((_, i) => i % 3 === 0)
+  const column2 = sourceImages.filter((_, i) => i % 3 === 1)
+  const column3 = sourceImages.filter((_, i) => i % 3 === 2)
 
   return (
     <div style={{
@@ -102,7 +113,7 @@ export default function ProjectsGrid() {
               style={{
                 objectFit: 'cover',
               }}
-              onClick={() => setActiveImageIndex(project.id - 1)}
+              onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item.id === project.id))}
             />
           </div>
         ))}
@@ -138,7 +149,7 @@ export default function ProjectsGrid() {
               style={{
                 objectFit: 'cover',
               }}
-              onClick={() => setActiveImageIndex(project.id - 1)}
+              onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item.id === project.id))}
             />
           </div>
         ))}
@@ -174,7 +185,7 @@ export default function ProjectsGrid() {
               style={{
                 objectFit: 'cover',
               }}
-              onClick={() => setActiveImageIndex(project.id - 1)}
+              onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item.id === project.id))}
             />
           </div>
         ))}

@@ -35,7 +35,12 @@ const finishes = [
   },
 ]
 
-export default function MineralFinishGrid() {
+type MineralFinishGridProps = {
+  images?: string[]
+}
+
+export default function MineralFinishGrid({ images }: MineralFinishGridProps) {
+  const source = images && images.length > 0 ? images : finishes.map((item) => item.image)
   return (
     <div style={{
       display: 'grid',
@@ -46,7 +51,9 @@ export default function MineralFinishGrid() {
     }}
     className="finishes-grid"
     >
-      {finishes.map((finish) => (
+      {source.map((image, index) => {
+        const finish = finishes[index] ?? { id: index + 1, name: `Finish ${index + 1}`, image }
+        return (
         <div
           key={finish.id}
           style={{
@@ -72,7 +79,7 @@ export default function MineralFinishGrid() {
             marginBottom: '1.5rem',
           }}>
             <Image
-              src={finish.image}
+              src={image}
               alt={finish.name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -96,7 +103,8 @@ export default function MineralFinishGrid() {
             {finish.name}
           </h3>
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
+import SiteChrome from '@/components/SiteChrome'
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.redmarksurfacecoatings.com'
@@ -54,9 +53,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalMotionEffects />
-        <Navbar />
-        <main style={{ position: 'relative', zIndex: 1 }}>{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   )

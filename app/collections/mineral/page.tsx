@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import MineralCollectionGallery from '@/components/MineralCollectionGallery'
 import MineralFinishGrid from '@/components/MineralFinishGrid'
+import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Mineral Collection',
@@ -10,7 +13,8 @@ export const metadata: Metadata = {
     'Soft mineral finishes with breathable matte texture and subtle tonal variation for calm architectural spaces.',
 }
 
-export default function MineralCollectionPage() {
+export default async function MineralCollectionPage() {
+  const mineralImages = await fetchEnabledMediaUrls(folderPathFromId('mineral'))
   return (
     <>
       {/* Hero Section */}
@@ -70,7 +74,7 @@ export default function MineralCollectionPage() {
       {/* Finish Grid Section */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <MineralFinishGrid />
+          <MineralFinishGrid images={mineralImages} />
         </div>
       </section>
 
@@ -136,7 +140,7 @@ export default function MineralCollectionPage() {
       </section>
 
       {/* Application Gallery */}
-      <MineralCollectionGallery />
+      <MineralCollectionGallery images={mineralImages} />
 
       {/* CTA Section */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>

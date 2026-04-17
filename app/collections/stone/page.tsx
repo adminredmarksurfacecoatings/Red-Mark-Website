@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import StoneCollectionGallery from '@/components/StoneCollectionGallery'
 import StoneFinishGrid from '@/components/StoneFinishGrid'
+import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Stone Collection',
@@ -10,7 +13,8 @@ export const metadata: Metadata = {
     'Layered mineral surfaces with tonal movement and architectural depth for contemporary interior and exterior spaces.',
 }
 
-export default function StoneCollectionPage() {
+export default async function StoneCollectionPage() {
+  const stoneImages = await fetchEnabledMediaUrls(folderPathFromId('stone'))
   return (
     <>
       {/* Hero Section */}
@@ -70,7 +74,7 @@ export default function StoneCollectionPage() {
       {/* Finish Grid Section */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <StoneFinishGrid />
+          <StoneFinishGrid images={stoneImages} />
         </div>
       </section>
 
@@ -136,7 +140,7 @@ export default function StoneCollectionPage() {
       </section>
 
       {/* Application Gallery */}
-      <StoneCollectionGallery />
+      <StoneCollectionGallery images={stoneImages} />
 
       {/* CTA Section */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>

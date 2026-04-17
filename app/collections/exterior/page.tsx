@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import ExteriorCollectionGallery from '@/components/ExteriorCollectionGallery'
 import ExteriorFinishGrid from '@/components/ExteriorFinishGrid'
+import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Exterior Collection',
@@ -9,7 +12,8 @@ export const metadata: Metadata = {
     'Durable mineral finish systems engineered for refined architectural exteriors and long-term performance.',
 }
 
-export default function ExteriorCollectionPage() {
+export default async function ExteriorCollectionPage() {
+  const exteriorImages = await fetchEnabledMediaUrls(folderPathFromId('exterior'))
   return (
     <>
       {/* Hero Section */}
@@ -69,7 +73,7 @@ export default function ExteriorCollectionPage() {
       {/* Finish Grid Section */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <ExteriorFinishGrid />
+          <ExteriorFinishGrid images={exteriorImages} />
         </div>
       </section>
 
@@ -135,7 +139,7 @@ export default function ExteriorCollectionPage() {
       </section>
 
       {/* Application Gallery */}
-      <ExteriorCollectionGallery />
+      <ExteriorCollectionGallery images={exteriorImages} />
     </>
   )
 }

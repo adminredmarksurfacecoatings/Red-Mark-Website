@@ -28,10 +28,15 @@ const finishesImages = [
   '/Finishes/ChatGPT-Image-Feb-7-2026-11_31_15-AM.png',
 ]
 
-export default function FinishesMasonry() {
+type FinishesMasonryProps = {
+  images?: string[]
+}
+
+export default function FinishesMasonry({ images }: FinishesMasonryProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
+  const sourceImages = images && images.length > 0 ? images : finishesImages
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
@@ -72,10 +77,10 @@ export default function FinishesMasonry() {
 
   // Organize images into masonry layout: Column 1 (tall), Column 2 (2 medium), Column 3 (tall)
   // Distribute images evenly across columns
-  const column1Images = finishesImages.slice(0, 7) // Tall images
-  const column2Images = finishesImages.slice(7, 14) // Medium images (will be stacked)
-  const column3Images = finishesImages.slice(14, 20) // Tall images
-  const gallery = finishesImages.map((image, index) => ({ src: image, alt: `Project ${index + 1}` }))
+  const column1Images = sourceImages.filter((_, i) => i % 3 === 0)
+  const column2Images = sourceImages.filter((_, i) => i % 3 === 1)
+  const column3Images = sourceImages.filter((_, i) => i % 3 === 2)
+  const gallery = sourceImages.map((image, index) => ({ src: image, alt: `Project ${index + 1}` }))
 
   return (
     <section
@@ -147,7 +152,7 @@ export default function FinishesMasonry() {
                   style={{
                     objectFit: 'cover',
                   }}
-                  onClick={() => setActiveImageIndex(index)}
+                  onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item === image))}
                 />
               </div>
             ))}
@@ -187,7 +192,7 @@ export default function FinishesMasonry() {
                   style={{
                     objectFit: 'cover',
                   }}
-                  onClick={() => setActiveImageIndex(index + 7)}
+                  onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item === image))}
                 />
               </div>
             ))}
@@ -227,7 +232,7 @@ export default function FinishesMasonry() {
                   style={{
                     objectFit: 'cover',
                   }}
-                  onClick={() => setActiveImageIndex(index + 14)}
+                  onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item === image))}
                 />
               </div>
             ))}

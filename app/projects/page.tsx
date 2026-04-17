@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import ProjectsGrid from '@/components/ProjectsGrid'
+import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -7,7 +10,8 @@ export const metadata: Metadata = {
     'View architectural projects featuring Red Mark mineral finishes across residential, commercial, and hospitality spaces.',
 }
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projectImages = await fetchEnabledMediaUrls(folderPathFromId('projects'))
   return (
     <>
       {/* Hero Section */}
@@ -43,7 +47,7 @@ export default function ProjectsPage() {
       {/* Editorial Masonry Grid */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <ProjectsGrid />
+          <ProjectsGrid images={projectImages} />
         </div>
       </section>
     </>
