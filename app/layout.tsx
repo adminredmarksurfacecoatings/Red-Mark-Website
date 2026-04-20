@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     'Architectural mineral finishes with depth, texture, and long-term performance for refined spaces.',
   icons: {
-    icon: '/Logo.png',
+    icon: '/Logo.svg',
   },
   openGraph: {
     title: 'Red Mark Surface Coatings',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Red Mark Surface Coatings',
     images: [
       {
-        url: '/Logo.png',
+        url: '/Logo.svg',
         width: 1200,
         height: 630,
       },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Red Mark Surface Coatings',
     description:
       'Architectural mineral finishes with depth, texture, and long-term performance for refined spaces.',
-    images: ['/Logo.png'],
+    images: ['/Logo.svg'],
   },
 }
 

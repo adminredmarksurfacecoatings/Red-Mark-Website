@@ -70,7 +70,7 @@ All required pages exist and are accessible:
 
 Referenced assets under `public/`:
 
-- `/Logo.png` — ✅
+- `/Logo.svg` — ✅
 - `/Stone_hero.png` — ✅
 - `/section_2.png` — ✅
 - `/home_grid_1.png`, `/home_grid_2.png`, `/home_grid_3.png` — ✅

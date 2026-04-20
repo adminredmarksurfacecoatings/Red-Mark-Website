@@ -87,13 +87,15 @@ export default function Navbar() {
           paddingRight: '4rem', /* Generous breathing space */
         }}>
           <Image 
-            src="/Logo.png" 
+            src="/Logo.svg"
             alt="Red Mark Surface Coatings" 
             width={50} 
             height={50}
             quality={75}
             style={{ 
               objectFit: 'contain',
+              transform: 'scale(1.1)',
+              transformOrigin: 'left center',
               filter: logoFilter,
               opacity: 1,
               transition: 'filter 0.3s ease',
