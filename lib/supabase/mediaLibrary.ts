@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export const MEDIA_BUCKET = 'project-images'
 export const DISABLED_PREFIX = '_disabled'
@@ -71,6 +72,7 @@ export async function moveStorageObject(
 }
 
 export async function fetchEnabledMediaUrls(folderPath: string): Promise<string[]> {
+  noStore()
   const supabase = getSupabaseClient()
   if (!supabase) return []
 

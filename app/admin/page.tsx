@@ -70,6 +70,18 @@ export default function AdminPage() {
     }
   }, [supabase])
 
+  async function revalidatePublicPages() {
+    try {
+      const res = await fetch('/api/revalidate-media', { method: 'POST', credentials: 'include' })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        console.warn('Revalidate failed:', body)
+      }
+    } catch (err) {
+      console.warn('Revalidate failed:', err)
+    }
+  }
+
   async function loadItems(currentUser: AuthUser | null = user) {
     if (!supabase || !currentUser) return
     setError(null)
@@ -182,8 +194,9 @@ export default function AdminPage() {
       return
     }
 
-    setMessage('Image deleted.')
+    setMessage('Image deleted. Refresh the public page to confirm.')
     await loadItems()
+    await revalidatePublicPages()
   }
 
   async function handleToggleEnabled(item: MediaItem, checked: boolean) {
@@ -207,6 +220,7 @@ export default function AdminPage() {
 
     setMessage(checked ? 'Image is now embedded on the website.' : 'Image hidden from the website.')
     await loadItems()
+    await revalidatePublicPages()
   }
 
   async function handleSaveChanges() {
@@ -237,6 +251,7 @@ export default function AdminPage() {
     setIsSaving(false)
     setMessage('Uploads saved successfully.')
     await loadItems()
+    await revalidatePublicPages()
   }
 
   async function handleCopy(url: string) {

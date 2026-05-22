@@ -40,7 +40,11 @@ type StoneFinishGridProps = {
 }
 
 export default function StoneFinishGrid({ images }: StoneFinishGridProps) {
-  const source = images && images.length > 0 ? images : finishes.map((item) => item.image)
+  const source = images !== undefined ? images : finishes.map((item) => item.image)
+
+  if (source.length === 0) {
+    return null
+  }
   return (
     <div style={{
       display: 'grid',

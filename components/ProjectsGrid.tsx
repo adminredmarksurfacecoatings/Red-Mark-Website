@@ -59,14 +59,21 @@ type ProjectsGridProps = {
 
 export default function ProjectsGrid({ images }: ProjectsGridProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
-  const sourceImages = (images && images.length > 0 ? images : projectImages.map((item) => item.image)).map(
-    (image, index) => ({
-      id: index + 1,
-      image,
-      aspectRatio: index % 2 === 0 ? ('3/4' as const) : ('4/3' as const),
-    }),
-  )
+  const imageList = images !== undefined ? images : projectImages.map((item) => item.image)
+  const sourceImages = imageList.map((image, index) => ({
+    id: index + 1,
+    image,
+    aspectRatio: index % 2 === 0 ? ('3/4' as const) : ('4/3' as const),
+  }))
   const gallery = sourceImages.map((project) => ({ src: project.image, alt: `Project ${project.id}` }))
+
+  if (sourceImages.length === 0) {
+    return (
+      <p className="admin-media-note" style={{ marginLeft: '10vw', marginRight: '10vw' }}>
+        No project images yet. Upload images in the admin panel under Projects.
+      </p>
+    )
+  }
 
   // Distribute images into 3 columns for masonry layout
   const column1 = sourceImages.filter((_, i) => i % 3 === 0)

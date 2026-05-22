@@ -36,7 +36,11 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
-  const sourceImages = images && images.length > 0 ? images : finishesImages
+  const sourceImages = images !== undefined ? images : finishesImages
+
+  if (sourceImages.length === 0) {
+    return null
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {

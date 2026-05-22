@@ -56,13 +56,18 @@ type StoneCollectionGalleryProps = {
 }
 
 export default function StoneCollectionGallery({ images }: StoneCollectionGalleryProps) {
-  const source = (images && images.length > 0 ? images : galleryImages.map((item) => item.image)).map(
+  const source = (images !== undefined ? images : galleryImages.map((item) => item.image)).map(
     (image, index) => ({
       id: index + 1,
       image,
       aspectRatio: index % 2 === 0 ? ('3/4' as const) : ('4/3' as const),
     }),
   )
+
+  if (source.length === 0) {
+    return null
+  }
+
   // Distribute images into 3 columns for masonry layout
   const column1 = source.filter((_, i) => i % 3 === 0)
   const column2 = source.filter((_, i) => i % 3 === 1)
