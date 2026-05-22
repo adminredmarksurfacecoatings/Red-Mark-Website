@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 export const MEDIA_BUCKET = 'project-images'
 export const DISABLED_PREFIX = '_disabled'
@@ -34,6 +34,40 @@ export function toDisabledPath(path: string): string {
 export function toEnabledPath(path: string): string {
   if (!path.startsWith(`${DISABLED_PREFIX}/`)) return path
   return path.slice(DISABLED_PREFIX.length + 1)
+}
+
+/** Supabase list() returns subfolders as entries without file metadata. */
+export function isStorageImageFile(entry: {
+  name: string
+  metadata?: Record<string, unknown> | null
+}): boolean {
+  if (!entry.name || entry.name.endsWith('/')) return false
+  return /\.(png|jpe?g|webp|gif|avif|svg)$/i.test(entry.name)
+}
+
+/** Move file; falls back to copy+delete when storage UPDATE/move policy is missing. */
+export async function moveStorageObject(
+  supabase: SupabaseClient,
+  bucket: string,
+  fromPath: string,
+  toPath: string,
+): Promise<{ error: string | null }> {
+  if (fromPath === toPath) return { error: null }
+
+  const { error: moveError } = await supabase.storage.from(bucket).move(fromPath, toPath)
+  if (!moveError) return { error: null }
+
+  const { error: copyError } = await supabase.storage.from(bucket).copy(fromPath, toPath)
+  if (copyError) {
+    return { error: copyError.message || moveError.message }
+  }
+
+  const { error: removeError } = await supabase.storage.from(bucket).remove([fromPath])
+  if (removeError) {
+    return { error: removeError.message }
+  }
+
+  return { error: null }
 }
 
 export async function fetchEnabledMediaUrls(folderPath: string): Promise<string[]> {

@@ -1055,6 +1055,16 @@ a.btn {
   color: var(--oxide-red);
 }
 
+.admin-inline-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.admin-inline-btn:disabled:hover {
+  border-color: rgba(106, 30, 30, 0.25);
+  color: inherit;
+}
+
 .admin-inline-btn--danger:hover {
   border-color: #7a2a24;
   color: #7a2a24;

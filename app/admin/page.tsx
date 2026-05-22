@@ -8,6 +8,8 @@ import {
   MEDIA_BUCKET,
   MEDIA_FOLDERS,
   folderPathFromId,
+  isStorageImageFile,
+  moveStorageObject,
   toDisabledPath,
   toEnabledPath,
   type MediaFolderId,
@@ -33,9 +35,9 @@ export default function AdminPage() {
   const [uploadEnabled, setUploadEnabled] = useState(true)
   const [items, setItems] = useState<MediaItem[]>([])
   const [pendingUploads, setPendingUploads] = useState<File[]>([])
-  const [pendingEnabledChanges, setPendingEnabledChanges] = useState<Record<string, boolean>>({})
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
+  const [busyPath, setBusyPath] = useState<string | null>(null)
   const [isSigningIn, setIsSigningIn] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -90,7 +92,7 @@ export default function AdminPage() {
       })
 
       activeResult.data?.forEach((file) => {
-        if (!file.name) return
+        if (!isStorageImageFile(file)) return
         const path = `${folder.path}/${file.name}`
         loaded.push({
           name: file.name,
@@ -105,7 +107,7 @@ export default function AdminPage() {
       })
 
       disabledResult.data?.forEach((file) => {
-        if (!file.name) return
+        if (!isStorageImageFile(file)) return
         const path = `${disabledFolder}/${file.name}`
         loaded.push({
           name: file.name,
@@ -127,7 +129,6 @@ export default function AdminPage() {
     })
 
     setItems(loaded)
-    setPendingEnabledChanges({})
   }
 
   async function handleSignIn(e: FormEvent<HTMLFormElement>) {
@@ -166,46 +167,55 @@ export default function AdminPage() {
   }
 
   async function handleDelete(path: string) {
-    if (!supabase || !user) return
+    if (!supabase || !user || busyPath) return
+    if (!window.confirm('Delete this image permanently?')) return
+
+    setBusyPath(path)
     setError(null)
     setMessage(null)
+
     const { error: deleteError } = await supabase.storage.from(MEDIA_BUCKET).remove([path])
+    setBusyPath(null)
+
     if (deleteError) {
       setError(deleteError.message)
       return
     }
+
     setMessage('Image deleted.')
     await loadItems()
   }
 
-  function handleToggleEnabled(item: MediaItem, checked: boolean) {
-    setPendingEnabledChanges((prev) => {
-      if (checked === item.enabled) {
-        const next = { ...prev }
-        delete next[item.path]
-        return next
-      }
-      return { ...prev, [item.path]: checked }
-    })
+  async function handleToggleEnabled(item: MediaItem, checked: boolean) {
+    if (!supabase || !user || busyPath) return
+    if (checked === item.enabled) return
+
+    const destination = checked ? toEnabledPath(item.path) : toDisabledPath(item.path)
+    if (destination === item.path) return
+
+    setBusyPath(item.path)
+    setError(null)
+    setMessage(null)
+
+    const { error: moveError } = await moveStorageObject(supabase, MEDIA_BUCKET, item.path, destination)
+    setBusyPath(null)
+
+    if (moveError) {
+      setError(moveError)
+      return
+    }
+
+    setMessage(checked ? 'Image is now embedded on the website.' : 'Image hidden from the website.')
+    await loadItems()
   }
 
   async function handleSaveChanges() {
     if (!supabase || !user) return
+    if (pendingUploads.length === 0) return
+
     setIsSaving(true)
     setError(null)
     setMessage(null)
-
-    const moveEntries = Object.entries(pendingEnabledChanges)
-    for (const [path, checked] of moveEntries) {
-      const destination = checked ? toEnabledPath(path) : toDisabledPath(path)
-      if (destination === path) continue
-      const { error: moveError } = await supabase.storage.from(MEDIA_BUCKET).move(path, destination)
-      if (moveError) {
-        setError(moveError.message)
-        setIsSaving(false)
-        return
-      }
-    }
 
     const baseFolder = folderPathFromId(targetFolder)
     const uploadFolder = uploadEnabled ? baseFolder : toDisabledPath(baseFolder)
@@ -224,9 +234,8 @@ export default function AdminPage() {
     }
 
     setPendingUploads([])
-    setPendingEnabledChanges({})
     setIsSaving(false)
-    setMessage('Changes saved successfully.')
+    setMessage('Uploads saved successfully.')
     await loadItems()
   }
 
@@ -317,7 +326,7 @@ export default function AdminPage() {
   }
 
   const visibleItems = items.filter((item) => item.folderId === targetFolder)
-  const hasPendingChanges = pendingUploads.length > 0 || Object.keys(pendingEnabledChanges).length > 0
+  const hasPendingUploads = pendingUploads.length > 0
 
   return (
     <section className="admin-page">
@@ -373,15 +382,18 @@ export default function AdminPage() {
             <p className="admin-media-note">{pendingUploads.length} file(s) queued for save.</p>
           ) : null}
           <p className="admin-media-note">
+            Uploads are saved with the button below. Embedded and Delete apply immediately to each image.
+          </p>
+          <p className="admin-media-note">
             Recommended: JPG/PNG/WebP, under 10MB each. Filenames are normalized automatically.
           </p>
           <button
             type="button"
             className="contact-form-submit"
-            disabled={!hasPendingChanges || isSaving}
+            disabled={!hasPendingUploads || isSaving || Boolean(busyPath)}
             onClick={handleSaveChanges}
           >
-            {isSaving ? 'Saving…' : 'Save Changes'}
+            {isSaving ? 'Saving uploads…' : 'Save Uploads'}
           </button>
         </div>
 
@@ -404,20 +416,27 @@ export default function AdminPage() {
                 <label className="admin-toggle-row admin-toggle-row--compact">
                   <input
                     type="checkbox"
-                    checked={pendingEnabledChanges[item.path] ?? item.enabled}
+                    checked={item.enabled}
+                    disabled={busyPath === item.path}
                     onChange={(e) => handleToggleEnabled(item, e.target.checked)}
                   />
-                  <span>Embedded</span>
+                  <span>{busyPath === item.path ? 'Updating…' : 'Embedded'}</span>
                 </label>
-                <button type="button" className="admin-inline-btn" onClick={() => handleCopy(item.publicUrl)}>
+                <button
+                  type="button"
+                  className="admin-inline-btn"
+                  disabled={Boolean(busyPath)}
+                  onClick={() => handleCopy(item.publicUrl)}
+                >
                   Copy URL
                 </button>
                 <button
                   type="button"
                   className="admin-inline-btn admin-inline-btn--danger"
+                  disabled={Boolean(busyPath)}
                   onClick={() => handleDelete(item.path)}
                 >
-                  Delete
+                  {busyPath === item.path ? 'Working…' : 'Delete'}
                 </button>
               </div>
             </article>
