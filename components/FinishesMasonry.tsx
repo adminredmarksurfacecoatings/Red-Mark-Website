@@ -1,10 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import ImageModal from '@/components/ImageModal'
+import GalleryImageTile from '@/components/GalleryImageTile'
 
-// Only images from /public/Finishes/ folder
 const finishesImages = [
   '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
   '/Finishes/ChatGPT-Image-Feb-17-2026-03_55_38-PM.png',
@@ -32,15 +31,34 @@ type FinishesMasonryProps = {
   images?: string[]
 }
 
+type MasonryColumnProps = {
+  images: string[]
+  getAspectRatio: (index: number) => string
+  altOffset: number
+  onImageClick: (src: string) => void
+}
+
+function MasonryColumn({ images, getAspectRatio, altOffset, onImageClick }: MasonryColumnProps) {
+  return (
+    <div className="finishes-masonry-column">
+      {images.map((image, index) => (
+        <GalleryImageTile
+          key={image}
+          src={image}
+          alt={`Project ${altOffset + index + 1}`}
+          aspectRatio={getAspectRatio(index)}
+          onClick={() => onImageClick(image)}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function FinishesMasonry({ images }: FinishesMasonryProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
   const sourceImages = images !== undefined ? images : finishesImages
-
-  if (sourceImages.length === 0) {
-    return null
-  }
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
@@ -79,12 +97,18 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
     }
   }, [])
 
-  // Organize images into masonry layout: Column 1 (tall), Column 2 (2 medium), Column 3 (tall)
-  // Distribute images evenly across columns
+  if (sourceImages.length === 0) {
+    return null
+  }
+
   const column1Images = sourceImages.filter((_, i) => i % 3 === 0)
   const column2Images = sourceImages.filter((_, i) => i % 3 === 1)
   const column3Images = sourceImages.filter((_, i) => i % 3 === 2)
   const gallery = sourceImages.map((image, index) => ({ src: image, alt: `Project ${index + 1}` }))
+
+  const openImage = (src: string) => {
+    setActiveImageIndex(sourceImages.findIndex((item) => item === src))
+  }
 
   return (
     <section
@@ -98,149 +122,49 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
       }}
     >
       <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-        {/* Section Heading */}
-        <h2 style={{
-          fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-          fontFamily: "'Cormorant Garamond', serif",
-          fontWeight: 500,
-          color: '#2B2B2B',
-          lineHeight: 1.2,
-          letterSpacing: '-0.02em',
-          marginBottom: '4rem',
-          marginLeft: '10vw',
-        }}>
+        <h2
+          style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 500,
+            color: '#2B2B2B',
+            lineHeight: 1.2,
+            letterSpacing: '-0.02em',
+            marginBottom: '4rem',
+            marginLeft: '10vw',
+          }}
+        >
           Selected Projects & Surfaces
         </h2>
 
-        {/* Masonry Grid Layout */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '40px',
-          marginLeft: '10vw',
-          marginRight: '10vw',
-        }}
-        className="finishes-masonry-grid"
+        <div
+          className="finishes-masonry-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '40px',
+            marginLeft: '10vw',
+            marginRight: '10vw',
+          }}
         >
-          {/* Column 1: Tall images */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '40px',
-          }}>
-            {column1Images.map((image, index) => (
-              <div
-                key={`col1-${index}`}
-                style={{
-                  width: '100%',
-                  aspectRatio: index % 2 === 0 ? '3/4' : '4/3', // Mix of tall and medium
-                  position: 'relative',
-                  overflow: 'hidden',
-                  borderRadius: '4px',
-                  transition: 'transform 0.3s ease',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.02)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                }}
-              >
-                <Image
-                  src={image}
-                  alt={`Project ${index + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={75}
-                  style={{
-                    objectFit: 'cover',
-                  }}
-                  onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item === image))}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Column 2: Medium images (stacked) */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '40px',
-          }}>
-            {column2Images.map((image, index) => (
-              <div
-                key={`col2-${index}`}
-                style={{
-                  width: '100%',
-                  aspectRatio: '4/3',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  borderRadius: '4px',
-                  transition: 'transform 0.3s ease',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.02)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                }}
-              >
-                <Image
-                  src={image}
-                  alt={`Project ${index + 8}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={75}
-                  style={{
-                    objectFit: 'cover',
-                  }}
-                  onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item === image))}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Column 3: Tall images */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '40px',
-          }}>
-            {column3Images.map((image, index) => (
-              <div
-                key={`col3-${index}`}
-                style={{
-                  width: '100%',
-                  aspectRatio: index % 2 === 0 ? '3/4' : '4/3', // Mix of tall and medium
-                  position: 'relative',
-                  overflow: 'hidden',
-                  borderRadius: '4px',
-                  transition: 'transform 0.3s ease',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.02)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)'
-                }}
-              >
-                <Image
-                  src={image}
-                  alt={`Project ${index + 15}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={75}
-                  style={{
-                    objectFit: 'cover',
-                  }}
-                  onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item === image))}
-                />
-              </div>
-            ))}
-          </div>
+          <MasonryColumn
+            images={column1Images}
+            getAspectRatio={(index) => (index % 2 === 0 ? '3/4' : '4/3')}
+            altOffset={0}
+            onImageClick={openImage}
+          />
+          <MasonryColumn
+            images={column2Images}
+            getAspectRatio={() => '4/3'}
+            altOffset={column1Images.length}
+            onImageClick={openImage}
+          />
+          <MasonryColumn
+            images={column3Images}
+            getAspectRatio={(index) => (index % 2 === 0 ? '3/4' : '4/3')}
+            altOffset={column1Images.length + column2Images.length}
+            onImageClick={openImage}
+          />
         </div>
       </div>
       <ImageModal

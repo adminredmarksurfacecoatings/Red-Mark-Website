@@ -84,7 +84,14 @@ export async function fetchEnabledMediaUrls(folderPath: string): Promise<string[
   if (error || !data) return []
 
   return data
-    .filter((file) => Boolean(file.name))
+    .filter((file) => isStorageImageFile(file))
     .map((file) => `${folderPath}/${file.name}`)
     .map((path) => supabase.storage.from(MEDIA_BUCKET).getPublicUrl(path).data.publicUrl)
+}
+
+/** Main finishes page: gallery images from finishes folder and all collection subfolders. */
+export async function fetchFinishesPageImages(): Promise<string[]> {
+  const folders = ['finishes', 'finishes/stone', 'finishes/mineral', 'finishes/exterior']
+  const lists = await Promise.all(folders.map((folder) => fetchEnabledMediaUrls(folder)))
+  return lists.flat()
 }

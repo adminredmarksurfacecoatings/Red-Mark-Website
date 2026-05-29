@@ -26,8 +26,6 @@ export default function GlobalMotionEffects() {
         main section .material-detail-grid > *,
         main section .finishes-grid > *,
         main section .projects-preview-grid > *,
-        main section .projects-masonry-grid > *,
-        main section .finishes-masonry-grid > *,
         main section .collections-editorial > *,
         main section .why-red-mark-grid > *,
         main section .for-pro-mini-grid > *,

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import FinishesMasonry from '@/components/FinishesMasonry'
 import FinishesCollectionsGrid from '@/components/FinishesCollectionsGrid'
-import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
 
 export const dynamic = 'force-dynamic'
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function FinishesPage() {
-  const finishesImages = await fetchEnabledMediaUrls(folderPathFromId('finishes'))
+  const finishesImages = await fetchFinishesPageImages()
   return (
     <>
       {/* Hero Section */}

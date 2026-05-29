@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import ImageModal from '@/components/ImageModal'
+import GalleryImageTile from '@/components/GalleryImageTile'
 
-// Curated selection of 9 images from /public/Finishes/ for the Projects page
 const projectImages = [
   {
     id: 1,
@@ -57,13 +56,41 @@ type ProjectsGridProps = {
   images?: string[]
 }
 
+type ProjectItem = {
+  id: number
+  image: string
+  aspectRatio: '3/4' | '4/3'
+}
+
+function ProjectColumn({
+  projects,
+  onImageClick,
+}: {
+  projects: ProjectItem[]
+  onImageClick: (id: number) => void
+}) {
+  return (
+    <div className="projects-masonry-column">
+      {projects.map((project) => (
+        <GalleryImageTile
+          key={project.id}
+          src={project.image}
+          alt={`Project ${project.id}`}
+          aspectRatio={project.aspectRatio}
+          onClick={() => onImageClick(project.id)}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function ProjectsGrid({ images }: ProjectsGridProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
   const imageList = images !== undefined ? images : projectImages.map((item) => item.image)
-  const sourceImages = imageList.map((image, index) => ({
+  const sourceImages: ProjectItem[] = imageList.map((image, index) => ({
     id: index + 1,
     image,
-    aspectRatio: index % 2 === 0 ? ('3/4' as const) : ('4/3' as const),
+    aspectRatio: index % 2 === 0 ? '3/4' : '4/3',
   }))
   const gallery = sourceImages.map((project) => ({ src: project.image, alt: `Project ${project.id}` }))
 
@@ -75,128 +102,28 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
     )
   }
 
-  // Distribute images into 3 columns for masonry layout
   const column1 = sourceImages.filter((_, i) => i % 3 === 0)
   const column2 = sourceImages.filter((_, i) => i % 3 === 1)
   const column3 = sourceImages.filter((_, i) => i % 3 === 2)
 
+  const openProject = (id: number) => {
+    setActiveImageIndex(sourceImages.findIndex((item) => item.id === id))
+  }
+
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '40px',
-      marginLeft: '10vw',
-      marginRight: '10vw',
-    }}
-    className="projects-masonry-grid"
+    <div
+      className="projects-masonry-grid"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '40px',
+        marginLeft: '10vw',
+        marginRight: '10vw',
+      }}
     >
-      {/* Column 1 */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-        {column1.map((project) => (
-          <div
-            key={project.id}
-            style={{
-              width: '100%',
-              aspectRatio: project.aspectRatio,
-              position: 'relative',
-              overflow: 'hidden',
-              borderRadius: '4px',
-              transition: 'transform 0.3s ease',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.02)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'
-            }}
-          >
-            <Image
-              src={project.image}
-              alt={`Project ${project.id}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              quality={75}
-              style={{
-                objectFit: 'cover',
-              }}
-              onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item.id === project.id))}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Column 2 */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-        {column2.map((project) => (
-          <div
-            key={project.id}
-            style={{
-              width: '100%',
-              aspectRatio: project.aspectRatio,
-              position: 'relative',
-              overflow: 'hidden',
-              borderRadius: '4px',
-              transition: 'transform 0.3s ease',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.02)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'
-            }}
-          >
-            <Image
-              src={project.image}
-              alt={`Project ${project.id}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              quality={75}
-              style={{
-                objectFit: 'cover',
-              }}
-              onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item.id === project.id))}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Column 3 */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-        {column3.map((project) => (
-          <div
-            key={project.id}
-            style={{
-              width: '100%',
-              aspectRatio: project.aspectRatio,
-              position: 'relative',
-              overflow: 'hidden',
-              borderRadius: '4px',
-              transition: 'transform 0.3s ease',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.02)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'
-            }}
-          >
-            <Image
-              src={project.image}
-              alt={`Project ${project.id}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              quality={75}
-              style={{
-                objectFit: 'cover',
-              }}
-              onClick={() => setActiveImageIndex(sourceImages.findIndex((item) => item.id === project.id))}
-            />
-          </div>
-        ))}
-      </div>
+      <ProjectColumn projects={column1} onImageClick={openProject} />
+      <ProjectColumn projects={column2} onImageClick={openProject} />
+      <ProjectColumn projects={column3} onImageClick={openProject} />
       <ImageModal
         isOpen={activeImageIndex !== null}
         images={gallery}

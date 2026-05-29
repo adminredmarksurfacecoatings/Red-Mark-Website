@@ -719,15 +719,161 @@ body.image-modal-open .site-nav {
   transform: translateY(0);
 }
 
+/* Gallery column/card wrappers must stay visible (nested images use fill layout) */
+.finishes-masonry-grid > *,
+.projects-masonry-grid > *,
+.finishes-grid > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.finishes-masonry-column,
+.projects-masonry-column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Gallery image tile — skeleton until fully loaded */
+.gallery-image-tile {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  background: linear-gradient(145deg, #ebe6df 0%, #f5f2ed 45%, #e8e2d9 100%);
+  flex-shrink: 0;
+}
+
+.gallery-image-tile__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  transition: transform 0.3s ease;
+}
+
+/* Next.js Image wrapper */
+.gallery-image-tile__frame > span {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-image-tile:hover .gallery-image-tile__frame {
+    transform: scale(1.02);
+  }
+}
+
+.gallery-image-tile__loader {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(145deg, #e8e2d9 0%, #f5f2ed 50%, #ebe6df 100%);
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.gallery-image-tile__loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.gallery-image-tile__loader-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 42%,
+    rgba(106, 30, 30, 0.06) 50%,
+    rgba(255, 255, 255, 0.35) 58%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  animation: gallery-tile-shimmer 2s ease-in-out infinite;
+}
+
+.gallery-image-tile__loader-mark {
+  position: relative;
+  z-index: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  padding-left: 0.28em;
+  color: rgba(106, 30, 30, 0.22);
+  user-select: none;
+  animation: gallery-tile-mark-pulse 2.4s ease-in-out infinite;
+}
+
+.gallery-image-tile__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.65s ease;
+}
+
+.gallery-image-tile__img.is-loaded {
+  opacity: 1;
+}
+
+@keyframes gallery-tile-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes gallery-tile-mark-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-image-tile__loader-shimmer,
+  .gallery-image-tile__loader-mark {
+    animation: none;
+  }
+
+  .gallery-image-tile__img {
+    transition-duration: 0.01ms;
+  }
+
+  .gallery-image-tile__loader {
+    transition-duration: 0.01ms;
+  }
+}
+
 /* Subtle image tactility */
 @media (hover: hover) and (pointer: fine) {
   main section img {
     transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   }
 
-  main section a:hover img,
-  main section div:hover > img,
-  main section button:hover img {
+  main section a:hover img:not(.gallery-image-tile__img),
+  main section div:hover > img:not(.gallery-image-tile__img),
+  main section button:hover img:not(.gallery-image-tile__img) {
     transform: scale(1.05);
     filter: brightness(1.03) contrast(1.02);
     box-shadow: 0 8px 26px rgba(30, 30, 30, 0.12);
