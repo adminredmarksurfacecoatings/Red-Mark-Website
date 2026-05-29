@@ -13,6 +13,7 @@ import ProjectsPreview from '@/components/ProjectsPreview'
 import RealProjectBlockSection from '@/components/RealProjectBlockSection'
 import MicroTestimonialSection from '@/components/MicroTestimonialSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
+import BrochureDownloadSection from '@/components/BrochureDownloadSection'
 import ImageModal from '@/components/ImageModal'
 import NotFoundRedirectPopup from '@/components/NotFoundRedirectPopup'
 
@@ -49,6 +50,7 @@ export default function Home() {
       <RealProjectBlockSection />
       <MicroTestimonialSection />
       <FinalCtaSection />
+      <BrochureDownloadSection />
       <ImageModal
         isOpen={Boolean(activeImage)}
         images={activeImage?.gallery || []}

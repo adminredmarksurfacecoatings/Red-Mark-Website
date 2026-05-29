@@ -701,6 +701,222 @@ body.image-modal-open .site-nav {
   margin-bottom: 2rem;
 }
 
+/* Homepage brochure download */
+.homepage-brochure {
+  background-color: #f7f4ef;
+  padding-top: clamp(5.5rem, 10vw, 8.5rem);
+  padding-bottom: clamp(5.5rem, 10vw, 8.5rem);
+}
+
+.homepage-brochure__container {
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.homepage-brochure__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(3rem, 6vw, 5.5rem);
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.homepage-brochure__content {
+  max-width: 34rem;
+}
+
+.homepage-brochure__eyebrow {
+  font-size: 0.6875rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #6a6a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.35rem;
+}
+
+.homepage-brochure__heading {
+  font-size: clamp(2.35rem, 4.6vw, 3.75rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #2b2b2b;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.home-page .homepage-brochure__heading {
+  margin-bottom: 1.5rem;
+}
+
+.homepage-brochure__description {
+  font-size: clamp(0.98rem, 1.15vw, 1.0625rem);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #4a4a4a;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.75rem;
+  max-width: 32rem;
+}
+
+.homepage-brochure__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  font-size: 0.6875rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #6a6a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.homepage-brochure__meta-sep {
+  color: rgba(106, 106, 106, 0.45);
+  user-select: none;
+}
+
+.homepage-brochure__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+}
+
+.homepage-brochure__download {
+  padding: 1.05rem 2.15rem;
+}
+
+.homepage-brochure__contact {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2b2b2b;
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(43, 43, 43, 0.22);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.homepage-brochure__contact:hover {
+  color: var(--oxide-red);
+  border-color: rgba(106, 30, 30, 0.45);
+}
+
+.homepage-brochure__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-brochure__mockup-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: min(100%, 300px);
+}
+
+.homepage-brochure__mockup {
+  width: 100%;
+  perspective: 1200px;
+}
+
+.homepage-brochure__mockup-page {
+  position: relative;
+  transform: rotateY(-7deg) rotateX(1.5deg);
+  transform-origin: center left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 2px 8px 22px rgba(43, 43, 43, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #f5f2ed;
+}
+
+.homepage-brochure__badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 2;
+  padding: 0.35rem 0.55rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f5f2ed;
+  background: rgba(106, 30, 30, 0.92);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .homepage-brochure__mockup-link:hover .homepage-brochure__mockup-page {
+    transform: rotateY(-6deg) rotateX(1deg) translateY(-3px);
+    box-shadow: 4px 14px 28px rgba(43, 43, 43, 0.11);
+  }
+
+  .homepage-brochure .btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.homepage-brochure__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+@media (max-width: 1024px) {
+  .homepage-brochure__grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .homepage-brochure__content {
+    max-width: none;
+  }
+
+  .homepage-brochure__mockup-link {
+    width: min(68vw, 260px);
+  }
+
+  .homepage-brochure__mockup-page {
+    transform: rotateY(-5deg) rotateX(1deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage-brochure__container {
+    padding: 0 2rem;
+  }
+
+  .homepage-brochure {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .homepage-brochure__meta {
+    margin-bottom: 2rem;
+  }
+
+  .homepage-brochure__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
+
 .for-pro-mini-card:hover {
   transform: translateY(-4px);
   border-color: rgba(106, 30, 30, 0.2) !important;

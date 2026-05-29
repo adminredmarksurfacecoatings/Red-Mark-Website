@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:brochure-cover": "node scripts/generate-brochure-cover.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.2",
@@ -25,6 +26,7 @@
     "@types/react-dom": "^18.2.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
+    "pdf-to-img": "^6.1.0",
     "sharp": "^0.34.5",
     "typescript": "^5.0.0"
   }
