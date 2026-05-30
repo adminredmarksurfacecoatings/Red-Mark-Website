@@ -25,7 +25,10 @@ export default function Navbar() {
     pathname === '/thank-you' ||
     pathname === '/catalogues' ||
     pathname?.startsWith('/for-professionals') ||
-    pathname?.startsWith('/collections')
+    pathname?.startsWith('/collections') ||
+    pathname?.startsWith('/finishes/exterior') ||
+    pathname?.startsWith('/finishes/interior') ||
+    pathname?.startsWith('/finishes/all')
 
   useEffect(() => {
     if (isStructuredPage) {

@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:brochure-cover": "node scripts/generate-brochure-cover.mjs"
+    "generate:brochure-cover": "node scripts/generate-brochure-cover.mjs",
+    "generate:stone-finish-cover": "node scripts/generate-finish-cover.mjs stone-finish",
+    "generate:pebble-finish-cover": "node scripts/generate-finish-cover.mjs pebble-finish",
+    "generate:finish-cover": "node scripts/generate-finish-cover.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.2",

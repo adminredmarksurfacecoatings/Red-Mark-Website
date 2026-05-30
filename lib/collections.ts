@@ -7,7 +7,7 @@ export type CollectionDefinition = {
   title: string
   description: string
   image: string
-  href: `/collections/${CollectionSlug}`
+  href: string
   /** Supabase folder for single-collection pages. Null = aggregate all finish folders. */
   storageId: MediaFolderId | null
   featured?: boolean
@@ -19,7 +19,7 @@ export const COLLECTIONS: CollectionDefinition[] = [
     title: 'Interior',
     description: 'Refined mineral finishes for calm, character-rich interior spaces.',
     image: '/home_grid_1.png',
-    href: '/collections/interior',
+    href: '/finishes/interior',
     storageId: 'stone',
   },
   {
@@ -27,7 +27,7 @@ export const COLLECTIONS: CollectionDefinition[] = [
     title: 'Exterior',
     description: 'Durable surface systems engineered for enduring architectural exteriors.',
     image: '/home_grid_2.png',
-    href: '/collections/exterior',
+    href: '/finishes/exterior',
     storageId: 'exterior',
     featured: true,
   },
@@ -36,7 +36,7 @@ export const COLLECTIONS: CollectionDefinition[] = [
     title: 'All',
     description: 'Explore the complete Red Mark range — decorative textures for every application.',
     image: '/home_grid_3.png',
-    href: '/collections/all',
+    href: '/finishes/all',
     storageId: null,
   },
 ]

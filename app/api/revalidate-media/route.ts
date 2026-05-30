@@ -7,6 +7,8 @@ import { getSupabaseClientEnv } from '@/lib/supabase/config'
 const PUBLIC_MEDIA_PATHS = [
   '/projects',
   '/finishes',
+  '/finishes/exterior',
+  '/finishes/exterior/stone-finish',
   '/collections/interior',
   '/collections/exterior',
   '/collections/all',

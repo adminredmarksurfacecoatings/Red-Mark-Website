@@ -31,7 +31,14 @@ export default function GlobalMotionEffects() {
         main section .for-pro-mini-grid > *,
         main section .real-project-grid > *,
         main section .collection-card,
-        main section .professional-card-link
+        main section .professional-card-link,
+        main section .exterior-landing-card,
+        main section .exterior-landing-why__card,
+        main section .exterior-landing-project,
+        main section .exterior-landing-hero__visual,
+        main section .stone-finish-shade,
+        main section .stone-finish-spec__item,
+        main section .stone-finish-cta__banner
         `
       )
     ).filter((node) => !node.closest('.image-modal-overlay'))
