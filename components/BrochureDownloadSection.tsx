@@ -1,10 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Fragment } from 'react'
+import { getFeaturedCatalogue } from '@/lib/catalogues'
 
-const BROCHURE_PDF = '/brochure/REDMARKPPT.pdf'
-const BROCHURE_COVER = '/brochure/collection-book-cover.webp'
+type BrochureDownloadSectionProps = {
+  showCataloguesLink?: boolean
+}
 
-export default function BrochureDownloadSection() {
+export default function BrochureDownloadSection({ showCataloguesLink = false }: BrochureDownloadSectionProps) {
+  const catalogue = getFeaturedCatalogue()
+
   return (
     <section
       id="homepage-brochure"
@@ -20,28 +25,26 @@ export default function BrochureDownloadSection() {
               Download the Red Mark Collection Book
             </h2>
 
-            <p className="homepage-brochure__description">
-              Explore our complete range of mineral finishes, decorative textures, exterior coatings,
-              metallic effects, and surface solutions in one curated guide.
-            </p>
+            <p className="homepage-brochure__description">{catalogue.description}</p>
 
             <ul className="homepage-brochure__meta" aria-label="Brochure details">
-              <li>15 Pages</li>
-              <li aria-hidden="true" className="homepage-brochure__meta-sep">
-                •
-              </li>
-              <li>Decorative Finishes</li>
-              <li aria-hidden="true" className="homepage-brochure__meta-sep">
-                •
-              </li>
-              <li>Interior &amp; Exterior Applications</li>
+              {catalogue.meta.map((entry, index) => (
+                <Fragment key={entry}>
+                  {index > 0 ? (
+                    <li aria-hidden="true" className="homepage-brochure__meta-sep">
+                      •
+                    </li>
+                  ) : null}
+                  <li>{entry}</li>
+                </Fragment>
+              ))}
             </ul>
 
             <div className="homepage-brochure__actions">
               <a
-                href={BROCHURE_PDF}
+                href={catalogue.pdf}
                 className="btn homepage-brochure__download"
-                download="Red-Mark-Collection-Book.pdf"
+                download={catalogue.downloadName}
                 aria-label="Download the Red Mark Collection Book brochure (PDF)"
               >
                 Download Brochure →
@@ -50,23 +53,31 @@ export default function BrochureDownloadSection() {
                 Contact Us
               </Link>
             </div>
+
+            {showCataloguesLink ? (
+              <Link href="/catalogues" className="homepage-brochure__catalogues-link">
+                View all catalogues →
+              </Link>
+            ) : null}
           </div>
 
           <div className="homepage-brochure__visual">
             <a
-              href={BROCHURE_PDF}
+              href={catalogue.pdf}
               className="homepage-brochure__mockup-link"
-              download="Red-Mark-Collection-Book.pdf"
+              download={catalogue.downloadName}
               aria-label="Download the Red Mark Collection Book (PDF)"
             >
               <div className="homepage-brochure__mockup">
                 <div className="homepage-brochure__mockup-page">
-                  <span className="homepage-brochure__badge">2026 Edition</span>
+                  {catalogue.badge ? (
+                    <span className="homepage-brochure__badge">{catalogue.badge}</span>
+                  ) : null}
                   <Image
-                    src={BROCHURE_COVER}
+                    src={catalogue.cover}
                     alt=""
-                    width={1350}
-                    height={1800}
+                    width={catalogue.coverWidth}
+                    height={catalogue.coverHeight}
                     sizes="(max-width: 768px) 68vw, 300px"
                     quality={90}
                     loading="lazy"

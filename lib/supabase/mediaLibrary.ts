@@ -7,9 +7,9 @@ export const DISABLED_PREFIX = '_disabled'
 export const MEDIA_FOLDERS = [
   { id: 'projects', label: 'Projects', path: 'projects' },
   { id: 'finishes', label: 'Finishes (Main)', path: 'finishes' },
-  { id: 'stone', label: 'Stone Collection', path: 'finishes/stone' },
-  { id: 'mineral', label: 'Mineral Collection', path: 'finishes/mineral' },
-  { id: 'exterior', label: 'Exterior Collection', path: 'finishes/exterior' },
+  { id: 'stone', label: 'Interior', path: 'finishes/stone' },
+  { id: 'mineral', label: 'All (additional folder)', path: 'finishes/mineral' },
+  { id: 'exterior', label: 'Exterior', path: 'finishes/exterior' },
 ] as const
 
 export type MediaFolderId = (typeof MEDIA_FOLDERS)[number]['id']

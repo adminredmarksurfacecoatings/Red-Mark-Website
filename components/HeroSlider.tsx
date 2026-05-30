@@ -1,8 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { getCollection } from '@/lib/collections'
 
 export default function HeroSlider() {
+  const featured = getCollection('exterior')!
   const scrollToNext = () => {
     const heroHeight = window.innerHeight
     window.scrollTo({
@@ -12,7 +14,9 @@ export default function HeroSlider() {
   }
 
   return (
-    <section style={{
+    <section
+      className="home-hero"
+      style={{
       position: 'relative',
       height: '100vh',
       overflow: 'hidden',
@@ -76,7 +80,7 @@ export default function HeroSlider() {
           lineHeight: 1.1,
           letterSpacing: '-0.02em',
         }}>
-          Stone Collection
+          {featured.title}
         </h1>
         
         <p style={{
@@ -88,7 +92,7 @@ export default function HeroSlider() {
           lineHeight: 1.6,
           marginBottom: '2rem', /* Comfortable spacing below subtext */
         }}>
-          Layered mineral surfaces with architectural depth.
+          {featured.description}
         </p>
         
         {/* Thin Oxide Red Accent Line (50-70px) */}
@@ -132,19 +136,6 @@ export default function HeroSlider() {
       </button>
 
       <style jsx>{`
-        .hero-bg-image {
-          animation: heroZoom 15s linear forwards;
-        }
-        
-        @keyframes heroZoom {
-          0% {
-            transform: scale(1);
-          }
-          100% {
-            transform: scale(1.03);
-          }
-        }
-        
         .scroll-indicator {
           animation: refinedBounce 3s ease-in-out infinite;
         }

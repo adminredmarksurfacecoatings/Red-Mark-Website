@@ -40,6 +40,7 @@ export default function Home() {
       </Suspense>
       <HeroSlider />
       <SectionTwo />
+      <BrochureDownloadSection showCataloguesLink />
       <SectionThree />
       <BreakSection />
       <WhyRedMarkSection />
@@ -50,7 +51,6 @@ export default function Home() {
       <RealProjectBlockSection />
       <MicroTestimonialSection />
       <FinalCtaSection />
-      <BrochureDownloadSection />
       <ImageModal
         isOpen={Boolean(activeImage)}
         images={activeImage?.gallery || []}

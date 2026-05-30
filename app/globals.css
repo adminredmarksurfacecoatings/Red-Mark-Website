@@ -812,6 +812,310 @@ body.image-modal-open .site-nav {
   border-color: rgba(106, 30, 30, 0.45);
 }
 
+.homepage-brochure__catalogues-link {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6a6a6a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(106, 106, 106, 0.28);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.homepage-brochure__catalogues-link:hover {
+  color: var(--oxide-red);
+  border-color: rgba(106, 30, 30, 0.45);
+}
+
+/* Navbar contact button */
+.nav-contact-btn {
+  padding: 0.72rem 1.35rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.nav-contact-btn--light {
+  border-color: rgba(245, 242, 237, 0.82);
+  color: #f5f2ed;
+}
+
+.nav-contact-btn--light:hover {
+  background-color: rgba(245, 242, 237, 0.12);
+  color: #f5f2ed;
+  border-color: #f5f2ed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-contact-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Catalogues page */
+.catalogues-hero__eyebrow {
+  font-size: 0.6875rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #6a6a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.25rem;
+}
+
+.catalogues-hero__heading {
+  font-size: clamp(3rem, 6vw, 4.75rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #2b2b2b;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.catalogues-hero__description {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #4a4a4a;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.catalogues-grid-section__heading {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #2b2b2b;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+
+.catalogues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3rem 2.5rem;
+}
+
+.catalogue-card__mockup-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 1.35rem;
+}
+
+.catalogue-card__mockup {
+  width: 100%;
+  max-width: 280px;
+  perspective: 1200px;
+}
+
+.catalogue-card__mockup-page {
+  position: relative;
+  transform: rotateY(-6deg) rotateX(1deg);
+  transform-origin: center left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 2px 8px 22px rgba(43, 43, 43, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #f5f2ed;
+}
+
+.catalogue-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  padding: 0.3rem 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f5f2ed;
+  background: rgba(106, 30, 30, 0.92);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.catalogue-card__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.catalogue-card__title {
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #2b2b2b;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.catalogue-card__description {
+  font-size: 0.9375rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #4a4a4a;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.catalogue-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 0.625rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #6a6a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.catalogue-card__meta-sep {
+  color: rgba(106, 106, 106, 0.45);
+}
+
+.catalogue-card__download {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2b2b2b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43, 43, 43, 0.22);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.catalogue-card__download:hover {
+  color: var(--oxide-red);
+  border-color: rgba(106, 30, 30, 0.45);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .catalogue-card__mockup-link:hover .catalogue-card__mockup-page {
+    transform: rotateY(-5deg) rotateX(0.5deg) translateY(-3px);
+    box-shadow: 4px 14px 28px rgba(43, 43, 43, 0.11);
+  }
+}
+
+.catalogues-professionals__inner {
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  max-width: 1180px;
+}
+
+.catalogues-professionals__eyebrow {
+  font-size: 0.6875rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #6a6a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 1rem;
+}
+
+.catalogues-professionals__heading {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: #2b2b2b;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.catalogues-professionals__description {
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #4a4a4a;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 34rem;
+}
+
+.catalogues-professionals__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.catalogues-professionals__link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2b2b2b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43, 43, 43, 0.18);
+  width: fit-content;
+  padding-bottom: 0.15rem;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.catalogues-professionals__link:hover {
+  color: var(--oxide-red);
+  border-color: rgba(106, 30, 30, 0.45);
+}
+
+.catalogues-professionals__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.catalogues-professionals__frame {
+  width: min(100%, 240px);
+  transform: rotateY(-5deg) rotateX(1deg);
+  box-shadow: 2px 8px 22px rgba(43, 43, 43, 0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.catalogues-professionals__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .catalogues-professionals__inner {
+    grid-template-columns: 1fr;
+    padding: 0 4rem;
+  }
+
+  .catalogues-professionals__visual {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalogues-professionals__inner {
+    padding: 0 2rem;
+  }
+}
+
 .homepage-brochure__visual {
   display: flex;
   justify-content: center;
@@ -914,6 +1218,42 @@ body.image-modal-open .site-nav {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
+  }
+}
+
+/* Homepage hero — slow zoom only, no hover scale */
+.home-hero .hero-bg-image {
+  animation: heroSlowZoom 22s ease-in-out forwards;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.home-hero img {
+  transition: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-hero img,
+  .home-hero div:hover > img,
+  .home-hero a:hover img {
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+}
+
+@keyframes heroSlowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero .hero-bg-image {
+    animation: none;
   }
 }
 
@@ -1083,13 +1423,13 @@ body.image-modal-open .site-nav {
 
 /* Subtle image tactility */
 @media (hover: hover) and (pointer: fine) {
-  main section img {
+  main section:not(.home-hero) img {
     transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   }
 
-  main section a:hover img:not(.gallery-image-tile__img),
-  main section div:hover > img:not(.gallery-image-tile__img),
-  main section button:hover img:not(.gallery-image-tile__img) {
+  main section:not(.home-hero) a:hover img:not(.gallery-image-tile__img),
+  main section:not(.home-hero) div:hover > img:not(.gallery-image-tile__img),
+  main section:not(.home-hero) button:hover img:not(.gallery-image-tile__img) {
     transform: scale(1.05);
     filter: brightness(1.03) contrast(1.02);
     box-shadow: 0 8px 26px rgba(30, 30, 30, 0.12);

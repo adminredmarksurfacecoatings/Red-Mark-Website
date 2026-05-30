@@ -87,7 +87,7 @@ export default function Footer() {
             >
               <li><Link href="/finishes" className="footer-link">Finishes</Link></li>
               <li><Link href="/projects" className="footer-link">Projects</Link></li>
-              <li><Link href="/for-professionals" className="footer-link">For Professionals</Link></li>
+              <li><Link href="/catalogues" className="footer-link">Catalogues</Link></li>
               <li><Link href="/about" className="footer-link">About</Link></li>
               <li><Link href="/contact" className="footer-link">Contact</Link></li>
             </ul>

@@ -7,9 +7,11 @@ import { getSupabaseClientEnv } from '@/lib/supabase/config'
 const PUBLIC_MEDIA_PATHS = [
   '/projects',
   '/finishes',
+  '/collections/interior',
+  '/collections/exterior',
+  '/collections/all',
   '/collections/stone',
   '/collections/mineral',
-  '/collections/exterior',
 ]
 
 export async function POST() {

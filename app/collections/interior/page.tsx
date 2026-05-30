@@ -1,23 +1,23 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import ExteriorCollectionGallery from '@/components/ExteriorCollectionGallery'
-import ExteriorFinishGrid from '@/components/ExteriorFinishGrid'
+import StoneCollectionGallery from '@/components/StoneCollectionGallery'
+import StoneFinishGrid from '@/components/StoneFinishGrid'
 import { getCollection, getNextCollection } from '@/lib/collections'
 import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
 
 export const dynamic = 'force-dynamic'
 
-const collection = getCollection('exterior')!
+const collection = getCollection('interior')!
 
 export const metadata: Metadata = {
   title: collection.title,
   description: collection.description,
 }
 
-export default async function ExteriorCollectionPage() {
-  const exteriorImages = await fetchEnabledMediaUrls(folderPathFromId(collection.storageId!))
-  const nextCollection = getNextCollection('exterior')
+export default async function InteriorCollectionPage() {
+  const interiorImages = await fetchEnabledMediaUrls(folderPathFromId(collection.storageId!))
+  const nextCollection = getNextCollection('interior')
 
   return (
     <>
@@ -79,7 +79,7 @@ export default async function ExteriorCollectionPage() {
 
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <ExteriorFinishGrid images={exteriorImages} />
+          <StoneFinishGrid images={interiorImages} />
         </div>
       </section>
 
@@ -139,15 +139,16 @@ export default async function ExteriorCollectionPage() {
                   letterSpacing: '0.01em',
                 }}
               >
-                Exterior finishes are engineered for weather resistance, tonal stability, and refined
-                architectural presence — composed to endure while maintaining mineral depth and texture.
+                Interior finishes are composed to bring layered mineral depth and soft tonal movement to
+                residential and commercial spaces — surfaces that respond beautifully to natural and
+                architectural light.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <ExteriorCollectionGallery images={exteriorImages} />
+      <StoneCollectionGallery images={interiorImages} />
 
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>

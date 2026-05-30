@@ -1,23 +1,23 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import ExteriorCollectionGallery from '@/components/ExteriorCollectionGallery'
-import ExteriorFinishGrid from '@/components/ExteriorFinishGrid'
+import MineralCollectionGallery from '@/components/MineralCollectionGallery'
+import MineralFinishGrid from '@/components/MineralFinishGrid'
 import { getCollection, getNextCollection } from '@/lib/collections'
-import { fetchEnabledMediaUrls, folderPathFromId } from '@/lib/supabase/mediaLibrary'
+import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
 
 export const dynamic = 'force-dynamic'
 
-const collection = getCollection('exterior')!
+const collection = getCollection('all')!
 
 export const metadata: Metadata = {
   title: collection.title,
   description: collection.description,
 }
 
-export default async function ExteriorCollectionPage() {
-  const exteriorImages = await fetchEnabledMediaUrls(folderPathFromId(collection.storageId!))
-  const nextCollection = getNextCollection('exterior')
+export default async function AllCollectionPage() {
+  const allImages = await fetchFinishesPageImages()
+  const nextCollection = getNextCollection('all')
 
   return (
     <>
@@ -66,7 +66,7 @@ export default async function ExteriorCollectionPage() {
             }}
           >
             <Image
-              src="/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png"
+              src="/Finishes/ChatGPT-Image-Feb-17-2026-04_08_31-PM.png"
               alt={`${collection.title} feature`}
               fill
               sizes="100vw"
@@ -79,7 +79,7 @@ export default async function ExteriorCollectionPage() {
 
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <ExteriorFinishGrid images={exteriorImages} />
+          <MineralFinishGrid images={allImages} />
         </div>
       </section>
 
@@ -126,7 +126,7 @@ export default async function ExteriorCollectionPage() {
                   marginBottom: '2rem',
                 }}
               >
-                Material Character
+                Complete Range
               </h2>
 
               <p
@@ -139,15 +139,15 @@ export default async function ExteriorCollectionPage() {
                   letterSpacing: '0.01em',
                 }}
               >
-                Exterior finishes are engineered for weather resistance, tonal stability, and refined
-                architectural presence — composed to endure while maintaining mineral depth and texture.
+                Browse every enabled finish across interior and exterior applications — decorative
+                textures, mineral coatings, and surface systems curated in one place.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <ExteriorCollectionGallery images={exteriorImages} />
+      <MineralCollectionGallery images={allImages} />
 
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>

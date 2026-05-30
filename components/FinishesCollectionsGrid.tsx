@@ -2,32 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-
-const finishes = [
-  {
-    id: 1,
-    image: '/home_grid_1.png',
-    title: 'Stone Collection',
-    description: 'Layered mineral surfaces with architectural depth.',
-    href: '/collections/stone',
-  },
-  {
-    id: 2,
-    image: '/home_grid_2.png',
-    title: 'Exterior Collection',
-    description: 'Refined surfaces engineered for enduring exteriors.',
-    href: '/collections/exterior',
-  },
-  {
-    id: 3,
-    image: '/home_grid_3.png',
-    title: 'Mineral Collection',
-    description: 'Soft tonal movement with breathable matte character.',
-    href: '/collections/mineral',
-  },
-]
+import { getCollectionsForNav } from '@/lib/collections'
 
 export default function FinishesCollectionsGrid() {
+  const finishes = getCollectionsForNav()
+
   return (
     <>
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
@@ -43,7 +22,7 @@ export default function FinishesCollectionsGrid() {
           >
             {finishes.map((finish) => (
               <Link
-                key={finish.id}
+                key={finish.slug}
                 href={finish.href}
                 style={{
                   display: 'flex',
