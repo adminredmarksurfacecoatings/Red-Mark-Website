@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import BecomeDealerForm from '@/components/contact/BecomeDealerForm'
 
 export const metadata: Metadata = {
   title: 'For Dealers',
@@ -164,7 +165,32 @@ export default function DealersPage() {
         </div>
       </section>
 
-      {/* Section 5 — CTA */}
+      {/* Section 5 — Become a Dealer */}
+      <section id="become-a-dealer" className="page-section dealer-partner-form-section">
+        <div className="container dealer-partner-form-section__container">
+          <div className="dealer-partner-form-section__grid">
+            <div>
+              <p className="dealer-partner-form-section__eyebrow">Become a Dealer</p>
+              <h2 className="dealer-partner-form-section__heading">Partner with Red Mark</h2>
+              <p className="dealer-partner-form-section__text">
+                Join our authorized dealer network to offer premium architectural finishes with
+                manufacturer-backed technical support, marketing materials, and product training.
+              </p>
+              <ul className="dealer-partner-form-section__list">
+                <li>Distinctive stone, pebble, and decorative finish portfolio</li>
+                <li>Technical and application support from Red Mark</li>
+                <li>Marketing assets and shade cards for your showroom</li>
+                <li>Long-term partnerships built on product quality</li>
+              </ul>
+            </div>
+            <div>
+              <BecomeDealerForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6 — CTA */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
           <h2 style={{
@@ -176,7 +202,7 @@ export default function DealersPage() {
             letterSpacing: '-0.02em',
             marginBottom: '1.5rem',
           }}>
-            Become a Dealer Partner
+            Questions About Distribution?
           </h2>
           <p style={{
             fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
@@ -188,10 +214,10 @@ export default function DealersPage() {
             maxWidth: '560px',
             margin: '0 auto 2.5rem',
           }}>
-            If you're interested in distributing Red Mark products in your region, we would be happy to discuss partnership opportunities.
+            For existing partnerships or general dealer enquiries, reach out directly.
           </p>
-          <Link href="/contact" className="btn">
-            Contact Us
+          <Link href="/contact?audience=dealer" className="btn">
+            Contact Dealer Team
           </Link>
         </div>
       </section>

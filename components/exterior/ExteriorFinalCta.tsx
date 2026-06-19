@@ -12,9 +12,14 @@ export default function ExteriorFinalCta() {
           Our team can recommend finishes based on project type, climate, and design direction.
         </p>
 
-        <Link href="/contact" className="btn exterior-landing-final__btn">
-          Start Your Project →
-        </Link>
+        <div className="exterior-landing-final__actions">
+          <Link href="/contact?audience=architect" className="btn exterior-landing-final__btn">
+            Request Project Support →
+          </Link>
+          <Link href="/find-a-dealer" className="exterior-landing-final__secondary">
+            Find a Dealer
+          </Link>
+        </div>
       </div>
     </section>
   )

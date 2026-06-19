@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: absUrl('/') },
     { url: absUrl('/about'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: absUrl('/find-a-dealer'), changeFrequency: 'monthly', priority: 0.75 },
     { url: absUrl('/contact'), changeFrequency: 'monthly', priority: 0.6 },
     { url: absUrl('/projects'), changeFrequency: 'monthly', priority: 0.7 },
     { url: absUrl('/finishes'), changeFrequency: 'monthly', priority: 0.7 },

@@ -164,6 +164,48 @@ export default function ArchitectsPage() {
         </div>
       </section>
 
+      <section className="page-section architect-resources">
+        <div className="container architect-resources__container">
+          <p className="architect-resources__eyebrow">Architect Resource Center</p>
+          <h2 className="architect-resources__heading">Specification-ready resources</h2>
+          <p className="architect-resources__intro">
+            Tools and references to help you evaluate, specify, and present Red Mark finishes on
+            active projects.
+          </p>
+
+          <div className="architect-resources__grid">
+            <Link href="/catalogues" className="architect-resources__card">
+              <h3>Product Catalogues</h3>
+              <p>Downloadable catalogues and finish overviews.</p>
+            </Link>
+            <Link href="/finishes" className="architect-resources__card">
+              <h3>Texture Collections</h3>
+              <p>Explore interior, exterior, and complete finish ranges.</p>
+            </Link>
+            <Link href="/finishes/exterior/stone-finish" className="architect-resources__card">
+              <h3>Stone Finish Shades</h3>
+              <p>Full shade catalogue with samples and shade cards.</p>
+            </Link>
+            <Link href="/projects" className="architect-resources__card">
+              <h3>Project Inspiration</h3>
+              <p>Reference installations across residential and commercial work.</p>
+            </Link>
+            <Link href="/finishes/exterior/stone-finish/request-sample" className="architect-resources__card">
+              <h3>Sample Requests</h3>
+              <p>Order physical samples for client presentations and mock-ups.</p>
+            </Link>
+            <Link href="/contact?audience=architect" className="architect-resources__card">
+              <h3>Technical Support</h3>
+              <p>Discuss specifications, applications, and project requirements.</p>
+            </Link>
+          </div>
+
+          <p className="architect-resources__note">
+            Technical data sheets and CAD resources will be added as they become available.
+          </p>
+        </div>
+      </section>
+
       {/* Section 5 — CTA */}
       <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
@@ -190,8 +232,8 @@ export default function ArchitectsPage() {
           }}>
             If you are working on a project and would like to explore our surface finishes, our team would be happy to assist.
           </p>
-          <Link href="/contact" className="btn">
-            Contact Us
+          <Link href="/contact?audience=architect" className="btn">
+            Request Samples
           </Link>
         </div>
       </section>

@@ -5,11 +5,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
-const navLinks = [
+const primaryLinks = [
   { href: '/finishes', label: 'Finishes' },
   { href: '/projects', label: 'Projects' },
   { href: '/catalogues', label: 'Catalogues' },
+  { href: '/for-professionals', label: 'For Professionals' },
+]
+
+const menuLinks = [
+  ...primaryLinks,
+  { href: '/find-a-dealer', label: 'Find a Dealer' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -24,6 +31,7 @@ export default function Navbar() {
     pathname === '/contact' ||
     pathname === '/thank-you' ||
     pathname === '/catalogues' ||
+    pathname === '/find-a-dealer' ||
     pathname?.startsWith('/for-professionals') ||
     pathname?.startsWith('/collections') ||
     pathname?.startsWith('/finishes/exterior') ||
@@ -43,6 +51,17 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isStructuredPage])
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
 
   const navBackground = isStructuredPage ? 'var(--bg-primary)' : isScrolled ? 'var(--bg-primary)' : 'transparent'
   const navPosition = isStructuredPage ? 'sticky' : 'fixed'
@@ -64,29 +83,10 @@ export default function Navbar() {
         borderBottom: navBorder,
         boxShadow: isScrolled || isStructuredPage ? '0 10px 30px rgba(20, 20, 20, 0.07)' : 'none',
         transition: 'background-color 0.3s ease, border-bottom 0.3s ease, box-shadow 0.3s ease',
-        backdropFilter: 'none',
       }}
     >
-      <div
-        className="container"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '2.5rem 4rem',
-          maxWidth: '1400px',
-          margin: '0 auto',
-        }}
-      >
-        <Link
-          href="/"
-          className="logo-link"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            paddingRight: '4rem',
-          }}
-        >
+      <div className="site-nav__inner container">
+        <Link href="/" className="logo-link site-nav__logo">
           <Image
             src="/Logo.svg"
             alt="Red Mark Surface Coatings"
@@ -98,41 +98,29 @@ export default function Navbar() {
               transform: 'scale(1.1)',
               transformOrigin: 'left center',
               filter: logoFilter,
-              opacity: 1,
               transition: 'filter 0.3s ease',
             }}
           />
         </Link>
 
-        <div
-          className="desktop-nav"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '3rem',
-          }}
-        >
-          {navLinks.map((link) => (
+        <div className="site-nav__desktop">
+          {primaryLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                fontSize: '0.875rem',
-                letterSpacing: '0.07em',
-                fontWeight: 500,
-                color: navTextColor,
-                textTransform: 'uppercase',
-                position: 'relative',
-                paddingBottom: '0.5rem',
-                transition: 'color 0.2s ease',
-                opacity: 0.88,
-              }}
-              className={`nav-link${pathname === link.href ? ' active' : ''}`}
+              style={{ color: navTextColor }}
+              className={`nav-link site-nav__link${pathname === link.href || pathname?.startsWith(`${link.href}/`) ? ' active' : ''}`}
             >
               {link.label}
             </Link>
           ))}
-
+          <Link
+            href="/find-a-dealer"
+            style={{ color: navTextColor }}
+            className={`nav-link site-nav__link site-nav__link--dealer${pathname === '/find-a-dealer' ? ' active' : ''}`}
+          >
+            Find a Dealer
+          </Link>
           <Link
             href="/contact"
             className={`btn nav-contact-btn${isTransparentNav ? ' nav-contact-btn--light' : ''}`}
@@ -142,108 +130,35 @@ export default function Navbar() {
         </div>
 
         <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            color: navTextColor,
-            cursor: 'pointer',
-            fontSize: '1.5rem',
-            padding: '0.5rem',
-          }}
-          className="mobile-menu-btn"
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+          className="site-nav__menu-btn"
+          style={{ color: navTextColor }}
         >
-          ☰
+          Menu
         </button>
       </div>
 
       {isMenuOpen ? (
-        <div
-          className="mobile-menu"
-          style={{
-            display: 'none',
-            flexDirection: 'column',
-            padding: '2rem 4rem',
-            gap: '1.5rem',
-            backgroundColor: 'var(--bg-primary)',
-          }}
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsMenuOpen(false)}
-              style={{ color: 'var(--text-primary)', fontSize: '1rem', opacity: 0.88 }}
-            >
-              {link.label}
+        <div className="site-nav__drawer" role="dialog" aria-label="Site menu">
+          <div className="site-nav__drawer-panel">
+            {menuLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`site-nav__drawer-link${pathname === link.href ? ' is-active' : ''}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link href="/for-professionals/dealers" className="site-nav__drawer-link">
+              Become a Dealer
             </Link>
-          ))}
-          <Link
-            href="/contact"
-            onClick={() => setIsMenuOpen(false)}
-            className="btn"
-            style={{ width: 'fit-content' }}
-          >
-            Contact
-          </Link>
+          </div>
         </div>
       ) : null}
-
-      <style jsx>{`
-        .nav--transparent .logo-link {
-          text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.55);
-        }
-
-        .nav--solid .logo-link {
-          text-shadow: none;
-        }
-
-        .nav-link {
-          position: relative;
-        }
-
-        .nav--transparent .nav-link {
-          text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.55);
-        }
-
-        .nav--solid .nav-link {
-          text-shadow: none;
-        }
-
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background-color: currentColor;
-          opacity: 0.7;
-          transition: width 0.25s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link:active::after,
-        .nav-link.active::after {
-          width: 100%;
-        }
-
-        @media (max-width: 768px) {
-          .mobile-menu-btn {
-            display: block !important;
-          }
-
-          .desktop-nav {
-            display: none !important;
-          }
-
-          .mobile-menu {
-            display: flex !important;
-          }
-        }
-      `}</style>
     </nav>
   )
 }

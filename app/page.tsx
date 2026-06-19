@@ -14,6 +14,7 @@ import RealProjectBlockSection from '@/components/RealProjectBlockSection'
 import MicroTestimonialSection from '@/components/MicroTestimonialSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
 import BrochureDownloadSection from '@/components/BrochureDownloadSection'
+import DealerNetworkSection from '@/components/home/DealerNetworkSection'
 import ImageModal from '@/components/ImageModal'
 import NotFoundRedirectPopup from '@/components/NotFoundRedirectPopup'
 
@@ -47,6 +48,7 @@ export default function Home() {
       <MidPageCtaSection />
       <FeatureHighlightSection />
       <ForProfessionalsMiniSection />
+      <DealerNetworkSection />
       <ProjectsPreview onImageClick={openImageModal} />
       <RealProjectBlockSection />
       <MicroTestimonialSection />

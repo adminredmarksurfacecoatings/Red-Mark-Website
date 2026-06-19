@@ -90,8 +90,8 @@ export default function FeatureHighlightSection() {
               Expressive finishes with balanced texture, depth, and tone curated to elevate modern architecture without visual noise.
             </p>
 
-            <Link href="/contact" className="feature-cta">
-              Request Material Consultation
+            <Link href="/contact?audience=architect" className="feature-cta">
+              Request Project Support
             </Link>
           </div>
         </div>

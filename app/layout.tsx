@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './globals-dealer.css'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 import SiteChrome from '@/components/SiteChrome'
 

@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import ContactForm from '@/components/ContactForm'
+import Link from 'next/link'
+import ContactFormSection from '@/components/contact/ContactFormSection'
+import { BRAND_TAGLINE } from '@/lib/brand'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Start a project conversation with Red Mark for material guidance, finish selection, and technical support.',
+    'Contact Red Mark for architect and builder project support, dealer partnerships, or homeowner enquiries routed through authorized dealers.',
 }
 
 export default function ContactPage() {
@@ -14,309 +16,102 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Section 1 — Hero */}
-      <section className="page-section page-section--first" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
-        <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <h1 style={{
-            fontSize: 'clamp(3rem, 6vw, 5rem)',
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 500,
-            color: '#2B2B2B',
-            lineHeight: 1.2,
-            letterSpacing: '-0.02em',
-            marginBottom: '3rem', /* Generous spacing between heading and subtext */
-          }}>
-            Contact
-          </h1>
-          
-          <p style={{
-            fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: 300,
-            color: '#4A4A4A',
-            lineHeight: 1.7,
-            letterSpacing: '0.01em',
-            maxWidth: '650px',
-            margin: '0 auto',
-          }}>
-            For project inquiries, collaborations, or product information, feel free to reach out.
+      <section className="page-section page-section--first contact-page-hero">
+        <div className="container contact-page-hero__container">
+          <h1 className="contact-page-hero__heading">Contact</h1>
+          <p className="contact-page-hero__lead">{BRAND_TAGLINE}</p>
+          <p className="contact-page-hero__support">
+            Architects, builders, and commercial projects work directly with Red Mark. Homeowners are
+            typically connected through authorized local dealers.
           </p>
         </div>
       </section>
 
-      {/* Section 2 — Feature Image */}
-      <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
-        <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <div style={{
-            width: '100%',
-            height: '400px',
-            position: 'relative',
-            overflow: 'hidden',
-            borderRadius: '4px',
-          }}>
+      <section className="page-section">
+        <div className="container">
+          <div className="contact-page-quick-links">
+            <Link href="/find-a-dealer" className="contact-page-quick-links__card">
+              <span className="contact-page-quick-links__eyebrow">Homeowners</span>
+              <strong>Find a Dealer</strong>
+              <span>Local availability in Ludhiana</span>
+            </Link>
+            <Link href="/contact?audience=architect" className="contact-page-quick-links__card">
+              <span className="contact-page-quick-links__eyebrow">Professionals</span>
+              <strong>Request Project Support</strong>
+              <span>Samples, specs, and technical guidance</span>
+            </Link>
+            <Link href="/for-professionals/dealers" className="contact-page-quick-links__card">
+              <span className="contact-page-quick-links__eyebrow">Dealers</span>
+              <strong>Become a Dealer</strong>
+              <span>Distribution partnerships</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section">
+        <div className="container">
+          <div className="contact-page-feature-image">
             <Image
               src="/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png"
               alt="Red Mark Surface Coatings"
               fill
               sizes="100vw"
               quality={75}
-              style={{
-                objectFit: 'cover',
-                filter: 'brightness(0.96) saturate(0.95)',
-              }}
+              style={{ objectFit: 'cover', filter: 'brightness(0.96) saturate(0.95)' }}
             />
-            {/* Gradient Overlay */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'linear-gradient(to bottom, rgba(245,242,238,0.05), rgba(245,242,238,0.25))',
-              pointerEvents: 'none',
-            }}></div>
           </div>
         </div>
       </section>
 
-      {/* Section 3 — Contact Section */}
-      <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
-        <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '80px',
-            alignItems: 'flex-start',
-            marginLeft: '10vw',
-            marginRight: '10vw',
-          }}
-          className="material-detail-grid"
-          >
-            {/* Left Column: Contact Information */}
-            <div>
-              <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 500,
-                color: '#2B2B2B',
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-                marginBottom: '2rem',
-              }}>
-                Get in Touch
-              </h2>
-              
-              <p style={{
-                fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 300,
-                color: '#4A4A4A',
-                lineHeight: 1.8,
-                letterSpacing: '0.01em',
-                marginBottom: '3rem',
-              }}>
-                Whether you're an architect, builder, designer, or homeowner, our team is happy to assist with project inquiries, surface finishes, and product information.
-              </p>
+      <section className="page-section">
+        <div className="container contact-page-grid material-detail-grid">
+          <div className="contact-page-sidebar">
+            <h2 className="contact-page-sidebar__heading">Get in Touch</h2>
+            <p className="contact-page-sidebar__text">
+              Choose your enquiry type in the form. This helps us route your message to the right team
+              — or to your nearest authorized dealer when appropriate.
+            </p>
 
-              {/* Contact Details */}
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '24px',
-              }}>
-                {/* Email */}
-                <div>
-                  <div style={{
-                    fontSize: '0.875rem',
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 500,
-                    color: '#2B2B2B',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '0.5rem',
-                  }}>
-                    Email
-                  </div>
-                  <a
-                    href="mailto:info@redmarksurfacecoatings.com"
-                    style={{
-                      fontSize: 'clamp(1rem, 1.25vw, 1.125rem)',
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: 300,
-                      color: '#4A4A4A',
-                      textDecoration: 'none',
-                      display: 'inline-block',
-                      position: 'relative',
-                      paddingBottom: '0.25rem',
-                    }}
-                    className="collection-link"
-                  >
-                    info@redmarksurfacecoatings.com
-                  </a>
-                  <div style={{
-                    fontSize: '0.8125rem',
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 300,
-                    color: '#6A6A6A',
-                    marginTop: '0.5rem',
-                  }}>
-                    Preferred contact method: Email
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <div style={{
-                    fontSize: '0.875rem',
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 500,
-                    color: '#2B2B2B',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '0.75rem',
-                  }}>
-                    Phone
-                  </div>
-
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.35rem',
-                  }}>
-                    <div>
-                      <div style={{
-                        fontSize: '0.6875rem',
-                        fontFamily: "'Inter', sans-serif",
-                        fontWeight: 400,
-                        color: '#2B2B2B',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.14em',
-                        opacity: 0.6,
-                        marginBottom: '0.4rem',
-                      }}>
-                        India
-                      </div>
-                      <a
-                        href="tel:+918968310500"
-                        style={{
-                          fontSize: 'clamp(1.0625rem, 1.3vw, 1.1875rem)',
-                          fontFamily: "'Inter', sans-serif",
-                          fontWeight: 300,
-                          color: '#2B2B2B',
-                          textDecoration: 'none',
-                          display: 'inline-block',
-                          position: 'relative',
-                          paddingBottom: '0.2rem',
-                          letterSpacing: '0.02em',
-                          opacity: 0.92,
-                        }}
-                        className="collection-link"
-                      >
-                        +91 89683 10500
-                      </a>
-                    </div>
-
-                    <div>
-                      <div style={{
-                        fontSize: '0.6875rem',
-                        fontFamily: "'Inter', sans-serif",
-                        fontWeight: 400,
-                        color: '#2B2B2B',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.14em',
-                        opacity: 0.6,
-                        marginBottom: '0.4rem',
-                      }}>
-                        Canada
-                      </div>
-                      <a
-                        href="tel:+15144464255"
-                        style={{
-                          fontSize: 'clamp(1.0625rem, 1.3vw, 1.1875rem)',
-                          fontFamily: "'Inter', sans-serif",
-                          fontWeight: 300,
-                          color: '#2B2B2B',
-                          textDecoration: 'none',
-                          display: 'inline-block',
-                          position: 'relative',
-                          paddingBottom: '0.2rem',
-                          letterSpacing: '0.02em',
-                          opacity: 0.92,
-                        }}
-                        className="collection-link"
-                      >
-                        +1 514 446 4255
-                      </a>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      marginTop: '1.1rem',
-                      fontSize: '0.8125rem',
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: 300,
-                      color: '#6A6A6A',
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    For faster response
-                  </div>
-
-                  <a
-                    href={whatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="whatsapp-inquiry-btn"
-                    aria-label="WhatsApp Inquiry: chat now"
-                  >
-                    WhatsApp Inquiry &rarr;
-                  </a>
-
-                  <div
-                    style={{
-                      marginTop: '0.55rem',
-                      fontSize: '0.8125rem',
-                      fontFamily: "'Inter', sans-serif",
-                      fontWeight: 300,
-                      color: '#6A6A6A',
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    Direct WhatsApp responses are usually faster.
-                  </div>
-                </div>
-              </div>
+            <div className="contact-page-sidebar__block">
+              <span className="contact-page-sidebar__label">Email</span>
+              <a href="mailto:info@redmarksurfacecoatings.com" className="collection-link">
+                info@redmarksurfacecoatings.com
+              </a>
             </div>
 
-            {/* Right Column: Contact Form */}
-            <div>
-              <h3 style={{
-                fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 500,
-                color: '#2B2B2B',
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-                marginBottom: '0.75rem',
-              }}>
-                Project Inquiry
-              </h3>
-              
-              <p style={{
-                fontSize: 'clamp(0.9375rem, 1.125vw, 1rem)',
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 300,
-                color: '#4A4A4A',
-                lineHeight: 1.6,
-                letterSpacing: '0.01em',
-                marginBottom: '2rem',
-              }}>
-                Submit the form below and our team will review your project requirements.
-              </p>
-
-              <ContactForm />
+            <div className="contact-page-sidebar__block">
+              <span className="contact-page-sidebar__label">Phone — India</span>
+              <a href="tel:+918968310500" className="collection-link">
+                +91 89683 10500
+              </a>
             </div>
+
+            <div className="contact-page-sidebar__block">
+              <span className="contact-page-sidebar__label">Phone — Canada</span>
+              <a href="tel:+15144464255" className="collection-link">
+                +1 514 446 4255
+              </a>
+            </div>
+
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp-inquiry-btn"
+              aria-label="WhatsApp Inquiry: chat now"
+            >
+              WhatsApp Inquiry →
+            </a>
+          </div>
+
+          <div>
+            <h3 className="contact-page-form__heading">Project Enquiry</h3>
+            <p className="contact-page-form__intro">
+              Tell us who you are and what you need. Large homeowner projects may also receive Red
+              Mark technical support alongside dealer fulfillment.
+            </p>
+            <ContactFormSection />
           </div>
         </div>
       </section>
