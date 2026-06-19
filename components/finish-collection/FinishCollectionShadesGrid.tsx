@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import FinishCollectionShadeSwatch from '@/components/finish-collection/FinishCollectionShadeSwatch'
 import type { FinishCollectionConfig } from '@/lib/finishCollection/types'
 
@@ -32,12 +31,6 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
               fallbackImage={shade.fallbackImage}
             />
           ))}
-        </div>
-
-        <div className="stone-finish-shades__footer">
-          <Link href={`#${config.shadeCardSectionId}`} className="stone-finish-shades__view-all">
-            View All Shades →
-          </Link>
         </div>
       </div>
     </section>

@@ -40,8 +40,10 @@ export default function FinishCollectionShadeSwatch({
           }}
         />
       </div>
-      <p className="stone-finish-shade__code">{code}</p>
-      <p className="stone-finish-shade__name">{name}</p>
+      <p className="stone-finish-shade__label">
+        <span className="stone-finish-shade__code">{code}</span>
+        <span className="stone-finish-shade__name">{name}</span>
+      </p>
     </article>
   )
 }

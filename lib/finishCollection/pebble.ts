@@ -99,7 +99,7 @@ export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   ctaSection: {
     eyebrow: 'Explore the Complete Range',
     heading: 'Pebble Finish Shade Card',
-    description: 'View all shades in detail and find the perfect tone for your project.',
+    description: 'Download the printable shade card for specifications, references, and offline sharing.',
   },
   specAriaLabel: 'Pebble finish specifications',
 }

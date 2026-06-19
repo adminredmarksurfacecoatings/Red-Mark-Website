@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import StoneFinishShadeSwatch from '@/components/stone-finish/StoneFinishShadeSwatch'
 import { STONE_FINISH_SHADES } from '@/lib/stoneFinishShades'
 
@@ -28,12 +27,6 @@ export default function StoneFinishShadesGrid() {
               fallbackImage={shade.fallbackImage}
             />
           ))}
-        </div>
-
-        <div className="stone-finish-shades__footer">
-          <Link href="#stone-finish-shade-card" className="stone-finish-shades__view-all">
-            View All Shades →
-          </Link>
         </div>
       </div>
     </section>
