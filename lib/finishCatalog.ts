@@ -9,6 +9,8 @@ export type FinishCatalogEntry = {
   image: string
   available: boolean
   applications: FinishApplication[]
+  /** Homepage featured finish row */
+  featured?: boolean
 }
 
 export const FINISH_CATALOG: FinishCatalogEntry[] = [
@@ -22,6 +24,7 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     image: '/Stone_hero.png',
     available: true,
     applications: ['exterior'],
+    featured: true,
   },
   {
     slug: 'pebble-finish',
@@ -33,6 +36,18 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
     available: true,
     applications: ['interior', 'exterior'],
+    featured: true,
+  },
+  {
+    slug: 'create-art',
+    eyebrow: 'CREATE ART',
+    title: 'Create Art',
+    description:
+      'Expressive decorative textures for interior feature walls — Slate, Dropway, and Subaru families with artisan depth.',
+    href: '/finishes/interior/create-art',
+    image: '/Shadecards/create-art/shade-card/cover.webp',
+    available: true,
+    applications: ['interior'],
   },
   {
     slug: 'mineral-textures',
@@ -85,4 +100,16 @@ export function formatFinishApplications(applications: FinishApplication[]) {
 
 export function getFinishCatalogEntry(slug: string) {
   return FINISH_CATALOG.find((entry) => entry.slug === slug)
+}
+
+export function getFeaturedFinishes() {
+  return FINISH_CATALOG.filter((entry) => entry.featured)
+}
+
+export function getPrimaryFeaturedFinish() {
+  return getFeaturedFinishes()[0]
+}
+
+export function getSecondaryFeaturedFinishes() {
+  return getFeaturedFinishes().slice(1)
 }

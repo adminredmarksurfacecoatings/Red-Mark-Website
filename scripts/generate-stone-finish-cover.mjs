@@ -10,7 +10,7 @@ import { pdf } from 'pdf-to-img'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
-const SHADE_CARD_DIR = path.join(ROOT, 'public/Finishes/exterior/stone-finish/shade-card')
+const SHADE_CARD_DIR = path.join(ROOT, 'public/Shadecards/stone-finish/shade-card')
 const PDF_CANDIDATES = [
   path.join(SHADE_CARD_DIR, 'Stone finish SC.pdf'),
   path.join(SHADE_CARD_DIR, 'stone-finish-shade-card.pdf'),

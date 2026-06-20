@@ -1,7 +1,9 @@
 import type { FinishCollectionConfig, FinishRequestSampleConfig } from '@/lib/finishCollection/types'
 import { shadeCardPdfPath, shadeImagePath } from '@/lib/finishCollection/types'
+import { shadecardCoverPath } from '@/lib/shadecards'
 
-const ASSET_BASE = '/Finishes/exterior/pebble-finish'
+const COLLECTION_SLUG = 'pebble-finish'
+const PAGE_ASSET_BASE = '/Finishes/exterior/pebble-finish'
 const SHADE_CARD_FILE = 'Pebble SC.pdf'
 
 const fallbackTextures = [
@@ -37,7 +39,7 @@ const shadeDefinitions = [
 
 const shades = shadeDefinitions.map((shade, index) => ({
   ...shade,
-  image: shadeImagePath(ASSET_BASE, shade.code),
+  image: shadeImagePath(COLLECTION_SLUG, shade.code),
   fallbackImage: fallbackTextures[index],
 }))
 
@@ -51,15 +53,15 @@ export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   requestSampleHref: '/finishes/exterior/pebble-finish/request-sample',
   heroLead:
     'Granular mineral textures crafted for interior and exterior walls, facades, and architectural surfaces — offering visual richness, durability, and enduring appeal.',
-  heroImage: `${ASSET_BASE}/hero/hero.webp`,
+  heroImage: `${PAGE_ASSET_BASE}/hero/hero.webp`,
   heroImageFallback: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
   heroImageAlt: 'Pebble finish on interior and exterior architectural surfaces',
   shadeCardSectionId: 'pebble-finish-shade-card',
   shadeCard: {
-    pdf: shadeCardPdfPath(ASSET_BASE, SHADE_CARD_FILE),
+    pdf: shadeCardPdfPath(COLLECTION_SLUG, SHADE_CARD_FILE),
     downloadName: 'Pebble-Finish-Shade-Card.pdf',
-    cover: `${ASSET_BASE}/shade-card/cover.webp`,
-    coverFallback: `${ASSET_BASE}/shade-card/cover.jpg`,
+    cover: shadecardCoverPath(COLLECTION_SLUG),
+    coverFallback: shadecardCoverPath(COLLECTION_SLUG, 'jpg'),
     coverWidth: 4142,
     coverHeight: 4937,
   },

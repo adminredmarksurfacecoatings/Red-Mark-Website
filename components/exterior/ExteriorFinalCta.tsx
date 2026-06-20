@@ -17,7 +17,7 @@ export default function ExteriorFinalCta() {
             Request Project Support →
           </Link>
           <Link href="/find-a-dealer" className="exterior-landing-final__secondary">
-            Find a Dealer
+            Get Connected
           </Link>
         </div>
       </div>

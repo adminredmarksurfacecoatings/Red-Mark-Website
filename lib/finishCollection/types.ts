@@ -9,6 +9,12 @@ export type FinishShade = {
   fallbackImage: string
 }
 
+export type FinishShadeGroup = {
+  id: string
+  heading: string
+  shades: FinishShade[]
+}
+
 export type FinishShadeCard = {
   pdf: string
   downloadName: string
@@ -36,6 +42,8 @@ export type FinishCollectionConfig = {
   shadeCard: FinishShadeCard
   shadeCardSectionId: string
   shades: FinishShade[]
+  /** When set, shades render in grouped sections (e.g. Create Art families). */
+  shadeGroups?: FinishShadeGroup[]
   specs: Array<{ label: string; value: string; icon: FinishSpecIcon }>
   heroFeatures: Array<{ label: string; icon: FinishFeatureIcon }>
   shadesSection: {
@@ -65,12 +73,12 @@ export type FinishRequestSampleConfig = {
   shades: FinishShade[]
 }
 
-export function shadeImagePath(assetBase: string, code: string) {
-  return `${assetBase}/shades/${code}/swatch.webp`
+export function shadeImagePath(collectionSlug: string, code: string) {
+  return `/Shadecards/${collectionSlug}/single-shades/${code}/swatch.webp`
 }
 
-export function shadeCardPdfPath(assetBase: string, filename: string) {
-  return `${assetBase}/shade-card/${encodeURIComponent(filename)}`
+export function shadeCardPdfPath(collectionSlug: string, filename: string) {
+  return `/Shadecards/${collectionSlug}/shade-card/${encodeURIComponent(filename)}`
 }
 
 export function matchFinishShade(

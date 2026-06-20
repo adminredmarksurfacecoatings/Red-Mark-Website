@@ -32,8 +32,8 @@ export default function ContactPage() {
           <div className="contact-page-quick-links">
             <Link href="/find-a-dealer" className="contact-page-quick-links__card">
               <span className="contact-page-quick-links__eyebrow">Homeowners</span>
-              <strong>Find a Dealer</strong>
-              <span>Local availability in Ludhiana</span>
+              <strong>Get Connected to a Dealer</strong>
+              <span>Request your local authorized partner</span>
             </Link>
             <Link href="/contact?audience=architect" className="contact-page-quick-links__card">
               <span className="contact-page-quick-links__eyebrow">Professionals</span>

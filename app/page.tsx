@@ -40,9 +40,9 @@ export default function Home() {
         <NotFoundRedirectPopup />
       </Suspense>
       <HeroSlider />
+      <SectionThree />
       <SectionTwo />
       <BrochureDownloadSection showCataloguesLink />
-      <SectionThree />
       <BreakSection />
       <WhyRedMarkSection />
       <MidPageCtaSection />

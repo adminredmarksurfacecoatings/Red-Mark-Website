@@ -139,8 +139,8 @@ export default function ContactAudienceForm({ initialAudience }: ContactAudience
             For most home projects, your nearest authorized dealer can confirm availability, shades,
             and local support faster.
           </p>
-          <Link href="/find-a-dealer" className="contact-audience-banner__link">
-            Find a Dealer in Ludhiana →
+            <Link href="/find-a-dealer" className="contact-audience-banner__link">
+            Get Connected to a Dealer →
           </Link>
         </div>
       ) : null}

@@ -1,7 +1,9 @@
 import type { FinishCollectionConfig, FinishRequestSampleConfig } from '@/lib/finishCollection/types'
 import { shadeCardPdfPath, shadeImagePath } from '@/lib/finishCollection/types'
+import { shadecardCoverPath } from '@/lib/shadecards'
 
-const ASSET_BASE = '/Finishes/exterior/stone-finish'
+const COLLECTION_SLUG = 'stone-finish'
+const PAGE_ASSET_BASE = '/Finishes/exterior/stone-finish'
 const SHADE_CARD_FILE = 'Stone finish SC.pdf'
 
 const fallbackTextures = [
@@ -63,7 +65,7 @@ const shadeDefinitions = [
 
 const shades = shadeDefinitions.map((shade, index) => ({
   ...shade,
-  image: shadeImagePath(ASSET_BASE, shade.code),
+  image: shadeImagePath(COLLECTION_SLUG, shade.code),
   fallbackImage: fallbackTextures[index % fallbackTextures.length],
 }))
 
@@ -79,15 +81,15 @@ export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
   requestSampleHref: '/finishes/exterior/stone-finish/request-sample',
   heroLead:
     'Timeless stone textures crafted for exterior walls, facades, and architectural surfaces — offering natural depth, weather resistance, and enduring appeal.',
-  heroImage: `${ASSET_BASE}/hero/hero.webp`,
+  heroImage: `${PAGE_ASSET_BASE}/hero/hero.webp`,
   heroImageFallback: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
   heroImageAlt: 'Stone finish exterior on a contemporary facade',
   shadeCardSectionId: 'stone-finish-shade-card',
   shadeCard: {
-    pdf: shadeCardPdfPath(ASSET_BASE, SHADE_CARD_FILE),
+    pdf: shadeCardPdfPath(COLLECTION_SLUG, SHADE_CARD_FILE),
     downloadName: 'Stone-Finish-Shade-Card.pdf',
-    cover: `${ASSET_BASE}/shade-card/cover.webp`,
-    coverFallback: `${ASSET_BASE}/shade-card/cover.jpg`,
+    cover: shadecardCoverPath(COLLECTION_SLUG),
+    coverFallback: shadecardCoverPath(COLLECTION_SLUG, 'jpg'),
     coverWidth: 4385,
     coverHeight: 5260,
   },

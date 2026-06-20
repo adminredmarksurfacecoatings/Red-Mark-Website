@@ -10,6 +10,9 @@
     "generate:brochure-cover": "node scripts/generate-brochure-cover.mjs",
     "generate:stone-finish-cover": "node scripts/generate-finish-cover.mjs stone-finish",
     "generate:pebble-finish-cover": "node scripts/generate-finish-cover.mjs pebble-finish",
+    "generate:create-art-cover": "node scripts/generate-finish-cover.mjs create-art",
+    "extract:create-art-swatches": "node scripts/extract-create-art-swatches.mjs",
+    "process:create-art-swatches": "node scripts/process-create-art-swatches.mjs",
     "generate:finish-cover": "node scripts/generate-finish-cover.mjs"
   },
   "dependencies": {

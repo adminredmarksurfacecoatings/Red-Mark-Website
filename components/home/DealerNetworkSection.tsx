@@ -47,7 +47,7 @@ export default function DealerNetworkSection() {
 
         <div className="dealer-network-section__actions">
           <Link href="/find-a-dealer" className="btn">
-            Find a Dealer
+            Get Connected
           </Link>
           <Link href="/for-professionals" className="dealer-network-section__secondary">
             For Professionals →

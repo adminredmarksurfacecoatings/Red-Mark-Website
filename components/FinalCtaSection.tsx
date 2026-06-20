@@ -9,15 +9,15 @@ export default function FinalCtaSection() {
         <div className="final-cta-section__inner">
           <h2 className="final-cta-section__heading">Ready to Specify or Source a Finish?</h2>
           <p className="final-cta-section__text">
-            Professionals can request samples and project support directly. Homeowners can locate an
-            authorized dealer for local availability.
+            Professionals can request samples and project support directly. Homeowners can get
+            connected with an authorized dealer for local availability.
           </p>
           <div className="final-cta-section__actions">
             <Link href="/contact?audience=architect" className="btn final-cta-btn">
               Request Project Support
             </Link>
             <Link href="/find-a-dealer" className="final-cta-section__secondary">
-              Find a Dealer →
+              Get Connected →
             </Link>
           </div>
         </div>

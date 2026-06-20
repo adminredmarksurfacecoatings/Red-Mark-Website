@@ -56,8 +56,11 @@ export default function FinishCollectionShadeCardCta({ config }: FinishCollectio
             <Link href={config.requestSampleHref} className="stone-finish-cta__sample">
               Request Sample
             </Link>
-            <Link href="/find-a-dealer" className="stone-finish-cta__dealer">
-              Find a Dealer
+            <Link
+              href={`/find-a-dealer?finish=${encodeURIComponent(config.title)}`}
+              className="stone-finish-cta__dealer"
+            >
+              Get Connected
             </Link>
           </div>
         </div>

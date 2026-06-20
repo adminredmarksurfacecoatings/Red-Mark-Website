@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absUrl('/finishes/exterior/stone-finish/request-sample'), changeFrequency: 'monthly', priority: 0.6 },
     { url: absUrl('/finishes/exterior/pebble-finish'), changeFrequency: 'monthly', priority: 0.7 },
     { url: absUrl('/finishes/exterior/pebble-finish/request-sample'), changeFrequency: 'monthly', priority: 0.6 },
+    { url: absUrl('/finishes/interior/create-art'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: absUrl('/finishes/interior/create-art/request-sample'), changeFrequency: 'monthly', priority: 0.6 },
     { url: absUrl('/finishes/exterior/mineral-textures'), changeFrequency: 'monthly', priority: 0.6 },
     { url: absUrl('/finishes/exterior/decorative-exterior-finishes'), changeFrequency: 'monthly', priority: 0.6 },
     { url: absUrl('/collections/interior'), changeFrequency: 'monthly', priority: 0.7 },

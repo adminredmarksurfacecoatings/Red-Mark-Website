@@ -12,15 +12,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
 
 const COLLECTIONS = {
-  'stone-finish': path.join(ROOT, 'public/Finishes/exterior/stone-finish/shade-card'),
-  'pebble-finish': path.join(ROOT, 'public/Finishes/exterior/pebble-finish/shade-card'),
+  'stone-finish': path.join(ROOT, 'public/Shadecards/stone-finish/shade-card'),
+  'pebble-finish': path.join(ROOT, 'public/Shadecards/pebble-finish/shade-card'),
+  'create-art': path.join(ROOT, 'public/Shadecards/create-art/shade-card'),
 }
 
 const slug = process.argv[2] || 'stone-finish'
 const SHADE_CARD_DIR = COLLECTIONS[slug]
 
 if (!SHADE_CARD_DIR) {
-  console.error(`Unknown collection "${slug}". Use: stone-finish | pebble-finish`)
+  console.error(`Unknown collection "${slug}". Use: stone-finish | pebble-finish | create-art`)
   process.exit(1)
 }
 
