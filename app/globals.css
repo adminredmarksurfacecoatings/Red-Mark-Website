@@ -1690,6 +1690,10 @@ a.btn {
     padding-bottom: var(--section-spacing-mobile);
   }
   
+  .finishes-collections-section {
+    display: none !important;
+  }
+
   .finishes-grid {
     grid-template-columns: 1fr !important;
     gap: 4rem !important;
@@ -1707,10 +1711,14 @@ a.btn {
   }
   
   .finishes-masonry-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.75rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  .finishes-masonry-column {
+    gap: 0.75rem;
   }
   
   .projects-masonry-grid {

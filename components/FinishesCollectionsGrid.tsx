@@ -9,7 +9,10 @@ export default function FinishesCollectionsGrid() {
 
   return (
     <>
-      <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
+      <section
+        className="page-section finishes-collections-section"
+        style={{ backgroundColor: 'var(--bg-primary)' }}
+      >
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
           <div
             style={{
