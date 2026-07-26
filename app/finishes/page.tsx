@@ -1,23 +1,27 @@
 import type { Metadata } from 'next'
 import FinishesMasonry from '@/components/FinishesMasonry'
 import FinishesCollectionsGrid from '@/components/FinishesCollectionsGrid'
+import { createPageMetadata } from '@/lib/seo'
 import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
-  title: 'Finishes',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Mineral Finishes & Wall Texture Collections',
   description:
-    'Explore curated mineral finish collections with layered texture, tonal depth, and architectural character.',
-}
+    'Explore Red Mark mineral finish collections — layered wall textures with tonal depth for interiors and exteriors. Browse selected surfaces and project imagery.',
+  path: '/finishes',
+  image: '/home_grid_2.png',
+  imageAlt: 'Red Mark mineral finish collection surfaces',
+})
 
 export default async function FinishesPage() {
   const finishesImages = await fetchFinishesPageImages()
   return (
-    <>
+    <div className="finishes-page">
       {/* Hero Section */}
       <section className="page-section page-section--first" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
-        <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
+        <div className="container finishes-page__container">
           <h1 style={{
             fontSize: 'clamp(3rem, 6vw, 5rem)',
             fontFamily: "'Cormorant Garamond', serif",
@@ -51,6 +55,6 @@ export default async function FinishesPage() {
       {/* Editorial Masonry Grid */}
       <FinishesMasonry images={finishesImages} />
 
-    </>
+    </div>
   )
 }

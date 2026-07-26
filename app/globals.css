@@ -1649,6 +1649,20 @@ a.btn {
 }
 
 /* Projects Masonry Grid Styles */
+.finishes-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.finishes-page__container,
+.projects-page__container {
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
 @media (max-width: 1024px) {
   .projects-masonry {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1656,8 +1670,8 @@ a.btn {
   }
   
   .finishes-masonry-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 2.5rem !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
   .projects-masonry-grid {
@@ -1698,10 +1712,18 @@ a.btn {
     grid-template-columns: 1fr !important;
     gap: 4rem !important;
   }
+
+  .finishes-page__container,
+  .projects-page__container,
+  .finishes-page .container,
+  .projects-page .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
   
   .projects-masonry {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
@@ -1712,24 +1734,28 @@ a.btn {
   
   .finishes-masonry-grid {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.75rem !important;
+    gap: 0.5rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
-  .finishes-masonry-column {
-    gap: 0.75rem;
+  .finishes-masonry-column,
+  .projects-masonry-column {
+    gap: 0.5rem;
   }
   
   .projects-masonry-grid {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
   
-  .finishes-masonry-section h2 {
+  .finishes-masonry-section h2,
+  .finishes-masonry-section__heading {
     margin-left: 0 !important;
+    margin-bottom: 1.5rem !important;
+    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
   }
   
   .projects-preview-grid {

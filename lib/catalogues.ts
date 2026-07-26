@@ -18,8 +18,8 @@ export const CATALOGUES: CatalogueItem[] = [
     title: 'Red Mark Collection Book',
     description:
       'Explore our complete range of mineral finishes, decorative textures, exterior coatings, metallic effects, and surface solutions in one curated guide.',
-    pdf: '/brochure/REDMARKPPT.pdf',
-    downloadName: 'Red-Mark-Collection-Book.pdf',
+    pdf: '/brochure/redmark-collection-book-2026.pdf',
+    downloadName: 'redmark-collection-book-2026.pdf',
     cover: '/brochure/collection-book-cover.webp',
     coverWidth: 1350,
     coverHeight: 1800,

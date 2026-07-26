@@ -2,11 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import BecomeDealerForm from '@/components/contact/BecomeDealerForm'
 
-export const metadata: Metadata = {
-  title: 'For Dealers',
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Become a Dealer — Distribution Partnerships',
   description:
-    'Partner with Red Mark to distribute distinctive mineral finishes and architectural surface products.',
-}
+    'Partner with Red Mark to distribute distinctive mineral finishes and architectural wall textures. Grow your portfolio with products that stand apart from standard paint.',
+  path: '/for-professionals/dealers',
+})
 
 const whyBecomeADealer = [
   {

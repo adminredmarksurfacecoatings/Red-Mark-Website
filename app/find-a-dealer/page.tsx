@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
 import DealerConnectionPanel from '@/components/dealers/DealerConnectionPanel'
 import { BRAND_TAGLINE } from '@/lib/brand'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Find a Dealer',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Find a Dealer Near You',
   description:
-    'Request connection with an authorized Red Mark dealer in your area for local product availability, shades, and project support.',
-}
+    'Connect with an authorized Red Mark dealer in your area for local product availability, shade selection, samples, and project support for wall textures and mineral finishes.',
+  path: '/find-a-dealer',
+})
 
 export default function FindADealerPage() {
   return (

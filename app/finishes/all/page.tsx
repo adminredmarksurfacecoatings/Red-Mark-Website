@@ -3,12 +3,16 @@ import FinishLandingHero from '@/components/finish-landing/FinishLandingHero'
 import FinishSubCollectionGrid from '@/components/finish-landing/FinishSubCollectionGrid'
 import ExteriorFinalCta from '@/components/exterior/ExteriorFinalCta'
 import { getAllFinishCatalog } from '@/lib/finishCatalog'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'All Collections',
+export const metadata: Metadata = createPageMetadata({
+  title: 'All Finish Collections — Interior & Exterior',
   description:
-    'Browse the complete Red Mark finish range — stone, pebble, mineral textures, and decorative coatings for every application.',
-}
+    'Browse the complete Red Mark range — stone, pebble, Create Art, mineral textures, and decorative coatings for interior and exterior applications.',
+  path: '/finishes/all',
+  image: '/home_grid_3.png',
+  imageAlt: 'Complete Red Mark finish collections overview',
+})
 
 export default function AllFinishesPage() {
   const allFinishes = getAllFinishCatalog()

@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'For Builders',
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'For Builders & Developers — Reliable Surface Systems',
   description:
-    'Reliable mineral finishes with practical application guidance for residential and commercial build projects.',
-}
+    'Durable mineral wall finishes with practical application guidance for residential and commercial projects. Consistent performance for builders and developers across India.',
+  path: '/for-professionals/builders',
+})
 
 const whatBuildersNeed = [
   {

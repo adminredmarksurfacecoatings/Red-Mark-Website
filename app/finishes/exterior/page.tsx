@@ -5,12 +5,16 @@ import ExteriorFinalCta from '@/components/exterior/ExteriorFinalCta'
 import ExteriorLandingHero from '@/components/exterior/ExteriorLandingHero'
 import ExteriorSubCollectionGrid from '@/components/exterior/ExteriorSubCollectionGrid'
 import ExteriorWhyChoose from '@/components/exterior/ExteriorWhyChoose'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Exterior Collection',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Exterior Wall Textures — Stone, Pebble & Mineral',
   description:
-    'Explore Red Mark exterior surface finishes — stone, pebble, mineral textures, and decorative coatings crafted for enduring architecture.',
-}
+    'Explore Red Mark exterior wall textures — stone finish, pebble finish, mineral textures, and decorative coatings engineered for durable architectural facades.',
+  path: '/finishes/exterior',
+  image: '/Stone_hero.png',
+  imageAlt: 'Exterior stone wall texture finish by Red Mark',
+})
 
 export default function ExteriorCollectionLandingPage() {
   return (

@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'About',
+export const metadata: Metadata = createPageMetadata({
+  title: 'About Our Craft & Material Philosophy',
   description:
-    'Learn the story, material philosophy, and craftsmanship behind Red Mark mineral finishes.',
-}
+    'Discover Red Mark Surface Coatings — our story, material philosophy, and craft approach to architectural mineral finishes and textured wall surfaces in India.',
+  path: '/about',
+  image: '/home_grid_1.png',
+  imageAlt: 'Red Mark mineral finish craftsmanship',
+})
 
 export default function AboutPage() {
   return (

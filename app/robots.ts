@@ -1,17 +1,14 @@
 import type { MetadataRoute } from 'next'
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.redmarksurfacecoatings.com'
+import { SITE_URL } from '@/lib/seo'
 
 export default function robots(): MetadataRoute.Robots {
-  const base = siteUrl.replace(/\/$/, '')
+  const base = SITE_URL.replace(/\/$/, '')
 
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      // This page is primarily a form-confirmation/utility page.
-      disallow: ['/thank-you'],
+      disallow: ['/thank-you', '/admin', '/admin/'],
     },
     sitemap: `${base}/sitemap.xml`,
   }

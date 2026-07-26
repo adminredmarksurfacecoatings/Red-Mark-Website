@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import RequestSampleFormLoader from '@/components/request-sample/RequestSampleFormLoader'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Request Sample — Stone Finish',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Request a Stone Finish Sample',
   description:
-    'Request a physical sample of Red Mark Stone Finish shades. Select your shade and preview the swatch before submitting.',
-}
+    'Request a physical sample of Red Mark Stone Finish shades. Select your shade code, preview the swatch, and submit for delivery through our dealer network.',
+  path: '/finishes/exterior/stone-finish/request-sample',
+  image: '/Stone_hero.png',
+  imageAlt: 'Request a Red Mark Stone Finish sample',
+})
 
 function RequestSampleFallback() {
   return (

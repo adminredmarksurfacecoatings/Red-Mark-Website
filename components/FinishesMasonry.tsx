@@ -121,8 +121,9 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
         transition: 'transform 0.6s ease',
       }}
     >
-      <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
+      <div className="container finishes-page__container finishes-masonry-section__container">
         <h2
+          className="finishes-masonry-section__heading"
           style={{
             fontSize: 'clamp(2.5rem, 5vw, 4rem)',
             fontFamily: "'Cormorant Garamond', serif",
@@ -137,16 +138,7 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
           Selected Projects & Surfaces
         </h2>
 
-        <div
-          className="finishes-masonry-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '40px',
-            marginLeft: '10vw',
-            marginRight: '10vw',
-          }}
-        >
+        <div className="finishes-masonry-grid">
           <MasonryColumn
             images={column1Images}
             getAspectRatio={(index) => (index % 2 === 0 ? '3/4' : '4/3')}

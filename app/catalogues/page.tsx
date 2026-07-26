@@ -5,11 +5,14 @@ import BrochureDownloadSection from '@/components/BrochureDownloadSection'
 import CatalogueCard from '@/components/CatalogueCard'
 import { getAdditionalCatalogues } from '@/lib/catalogues'
 
-export const metadata: Metadata = {
-  title: 'Catalogues',
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Product Catalogues & Shade Guides Download',
   description:
-    'Download Red Mark product literature, collection books, and specification guides for decorative and architectural surface finishes.',
-}
+    'Download Red Mark collection books, shade cards, and specification guides for decorative mineral finishes and architectural wall textures.',
+  path: '/catalogues',
+})
 
 const professionalLinks = [
   { label: 'Architects', href: '/for-professionals/architects' },

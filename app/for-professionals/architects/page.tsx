@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'For Architects',
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'For Architects — Specify Mineral Wall Finishes',
   description:
-    'Surface systems for architects seeking depth, light responsiveness, and refined material expression.',
-}
+    'Specify Red Mark mineral finishes and wall textures with architectural depth and light-responsive character. Samples, shade cards, and material guidance for design professionals.',
+  path: '/for-professionals/architects',
+})
 
 const whatWeProvide = [
   {

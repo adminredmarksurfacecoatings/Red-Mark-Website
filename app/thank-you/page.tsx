@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Thank You',
+import { createPageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Thank You for Contacting Red Mark',
   description:
-    'Thank you for contacting Red Mark. Our team will review your inquiry and respond shortly.',
-}
+    'Thank you for contacting Red Mark Surface Coatings. Our team will review your enquiry and respond shortly.',
+  path: '/thank-you',
+  noIndex: true,
+})
 
 export default function ThankYouPage() {
   return (

@@ -4,12 +4,16 @@ import FinishCollectionShadeCardCta from '@/components/finish-collection/FinishC
 import FinishCollectionShadesGrid from '@/components/finish-collection/FinishCollectionShadesGrid'
 import FinishCollectionSpecBar from '@/components/finish-collection/FinishCollectionSpecBar'
 import { STONE_FINISH_COLLECTION } from '@/lib/finishCollection/stone'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Stone Finish Collection — Exterior Collection',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Stone Finish Exterior Wall Texture — Shades & Shade Card',
   description:
-    'Timeless stone textures for exterior walls and facades. Explore shades, specifications, and download the Stone Finish shade card.',
-}
+    'Red Mark Stone Finish — timeless stone wall textures for exteriors and facades. Explore 48 shades, technical specs, and download the Stone Finish shade card.',
+  path: '/finishes/exterior/stone-finish',
+  image: '/Stone_hero.png',
+  imageAlt: 'Red Mark Stone Finish exterior wall texture',
+})
 
 export default function StoneFinishPage() {
   return (

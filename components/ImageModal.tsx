@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { createPortal } from 'react-dom'
 
@@ -17,8 +17,13 @@ type ImageModalProps = {
   onClose: () => void
 }
 
+const SWIPE_THRESHOLD_PX = 48
+
 export default function ImageModal({ isOpen, images, currentIndex, onNavigate, onClose }: ImageModalProps) {
   const [isMounted, setIsMounted] = useState(false)
+  const [slideDir, setSlideDir] = useState<'next' | 'prev' | null>(null)
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null)
+  const swipedRef = useRef(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -27,6 +32,7 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
   useEffect(() => {
     if (!isOpen) {
       document.body.classList.remove('image-modal-open')
+      setSlideDir(null)
       return
     }
 
@@ -35,9 +41,11 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
         onClose()
       }
       if (event.key === 'ArrowRight' && images.length > 1) {
+        setSlideDir('next')
         onNavigate((currentIndex + 1) % images.length)
       }
       if (event.key === 'ArrowLeft' && images.length > 1) {
+        setSlideDir('prev')
         onNavigate((currentIndex - 1 + images.length) % images.length)
       }
     }
@@ -59,11 +67,59 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
   const activeImage = images[currentIndex]
   if (!activeImage) return null
 
-  const goPrev = () => onNavigate((currentIndex - 1 + images.length) % images.length)
-  const goNext = () => onNavigate((currentIndex + 1) % images.length)
+  const goPrev = () => {
+    setSlideDir('prev')
+    onNavigate((currentIndex - 1 + images.length) % images.length)
+  }
+
+  const goNext = () => {
+    setSlideDir('next')
+    onNavigate((currentIndex + 1) % images.length)
+  }
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    if (images.length <= 1) return
+    const touch = event.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+    swipedRef.current = false
+  }
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    if (!touchStartRef.current || images.length <= 1) return
+
+    const touch = event.changedTouches[0]
+    const dx = touch.clientX - touchStartRef.current.x
+    const dy = touch.clientY - touchStartRef.current.y
+    touchStartRef.current = null
+
+    if (Math.abs(dx) < SWIPE_THRESHOLD_PX) return
+    if (Math.abs(dx) < Math.abs(dy) * 1.15) return
+
+    swipedRef.current = true
+    if (dx < 0) goNext()
+    else goPrev()
+  }
+
+  const handleOverlayClick = () => {
+    if (swipedRef.current) {
+      swipedRef.current = false
+      return
+    }
+    onClose()
+  }
+
+  const slideClass =
+    slideDir === 'next' ? 'image-modal-slide-next' : slideDir === 'prev' ? 'image-modal-slide-prev' : ''
 
   const modalContent = (
-    <div className="image-modal-overlay" role="dialog" aria-modal="true" onClick={onClose}>
+    <div
+      className="image-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      onClick={handleOverlayClick}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <button className="image-modal-close" aria-label="Close image preview" onClick={onClose}>
         ×
       </button>
@@ -94,7 +150,7 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
       )}
 
       <div className="image-modal-content" onClick={(event) => event.stopPropagation()}>
-        <div className="image-modal-image-wrap">
+        <div key={currentIndex} className={`image-modal-image-wrap ${slideClass}`}>
           <Image
             src={activeImage.src}
             alt={activeImage.alt}
@@ -102,6 +158,7 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
             sizes="90vw"
             quality={75}
             style={{ objectFit: 'contain' }}
+            draggable={false}
           />
         </div>
       </div>
@@ -119,6 +176,9 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
           -webkit-backdrop-filter: blur(3px);
           animation: modalFadeIn 0.24s ease;
           padding: 2rem;
+          touch-action: pan-y;
+          user-select: none;
+          -webkit-user-select: none;
         }
 
         .image-modal-content {
@@ -127,13 +187,21 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
           display: flex;
           align-items: center;
           justify-content: center;
-          animation: modalZoomIn 0.24s ease;
+          overflow: hidden;
         }
 
         .image-modal-image-wrap {
           position: relative;
           width: 100%;
           height: 100%;
+        }
+
+        .image-modal-slide-next {
+          animation: modalSlideFromRight 0.28s ease;
+        }
+
+        .image-modal-slide-prev {
+          animation: modalSlideFromLeft 0.28s ease;
         }
 
         .image-modal-close {
@@ -201,14 +269,25 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
           }
         }
 
-        @keyframes modalZoomIn {
+        @keyframes modalSlideFromRight {
           from {
-            opacity: 0;
-            transform: scale(0.97);
+            opacity: 0.35;
+            transform: translateX(18%);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes modalSlideFromLeft {
+          from {
+            opacity: 0.35;
+            transform: translateX(-18%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
           }
         }
 
@@ -233,6 +312,13 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
 
           .image-modal-nav-right {
             right: 0.5rem;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .image-modal-slide-next,
+          .image-modal-slide-prev {
+            animation: none;
           }
         }
       `}</style>

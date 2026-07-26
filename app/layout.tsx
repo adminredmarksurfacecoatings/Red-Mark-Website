@@ -3,45 +3,39 @@ import './globals.css'
 import './globals-dealer.css'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 import SiteChrome from '@/components/SiteChrome'
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.redmarksurfacecoatings.com'
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   verification: {
     google: '5qy25uPPQVJILHPSEIEFv06LjNvYUxNJpaoPJJ2gYxw',
   },
   title: {
-    default: 'Red Mark Surface Coatings',
-    template: '%s | Red Mark Surface Coatings',
+    default: `${SITE_NAME} | Architectural Wall Textures & Mineral Finishes India`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    'Architectural mineral finishes with depth, texture, and long-term performance for refined spaces.',
+    'Architectural mineral finishes and wall textures with depth, durability, and refined character for interiors and exteriors across India.',
   icons: {
     icon: '/Logo.svg',
   },
+  // Intentionally minimal OG defaults — each page should call createPageMetadata()
+  // so title/description/url are unique. These only apply if a route omits OG.
   openGraph: {
-    title: 'Red Mark Surface Coatings',
-    description:
-      'Architectural mineral finishes with depth, texture, and long-term performance for refined spaces.',
-    url: siteUrl,
-    siteName: 'Red Mark Surface Coatings',
+    siteName: SITE_NAME,
+    locale: 'en_IN',
+    type: 'website',
     images: [
       {
-        url: '/Logo.svg',
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
+        alt: SITE_NAME,
       },
     ],
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Red Mark Surface Coatings',
-    description:
-      'Architectural mineral finishes with depth, texture, and long-term performance for refined spaces.',
-    images: ['/Logo.svg'],
   },
 }
 

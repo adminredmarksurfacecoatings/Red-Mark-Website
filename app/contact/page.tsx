@@ -3,12 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ContactFormSection from '@/components/contact/ContactFormSection'
 import { BRAND_TAGLINE } from '@/lib/brand'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Contact',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Contact for Projects, Dealers & Enquiries',
   description:
-    'Contact Red Mark for architect and builder project support, dealer partnerships, or homeowner enquiries routed through authorized dealers.',
-}
+    'Contact Red Mark Surface Coatings for architect and builder project support, dealer partnerships, sample requests, or homeowner enquiries through our dealer network.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
   const whatsappHref =

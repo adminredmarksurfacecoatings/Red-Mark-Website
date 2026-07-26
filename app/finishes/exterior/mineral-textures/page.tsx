@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import ExteriorSubCollectionPlaceholder from '@/components/exterior/ExteriorSubCollectionPlaceholder'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Mineral Textures — Exterior Collection',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Mineral Textures Exterior Finishes — Coming Soon',
   description:
-    'Architectural exterior finishes inspired by natural materials and handcrafted surfaces.',
-}
+    'Red Mark Mineral Textures — architectural exterior finishes inspired by natural materials. Collection in preparation; contact us for early project guidance.',
+  path: '/finishes/exterior/mineral-textures',
+})
 
 export default function MineralTexturesPage() {
   return (

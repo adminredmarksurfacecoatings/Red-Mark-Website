@@ -1010,7 +1010,8 @@
   }
 
   .projects-page-grid-wrap .projects-masonry-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
     margin-left: 0;
     margin-right: 0;
   }
