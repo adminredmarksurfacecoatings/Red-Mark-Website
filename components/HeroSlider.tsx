@@ -106,9 +106,14 @@ export default function HeroSlider() {
 
         <div className="home-hero__accent" />
 
-        <Link href={activeCollection.href} className="home-hero__cta">
-          Explore {activeCollection.title} →
-        </Link>
+        <div className="home-hero__actions">
+          <Link href={activeCollection.href} className="home-hero__cta">
+            Explore {activeCollection.title} →
+          </Link>
+          <Link href="/finishes" className="home-hero__cta home-hero__cta--secondary">
+            Explore all finishes →
+          </Link>
+        </div>
       </div>
 
       <button

@@ -1327,9 +1327,29 @@ body.image-modal-open .site-nav {
   transition: color 0.25s ease, border-color 0.25s ease;
 }
 
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+}
+
+.home-hero__cta--secondary {
+  color: rgba(245, 242, 237, 0.72);
+  border-bottom-color: rgba(245, 242, 237, 0.22);
+  letter-spacing: 0.08em;
+  text-transform: none;
+  font-size: 0.875rem;
+}
+
 .home-hero__cta:hover {
   color: #f5f2ed;
   border-color: rgba(245, 242, 237, 0.65);
+}
+
+.home-hero__cta--secondary:hover {
+  color: rgba(245, 242, 237, 0.92);
+  border-color: rgba(245, 242, 237, 0.45);
 }
 
 .home-hero__content--fade {
@@ -1704,15 +1724,6 @@ a.btn {
     padding-bottom: var(--section-spacing-mobile);
   }
   
-  .finishes-collections-section {
-    display: none !important;
-  }
-
-  .finishes-grid {
-    grid-template-columns: 1fr !important;
-    gap: 4rem !important;
-  }
-
   .finishes-page__container,
   .projects-page__container,
   .finishes-page .container,

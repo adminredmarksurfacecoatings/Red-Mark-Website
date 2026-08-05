@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { Suspense } from 'react'
 import HeroSlider from '@/components/HeroSlider'
 import SectionTwo from '@/components/SectionTwo'
 import SectionThree from '@/components/SectionThree'
@@ -9,36 +9,24 @@ import WhyRedMarkSection from '@/components/WhyRedMarkSection'
 import MidPageCtaSection from '@/components/MidPageCtaSection'
 import FeatureHighlightSection from '@/components/FeatureHighlightSection'
 import ForProfessionalsMiniSection from '@/components/ForProfessionalsMiniSection'
-import ProjectsPreview from '@/components/ProjectsPreview'
-import RealProjectBlockSection from '@/components/RealProjectBlockSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
 import BrochureDownloadSection from '@/components/BrochureDownloadSection'
 import DealerNetworkSection from '@/components/home/DealerNetworkSection'
-import ImageModal from '@/components/ImageModal'
+import HomeFinishesGrid from '@/components/home/HomeFinishesGrid'
 import NotFoundRedirectPopup from '@/components/NotFoundRedirectPopup'
 
-type ActiveImage = {
-  gallery: { src: string; alt: string }[]
-  index: number
-} | null
+type HomePageClientProps = {
+  finishesImages?: string[]
+}
 
-export default function HomePageClient() {
-  const [activeImage, setActiveImage] = useState<ActiveImage>(null)
-
-  const openImageModal = (gallery: { src: string; alt: string }[], index: number) => {
-    setActiveImage({ gallery, index })
-  }
-
-  const closeImageModal = () => {
-    setActiveImage(null)
-  }
-
+export default function HomePageClient({ finishesImages }: HomePageClientProps) {
   return (
     <div className="home-page">
       <Suspense fallback={null}>
         <NotFoundRedirectPopup />
       </Suspense>
       <HeroSlider />
+      <HomeFinishesGrid images={finishesImages} />
       <SectionThree />
       <SectionTwo />
       <BrochureDownloadSection showCataloguesLink />
@@ -48,19 +36,7 @@ export default function HomePageClient() {
       <FeatureHighlightSection />
       <ForProfessionalsMiniSection />
       <DealerNetworkSection />
-      <ProjectsPreview onImageClick={openImageModal} />
-      <RealProjectBlockSection />
       <FinalCtaSection />
-      <ImageModal
-        isOpen={Boolean(activeImage)}
-        images={activeImage?.gallery || []}
-        currentIndex={activeImage?.index || 0}
-        onNavigate={(nextIndex) => {
-          if (!activeImage) return
-          setActiveImage({ ...activeImage, index: nextIndex })
-        }}
-        onClose={closeImageModal}
-      />
     </div>
   )
 }

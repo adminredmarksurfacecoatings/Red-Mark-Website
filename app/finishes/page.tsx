@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import FinishesMasonry from '@/components/FinishesMasonry'
-import FinishesCollectionsGrid from '@/components/FinishesCollectionsGrid'
 import { createPageMetadata } from '@/lib/seo'
 import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
 
@@ -19,7 +18,6 @@ export default async function FinishesPage() {
   const finishesImages = await fetchFinishesPageImages()
   return (
     <div className="finishes-page">
-      {/* Hero Section */}
       <section className="page-section page-section--first" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container finishes-page__container">
           <h1 style={{
@@ -29,9 +27,9 @@ export default async function FinishesPage() {
             color: '#2B2B2B',
             lineHeight: 1.2,
             letterSpacing: '-0.02em',
-            marginBottom: '3rem', /* Generous spacing between heading and subtext */
+            marginBottom: '3rem',
           }}>
-            Our Collections
+            Finishes
           </h1>
           
           <p style={{
@@ -49,12 +47,7 @@ export default async function FinishesPage() {
         </div>
       </section>
 
-      {/* Grid Section */}
-      <FinishesCollectionsGrid />
-
-      {/* Editorial Masonry Grid */}
       <FinishesMasonry images={finishesImages} />
-
     </div>
   )
 }

@@ -2,6 +2,18 @@
 
 import Link from 'next/link'
 
+const secondaryLinkStyle = {
+  fontFamily: "'Inter', sans-serif",
+  fontSize: '0.8125rem',
+  fontWeight: 400,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase' as const,
+  color: '#2b2b2b',
+  textDecoration: 'none',
+  borderBottom: '1px solid rgba(43, 43, 43, 0.25)',
+  paddingBottom: '0.15rem',
+}
+
 export default function MidPageCtaSection() {
   return (
     <section className="page-section" style={{ backgroundColor: '#F8F4EE', textAlign: 'center' }}>
@@ -17,7 +29,7 @@ export default function MidPageCtaSection() {
             marginBottom: '1.2rem',
           }}
         >
-          Choose Your Material Direction
+          Find the Right Finish
         </h2>
         <p
           style={{
@@ -28,16 +40,27 @@ export default function MidPageCtaSection() {
             lineHeight: 1.8,
             letterSpacing: '0.01em',
             marginBottom: '2.2rem',
+            maxWidth: '560px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
           }}
         >
-          Start with curated finishes or explore built projects to quickly align style, texture, and application.
+          Browse curated mineral finishes by texture and application — then see how they look in real projects.
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '1.5rem',
+            flexWrap: 'wrap',
+          }}
+        >
           <Link href="/finishes" className="btn">
-            View Finishes
+            Explore Finishes
           </Link>
-          <Link href="/projects" className="btn">
-            View Projects
+          <Link href="/projects" style={secondaryLinkStyle}>
+            View Projects →
           </Link>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function SectionTwo() {
   return (
     <section className="page-section" style={{ backgroundColor: 'var(--bg-primary)' }}>
@@ -45,9 +47,25 @@ export default function SectionTwo() {
             height: '1px',
             backgroundColor: 'var(--oxide-red)',
             opacity: 0.55,
-            margin: '2.75rem auto 0',
+            margin: '2.75rem auto 1.75rem',
           }}
         />
+
+        <Link
+          href="/finishes"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.875rem',
+            fontWeight: 400,
+            color: '#2B2B2B',
+            letterSpacing: '0.06em',
+            textDecoration: 'none',
+            borderBottom: '1px solid rgba(43, 43, 43, 0.35)',
+            paddingBottom: '2px',
+          }}
+        >
+          Explore our finishes →
+        </Link>
       </div>
     </section>
   )

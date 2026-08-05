@@ -297,7 +297,7 @@ export default function SectionThree() {
                 paddingBottom: '2px',
               }}
             >
-              View all finishes →
+              Browse all finishes →
             </Link>
           </div>
         </div>

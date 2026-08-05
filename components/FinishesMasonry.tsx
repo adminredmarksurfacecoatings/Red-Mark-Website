@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import ImageModal from '@/components/ImageModal'
 import GalleryImageTile from '@/components/GalleryImageTile'
+import { useInfiniteBatch } from '@/lib/useInfiniteBatch'
 
 const finishesImages = [
   '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
@@ -59,6 +60,7 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
   const sourceImages = images !== undefined ? images : finishesImages
+  const { visibleItems, sentinelRef, hasMore } = useInfiniteBatch(sourceImages)
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
@@ -101,9 +103,9 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
     return null
   }
 
-  const column1Images = sourceImages.filter((_, i) => i % 3 === 0)
-  const column2Images = sourceImages.filter((_, i) => i % 3 === 1)
-  const column3Images = sourceImages.filter((_, i) => i % 3 === 2)
+  const column1Images = visibleItems.filter((_, i) => i % 3 === 0)
+  const column2Images = visibleItems.filter((_, i) => i % 3 === 1)
+  const column3Images = visibleItems.filter((_, i) => i % 3 === 2)
   const gallery = sourceImages.map((image, index) => ({ src: image, alt: `Project ${index + 1}` }))
 
   const openImage = (src: string) => {
@@ -158,6 +160,15 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
             onImageClick={openImage}
           />
         </div>
+
+        {hasMore ? (
+          <div
+            ref={sentinelRef}
+            className="gallery-load-sentinel"
+            aria-hidden="true"
+            style={{ height: 1, marginTop: '2rem' }}
+          />
+        ) : null}
       </div>
       <ImageModal
         isOpen={activeImageIndex !== null}

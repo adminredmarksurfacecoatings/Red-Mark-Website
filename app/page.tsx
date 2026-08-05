@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import HomePageClient from '@/components/home/HomePageClient'
 import { createPageMetadata } from '@/lib/seo'
+import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Red Mark Surface Coatings | Architectural Wall Textures & Mineral Finishes India',
@@ -12,6 +15,7 @@ export const metadata: Metadata = createPageMetadata({
   imageAlt: 'Red Mark architectural wall texture and mineral finish',
 })
 
-export default function HomePage() {
-  return <HomePageClient />
+export default async function HomePage() {
+  const finishesImages = (await fetchFinishesPageImages()).slice(0, 12)
+  return <HomePageClient finishesImages={finishesImages} />
 }

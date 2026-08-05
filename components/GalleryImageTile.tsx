@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { isRemoteStorageImage } from '@/lib/imageUtils'
+import { useCachedImageSrc } from '@/lib/useCachedImageSrc'
 
 type GalleryImageTileProps = {
   src: string
@@ -32,9 +33,11 @@ export default function GalleryImageTile({
   sizes = '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw',
   onClick,
 }: GalleryImageTileProps) {
+  const displaySrc = useCachedImageSrc(src)
   const [loaded, setLoaded] = useState(false)
   const tileRef = useRef<HTMLDivElement>(null)
   const { width, height } = aspectRatioDimensions(aspectRatio)
+  const isBlob = displaySrc.startsWith('blob:')
 
   useEffect(() => {
     setLoaded(false)
@@ -42,7 +45,7 @@ export default function GalleryImageTile({
     if (img?.complete && img.naturalWidth > 0) {
       setLoaded(true)
     }
-  }, [src])
+  }, [displaySrc])
 
   return (
     <div
@@ -70,17 +73,33 @@ export default function GalleryImageTile({
             RM
           </span>
         </div>
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          unoptimized={isRemoteStorageImage(src)}
-          sizes={sizes}
-          quality={75}
-          className={`gallery-image-tile__img${loaded ? ' is-loaded' : ''}`}
-          onLoad={() => setLoaded(true)}
-        />
+        {isBlob ? (
+          // Cached blob URLs bypass next/image optimizer
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={displaySrc}
+            alt={alt}
+            width={width}
+            height={height}
+            loading="lazy"
+            decoding="async"
+            className={`gallery-image-tile__img${loaded ? ' is-loaded' : ''}`}
+            onLoad={() => setLoaded(true)}
+          />
+        ) : (
+          <Image
+            src={displaySrc}
+            alt={alt}
+            width={width}
+            height={height}
+            loading="lazy"
+            unoptimized={isRemoteStorageImage(displaySrc)}
+            sizes={sizes}
+            quality={70}
+            className={`gallery-image-tile__img${loaded ? ' is-loaded' : ''}`}
+            onLoad={() => setLoaded(true)}
+          />
+        )}
       </div>
     </div>
   )

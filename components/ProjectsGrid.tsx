@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import ImageModal from '@/components/ImageModal'
 import GalleryImageTile from '@/components/GalleryImageTile'
+import { useInfiniteBatch } from '@/lib/useInfiniteBatch'
 
 const fallbackProjectImages = [
   '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
@@ -54,18 +55,20 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
 
   const imageList = images !== undefined && images.length > 0 ? images : fallbackProjectImages
 
-  const sourceImages: ProjectItem[] = imageList.map((image, index) => ({
+  const allProjects: ProjectItem[] = imageList.map((image, index) => ({
     id: index + 1,
     image,
     aspectRatio: index % 2 === 0 ? '3/4' : '4/3',
   }))
 
-  const gallery = sourceImages.map((project) => ({
+  const { visibleItems, sentinelRef, hasMore } = useInfiniteBatch(allProjects)
+
+  const gallery = allProjects.map((project) => ({
     src: project.image,
     alt: `Project ${project.id}`,
   }))
 
-  if (sourceImages.length === 0) {
+  if (allProjects.length === 0) {
     return (
       <p className="admin-media-note" style={{ marginLeft: '10vw', marginRight: '10vw' }}>
         No project images yet. Upload images in the admin panel under Projects.
@@ -73,12 +76,12 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
     )
   }
 
-  const column1 = sourceImages.filter((_, i) => i % 3 === 0)
-  const column2 = sourceImages.filter((_, i) => i % 3 === 1)
-  const column3 = sourceImages.filter((_, i) => i % 3 === 2)
+  const column1 = visibleItems.filter((_, i) => i % 3 === 0)
+  const column2 = visibleItems.filter((_, i) => i % 3 === 1)
+  const column3 = visibleItems.filter((_, i) => i % 3 === 2)
 
   const openProject = (id: number) => {
-    setActiveImageIndex(sourceImages.findIndex((item) => item.id === id))
+    setActiveImageIndex(allProjects.findIndex((item) => item.id === id))
   }
 
   return (
@@ -88,6 +91,15 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
         <ProjectColumn projects={column2} onImageClick={openProject} />
         <ProjectColumn projects={column3} onImageClick={openProject} />
       </div>
+
+      {hasMore ? (
+        <div
+          ref={sentinelRef}
+          className="gallery-load-sentinel"
+          aria-hidden="true"
+          style={{ height: 1, marginTop: '2rem' }}
+        />
+      ) : null}
 
       <div className="projects-page-cta">
         <p>Planning a similar space?</p>
