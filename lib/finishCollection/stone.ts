@@ -82,7 +82,7 @@ export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
   heroLead:
     'Timeless stone textures crafted for exterior walls, facades, and architectural surfaces — offering natural depth, weather resistance, and enduring appeal.',
   heroImage: `${PAGE_ASSET_BASE}/hero/hero.webp`,
-  heroImageFallback: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
+  heroImageFallback: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   heroImageAlt: 'Stone finish exterior on a contemporary facade',
   shadeCardSectionId: 'stone-finish-shade-card',
   shadeCard: {

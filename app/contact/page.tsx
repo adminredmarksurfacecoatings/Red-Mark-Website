@@ -55,7 +55,7 @@ export default function ContactPage() {
         <div className="container">
           <div className="contact-page-feature-image">
             <Image
-              src="/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png"
+              src="/Finishes/mediterranean-textured-wall-arched-loggia.png"
               alt="Red Mark Surface Coatings"
               fill
               sizes="100vw"

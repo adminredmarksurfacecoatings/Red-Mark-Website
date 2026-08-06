@@ -65,7 +65,7 @@ export const EXTERIOR_FEATURED_PROJECTS = [
   {
     name: 'Boundary Wall',
     finish: 'Decorative Exterior',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
+    image: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   },
 ]
 

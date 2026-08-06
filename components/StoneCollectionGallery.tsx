@@ -6,47 +6,47 @@ import Image from 'next/image'
 const galleryImages = [
   {
     id: 1,
-    image: '/Finishes/ChatGPT-Image-Feb-5-2026-05_09_59-PM.png',
+    image: '/Finishes/sand-textured-plaster-wall-interior.png',
     aspectRatio: '3/4' as const,
   },
   {
     id: 2,
-    image: '/Finishes/ChatGPT-Image-Feb-5-2026-05_11_10-PM.png',
+    image: '/Finishes/taupe-mineral-wall-texture-bedroom.png',
     aspectRatio: '4/3' as const,
   },
   {
     id: 3,
-    image: '/Finishes/ChatGPT-Image-Feb-6-2026-11_10_55-AM.png',
+    image: '/Finishes/teal-textured-wall-coastal-living-room.png',
     aspectRatio: '3/4' as const,
   },
   {
     id: 4,
-    image: '/Finishes/ChatGPT-Image-Feb-7-2026-10_25_26-AM.png',
+    image: '/Finishes/blue-venetian-plaster-living-room-wall.png',
     aspectRatio: '4/3' as const,
   },
   {
     id: 5,
-    image: '/Finishes/ChatGPT-Image-Feb-7-2026-10_56_00-AM.png',
+    image: '/Finishes/sage-mineral-wall-texture-living-room.png',
     aspectRatio: '3/4' as const,
   },
   {
     id: 6,
-    image: '/Finishes/ChatGPT-Image-Feb-7-2026-11_02_53-AM.png',
+    image: '/Finishes/navy-feature-wall-modern-bedroom.png',
     aspectRatio: '4/3' as const,
   },
   {
     id: 7,
-    image: '/Finishes/ChatGPT-Image-Feb-7-2026-11_21_40-AM.png',
+    image: '/Finishes/charcoal-textured-facade-exterior-lighting.png',
     aspectRatio: '4/3' as const,
   },
   {
     id: 8,
-    image: '/Finishes/ChatGPT-Image-Feb-7-2026-11_24_39-AM.png',
+    image: '/Finishes/beige-textured-exterior-walkway-sconces.png',
     aspectRatio: '3/4' as const,
   },
   {
     id: 9,
-    image: '/Finishes/ChatGPT-Image-Feb-7-2026-11_28_05-AM.png',
+    image: '/Finishes/charcoal-dragged-plaster-exterior-wall.png',
     aspectRatio: '4/3' as const,
   },
 ]

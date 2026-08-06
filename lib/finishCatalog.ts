@@ -33,7 +33,7 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     description:
       'Granular mineral textures designed for visual richness across interior and exterior applications.',
     href: '/finishes/exterior/pebble-finish',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
+    image: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
     available: true,
     applications: ['interior', 'exterior'],
     featured: true,
@@ -56,7 +56,7 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     description:
       'Architectural finishes inspired by natural materials and handcrafted surfaces.',
     href: '/finishes/exterior/mineral-textures',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_17_23-PM.png',
+    image: '/Finishes/cream-stucco-outdoor-living-wicker-patio.png',
     available: false,
     applications: ['exterior'],
   },

@@ -101,7 +101,7 @@ export default function AboutPage() {
               borderRadius: '4px',
             }}>
               <Image
-                src="/Finishes/ChatGPT-Image-Feb-17-2026-04_17_23-PM.png"
+                src="/Finishes/cream-stucco-outdoor-living-wicker-patio.png"
                 alt="Red Mark Surface Coatings"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

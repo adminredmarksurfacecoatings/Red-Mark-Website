@@ -7,14 +7,14 @@ const PAGE_ASSET_BASE = '/Finishes/exterior/pebble-finish'
 const SHADE_CARD_FILE = 'Pebble SC.pdf'
 
 const fallbackTextures = [
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_17_23-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_09_48-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_08_02-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_05_15-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-03_57_20-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-03_55_38-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
+  '/Finishes/mediterranean-textured-wall-arched-loggia.png',
+  '/Finishes/cream-stucco-outdoor-living-wicker-patio.png',
+  '/Finishes/sand-plaster-wall-kitchen-island.png',
+  '/Finishes/blue-limewash-wall-modern-bedroom.png',
+  '/Finishes/sage-green-mineral-wall-living-room.png',
+  '/Finishes/ochre-stucco-exterior-patio-finish.png',
+  '/Finishes/mustard-limewash-wall-dining-room.png',
+  '/Finishes/ochre-mineral-wall-texture-living-room.png',
   '/home_grid_2.png',
   '/Stone_hero.png',
   '/section_2.png',
@@ -54,7 +54,7 @@ export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   heroLead:
     'Granular mineral textures crafted for interior and exterior walls, facades, and architectural surfaces — offering visual richness, durability, and enduring appeal.',
   heroImage: `${PAGE_ASSET_BASE}/hero/hero.webp`,
-  heroImageFallback: '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
+  heroImageFallback: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   heroImageAlt: 'Pebble finish on interior and exterior architectural surfaces',
   shadeCardSectionId: 'pebble-finish-shade-card',
   shadeCard: {

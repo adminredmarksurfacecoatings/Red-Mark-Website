@@ -9,7 +9,7 @@ const fallbackTextures = [
   '/home_grid_1.png',
   '/home_hero_interior_1.png',
   '/home_hero_interior_2.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_17_23-PM.png',
+  '/Finishes/cream-stucco-outdoor-living-wicker-patio.png',
 ]
 
 function buildShades(definitions: Array<{ code: string; name: string }>, offset: number): FinishShade[] {

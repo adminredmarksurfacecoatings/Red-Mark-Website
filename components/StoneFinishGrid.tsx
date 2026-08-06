@@ -6,32 +6,32 @@ const finishes = [
   {
     id: 1,
     name: 'Terra',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
+    image: '/Finishes/ochre-mineral-wall-texture-living-room.png',
   },
   {
     id: 2,
     name: 'Ochre',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-03_55_38-PM.png',
+    image: '/Finishes/mustard-limewash-wall-dining-room.png',
   },
   {
     id: 3,
     name: 'Basalt',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-03_57_20-PM.png',
+    image: '/Finishes/ochre-stucco-exterior-patio-finish.png',
   },
   {
     id: 4,
     name: 'Travertine',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_05_15-PM.png',
+    image: '/Finishes/sage-green-mineral-wall-living-room.png',
   },
   {
     id: 5,
     name: 'Sand',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_08_02-PM.png',
+    image: '/Finishes/blue-limewash-wall-modern-bedroom.png',
   },
   {
     id: 6,
     name: 'Clay',
-    image: '/Finishes/ChatGPT-Image-Feb-17-2026-04_09_48-PM.png',
+    image: '/Finishes/sand-plaster-wall-kitchen-island.png',
   },
 ]
 

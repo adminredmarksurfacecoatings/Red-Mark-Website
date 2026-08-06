@@ -26,7 +26,7 @@ export default function RealProjectBlockSection() {
             }}
           >
             <Image
-              src="/Finishes/ChatGPT-Image-Feb-17-2026-04_08_31-PM.png"
+              src="/Finishes/textured-stucco-poolside-fire-pit-patio.png"
               alt="Real project surface application"
               fill
               sizes="(max-width: 1024px) 100vw, 60vw"
@@ -48,7 +48,7 @@ export default function RealProjectBlockSection() {
               }}
             >
               <Image
-                src="/Finishes/ChatGPT-Image-Feb-17-2026-04_17_23-PM.png"
+                src="/Finishes/cream-stucco-outdoor-living-wicker-patio.png"
                 alt="Architectural finish in real space"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

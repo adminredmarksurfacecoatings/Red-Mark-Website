@@ -6,18 +6,18 @@ import ImageModal from '@/components/ImageModal'
 import { useState } from 'react'
 
 const FALLBACK_IMAGES = [
-  '/Finishes/ChatGPT-Image-Feb-17-2026-03_52_52-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-03_55_38-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-03_57_20-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_05_15-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_06_06-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_08_02-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_08_31-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_09_48-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_15_19-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-17-2026-04_17_23-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-5-2026-05_09_59-PM.png',
-  '/Finishes/ChatGPT-Image-Feb-5-2026-05_11_10-PM.png',
+  '/Finishes/ochre-mineral-wall-texture-living-room.png',
+  '/Finishes/mustard-limewash-wall-dining-room.png',
+  '/Finishes/ochre-stucco-exterior-patio-finish.png',
+  '/Finishes/sage-green-mineral-wall-living-room.png',
+  '/Finishes/sage-stucco-exterior-patio-dining.png',
+  '/Finishes/blue-limewash-wall-modern-bedroom.png',
+  '/Finishes/textured-stucco-poolside-fire-pit-patio.png',
+  '/Finishes/sand-plaster-wall-kitchen-island.png',
+  '/Finishes/mediterranean-textured-wall-arched-loggia.png',
+  '/Finishes/cream-stucco-outdoor-living-wicker-patio.png',
+  '/Finishes/sand-textured-plaster-wall-interior.png',
+  '/Finishes/taupe-mineral-wall-texture-bedroom.png',
 ]
 
 const GRID_COUNT = 12
