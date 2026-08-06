@@ -11,7 +11,7 @@ export const metadata: Metadata = createPageMetadata({
   description:
     'Red Mark Stone Finish — timeless stone wall textures for exteriors and facades. Explore 48 shades, technical specs, and download the Stone Finish shade card.',
   path: '/finishes/exterior/stone-finish',
-  image: '/Stone_hero.png',
+  image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.jpg',
   imageAlt: 'Red Mark Stone Finish exterior wall texture',
 })
 

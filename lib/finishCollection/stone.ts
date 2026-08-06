@@ -6,8 +6,13 @@ const COLLECTION_SLUG = 'stone-finish'
 const PAGE_ASSET_BASE = '/Finishes/exterior/stone-finish'
 const SHADE_CARD_FILE = 'Stone finish SC.pdf'
 
+const HERO_IMAGE =
+  `${PAGE_ASSET_BASE}/hero/stone-finish-exterior-facade-beige-grooved-wall.webp`
+const HERO_IMAGE_FALLBACK =
+  `${PAGE_ASSET_BASE}/hero/stone-finish-exterior-facade-beige-grooved-wall.jpg`
+
 const fallbackTextures = [
-  '/Stone_hero.png',
+  HERO_IMAGE,
   '/home_grid_2.png',
   '/section_2.png',
 ]
@@ -81,9 +86,10 @@ export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
   requestSampleHref: '/finishes/exterior/stone-finish/request-sample',
   heroLead:
     'Timeless stone textures crafted for exterior walls, facades, and architectural surfaces — offering natural depth, weather resistance, and enduring appeal.',
-  heroImage: `${PAGE_ASSET_BASE}/hero/hero.webp`,
-  heroImageFallback: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
-  heroImageAlt: 'Stone finish exterior on a contemporary facade',
+  heroImage: HERO_IMAGE,
+  heroImageFallback: HERO_IMAGE_FALLBACK,
+  heroImageAlt:
+    'Beige textured stone finish on a modern exterior facade with horizontal grooves and black wall lights',
   shadeCardSectionId: 'stone-finish-shade-card',
   shadeCard: {
     pdf: shadeCardPdfPath(COLLECTION_SLUG, SHADE_CARD_FILE),

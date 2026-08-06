@@ -16,7 +16,7 @@ const fallbackTextures = [
   '/Finishes/mustard-limewash-wall-dining-room.png',
   '/Finishes/ochre-mineral-wall-texture-living-room.png',
   '/home_grid_2.png',
-  '/Stone_hero.png',
+  '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.webp',
   '/section_2.png',
   '/home_grid_1.png',
 ]

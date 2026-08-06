@@ -55,7 +55,7 @@ export const EXTERIOR_FEATURED_PROJECTS = [
   {
     name: 'Commercial Facade',
     finish: 'Pebble Finish',
-    image: '/Stone_hero.png',
+    image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.webp',
   },
   {
     name: 'Resort Exterior',

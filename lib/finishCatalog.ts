@@ -21,7 +21,7 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     description:
       'Natural stone-inspired textures with depth, elegance, and lasting durability for exterior architecture.',
     href: '/finishes/exterior/stone-finish',
-    image: '/Stone_hero.png',
+    image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.webp',
     available: true,
     applications: ['exterior'],
     featured: true,

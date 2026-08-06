@@ -12,7 +12,7 @@ export const metadata: Metadata = createPageMetadata({
   description:
     'Explore Red Mark exterior wall textures — stone finish, pebble finish, mineral textures, and decorative coatings engineered for durable architectural facades.',
   path: '/finishes/exterior',
-  image: '/Stone_hero.png',
+  image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.jpg',
   imageAlt: 'Exterior stone wall texture finish by Red Mark',
 })
 
