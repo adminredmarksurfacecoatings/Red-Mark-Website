@@ -114,7 +114,6 @@ export default function ContactForm() {
         value={`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/thank-you`}
       />
 
-      {/* Disable captcha */}
       <input type="hidden" name="_captcha" value="false" />
 
       {/* Email subject */}

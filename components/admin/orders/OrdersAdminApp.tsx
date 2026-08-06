@@ -18,6 +18,7 @@ import {
   showBrowserNotification,
 } from '@/lib/orders/notifyClient'
 import type { NewOrderInput, OrderRow, OrderUpdatePayload } from '@/lib/orders/types'
+import { checkIsStaff } from '@/lib/staffAccess'
 import OrderNotificationsBell from '@/components/admin/orders/OrderNotificationsBell'
 
 const emptyNewOrder = (): NewOrderInput => ({
@@ -63,19 +64,9 @@ export default function OrdersAdminApp() {
   async function ensureStaffAccess(): Promise<boolean> {
     if (!supabase) return false
 
-    const { data: isStaff, error: staffError } = await supabase.rpc('is_staff')
-
-    if (staffError) {
-      // Migration not applied yet — permissive RLS still allows access
-      if (staffError.message.includes('Could not find the function')) return true
-      setError('Could not verify staff access.')
-      return false
-    }
-
-    if (!isStaff) {
-      setError(
-        'This account is not authorized for orders. Ask an admin to add your email to staff_allowlist in Supabase.'
-      )
+    const result = await checkIsStaff(supabase)
+    if (!result.ok) {
+      setError(result.reason)
       return false
     }
 
@@ -424,7 +415,9 @@ export default function OrdersAdminApp() {
       <section className="orders-admin">
         <div className="orders-admin__shell">
           <h1 className="orders-admin__title">Orders Login</h1>
-          <p className="orders-admin__subtitle">Sign in to manage factory orders.</p>
+          <p className="orders-admin__subtitle">
+            Staff accounts only — there is no public sign-up. Sign in to manage factory orders.
+          </p>
 
           <form className="orders-admin__card" onSubmit={handleSignIn}>
             {!supabase ? (

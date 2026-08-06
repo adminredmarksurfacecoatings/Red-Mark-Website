@@ -14,6 +14,7 @@ import {
   toEnabledPath,
   type MediaFolderId,
 } from '@/lib/supabase/mediaLibrary'
+import { checkIsStaff } from '@/lib/staffAccess'
 
 type MediaItem = {
   name: string
@@ -42,6 +43,17 @@ export default function AdminPage() {
   const [message, setMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+  async function ensureStaffAccess(): Promise<boolean> {
+    if (!supabase) return false
+    const result = await checkIsStaff(supabase)
+    if (!result.ok) {
+      setError(result.reason)
+      setUser(null)
+      return false
+    }
+    return true
+  }
+
   useEffect(() => {
     if (!supabase) {
       setError('Supabase env vars are missing. Please configure .env.local and restart.')
@@ -59,7 +71,13 @@ export default function AdminPage() {
       setUser(currentUser)
 
       if (currentUser) {
-        await loadItems(currentUser)
+        const allowed = await ensureStaffAccess()
+        if (allowed) {
+          await loadItems(currentUser)
+        } else {
+          await supabase.auth.signOut()
+          setUser(null)
+        }
       }
 
       setIsLoading(false)
@@ -163,6 +181,14 @@ export default function AdminPage() {
 
     if (signInError) {
       setError(signInError.message)
+      return
+    }
+
+    const allowed = await ensureStaffAccess()
+    if (!allowed) {
+      await supabase.auth.signOut()
+      setUser(null)
+      setPassword('')
       return
     }
 
@@ -287,7 +313,8 @@ export default function AdminPage() {
         <div className="container admin-auth-shell">
           <h1 className="admin-auth-title">Employee Media Login</h1>
           <p className="admin-auth-subtitle">
-            Sign in with your employee account to manage project images.
+            Staff accounts only — there is no public sign-up. Sign in with your
+            authorized employee email to manage project images.
           </p>
 
           <form className="admin-auth-card" onSubmit={handleSignIn}>

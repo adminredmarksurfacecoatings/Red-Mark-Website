@@ -29,8 +29,11 @@ Database → **Replication** → enable:
 
 Authentication → **Providers** → Email:
 
-- Turn **OFF** public sign-up if you only want invited staff
+- Turn **OFF** “Allow new users to sign up” / public sign-up (required)
+- The website has **sign-in only** — no register / create-account UI
+- Create staff users in Dashboard → Authentication → Users → **Add user**, or invite them
 - Use strong passwords for staff accounts
+- Only emails listed in `staff_allowlist` can open media or orders admin
 
 ## Vercel env (optional)
 
@@ -42,11 +45,14 @@ ORDERS_ALERT_EMAIL=info@redmarksurfacecoatings.com
 
 | Layer | Protection |
 |-------|------------|
-| `/admin/orders` | Login required; not indexed by search engines |
+| `/admin` (media) | Login + staff allowlist (`is_staff()`) |
+| `/admin/orders` | Login + staff allowlist; not indexed by search engines |
+| `/api/revalidate-media` | Staff session required |
+| `/api/orders/notify` | Staff session + order must exist + input sanitized |
 | Database RLS | Staff allowlist only (`is_staff()`) |
 | Notifications | Inserts only via DB trigger; staff can mark read |
-| `/api/orders/notify` | Staff session + order must exist + input sanitized |
 | Email alerts | Server-side only; never exposed to public |
+| Public forms | FormSubmit honeypot field; CAPTCHA left off (by product choice) |
 
 ## DDoS / abuse
 

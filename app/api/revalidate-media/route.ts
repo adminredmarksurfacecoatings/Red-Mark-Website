@@ -1,14 +1,17 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
-import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
-import { getSupabaseClientEnv } from '@/lib/supabase/config'
+import { revalidatePath } from 'next/cache'
+import { assertStaffSession } from '@/lib/orders/assertStaffSession'
 
 const PUBLIC_MEDIA_PATHS = [
+  '/',
   '/projects',
   '/finishes',
   '/finishes/exterior',
   '/finishes/exterior/stone-finish',
+  '/finishes/exterior/pebble-finish',
+  '/finishes/interior',
+  '/finishes/interior/create-art',
+  '/finishes/all',
   '/collections/interior',
   '/collections/exterior',
   '/collections/all',
@@ -17,31 +20,9 @@ const PUBLIC_MEDIA_PATHS = [
 ]
 
 export async function POST() {
-  const env = getSupabaseClientEnv()
-  if (!env) {
-    return NextResponse.json({ error: 'Supabase is not configured.' }, { status: 500 })
-  }
-
-  const cookieStore = await cookies()
-  const supabase = createServerClient(env.url, env.key, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll()
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => {
-          cookieStore.set(name, value, options)
-        })
-      },
-    },
-  })
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const session = await assertStaffSession()
+  if (!session.ok) {
+    return NextResponse.json({ error: session.error }, { status: session.status })
   }
 
   for (const path of PUBLIC_MEDIA_PATHS) {
