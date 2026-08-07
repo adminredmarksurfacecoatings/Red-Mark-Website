@@ -71,6 +71,49 @@ export async function moveStorageObject(
   return { error: null }
 }
 
+const IMAGE_EXT_RE = /\.[a-zA-Z0-9]+$/
+const SAFE_FILENAME_STEM_RE = /^[a-zA-Z0-9][a-zA-Z0-9._-]*$/
+
+/**
+ * Build a same-folder rename destination. Rejects path escapes; keeps the original extension.
+ */
+export function buildRenamedStoragePath(
+  currentPath: string,
+  newFilenameInput: string,
+): { path: string; filename: string } | { error: string } {
+  const trimmed = newFilenameInput.trim()
+  if (!trimmed) return { error: 'Filename cannot be empty.' }
+  if (/[/\\]/.test(trimmed) || trimmed.includes('..')) {
+    return { error: 'Filename cannot contain path separators or "..".' }
+  }
+
+  const slash = currentPath.lastIndexOf('/')
+  if (slash < 0) return { error: 'Invalid current path.' }
+
+  const folder = currentPath.slice(0, slash)
+  const currentName = currentPath.slice(slash + 1)
+  const extMatch = currentName.match(IMAGE_EXT_RE)
+  const originalExt = extMatch?.[0] ?? ''
+
+  let stem = trimmed.replace(IMAGE_EXT_RE, '')
+  stem = stem.replace(/\s+/g, '-').toLowerCase()
+
+  if (!stem) return { error: 'Filename cannot be empty.' }
+  if (!SAFE_FILENAME_STEM_RE.test(stem)) {
+    return {
+      error: 'Use only letters, numbers, dots, hyphens, and underscores.',
+    }
+  }
+
+  const filename = `${stem}${originalExt.toLowerCase()}`
+  const path = `${folder}/${filename}`
+  if (path === currentPath) {
+    return { error: 'New filename is the same as the current name.' }
+  }
+
+  return { path, filename }
+}
+
 export async function fetchEnabledMediaUrls(folderPath: string): Promise<string[]> {
   noStore()
   const supabase = getSupabaseClient()

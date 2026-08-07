@@ -18,6 +18,8 @@
   "dependencies": {
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.103.3",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "framer-motion": "^12.38.0",
     "i18n-iso-countries": "^7.14.0",
     "keen-slider": "^6.8.6",

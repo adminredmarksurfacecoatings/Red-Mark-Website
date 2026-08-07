@@ -7,6 +7,7 @@ import { createSupabaseBrowserClient } from '@/lib/supabase/client'
 import {
   MEDIA_BUCKET,
   MEDIA_FOLDERS,
+  buildRenamedStoragePath,
   folderPathFromId,
   isStorageImageFile,
   moveStorageObject,
@@ -39,6 +40,8 @@ export default function AdminPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const [busyPath, setBusyPath] = useState<string | null>(null)
+  const [renamingPath, setRenamingPath] = useState<string | null>(null)
+  const [renameValue, setRenameValue] = useState('')
   const [isSigningIn, setIsSigningIn] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -249,6 +252,56 @@ export default function AdminPage() {
     await revalidatePublicPages()
   }
 
+  function startRename(item: MediaItem) {
+    if (busyPath) return
+    const stem = item.name.replace(/\.[a-zA-Z0-9]+$/, '')
+    setRenamingPath(item.path)
+    setRenameValue(stem)
+    setError(null)
+    setMessage(null)
+  }
+
+  function cancelRename() {
+    setRenamingPath(null)
+    setRenameValue('')
+  }
+
+  async function handleRename(item: MediaItem) {
+    if (!supabase || !user || busyPath) return
+
+    const built = buildRenamedStoragePath(item.path, renameValue)
+    if ('error' in built) {
+      setError(built.error)
+      return
+    }
+
+    setBusyPath(item.path)
+    setError(null)
+    setMessage(null)
+
+    const { error: moveError } = await moveStorageObject(
+      supabase,
+      MEDIA_BUCKET,
+      item.path,
+      built.path,
+    )
+    setBusyPath(null)
+
+    if (moveError) {
+      const conflictHint = /already exists|duplicate|conflict/i.test(moveError)
+        ? ' A file with that name may already exist in this folder.'
+        : ''
+      setError(`Rename failed: ${moveError}.${conflictHint}`)
+      return
+    }
+
+    setRenamingPath(null)
+    setRenameValue('')
+    setMessage(`Renamed to ${built.filename}.`)
+    await loadItems()
+    await revalidatePublicPages()
+  }
+
   async function handleSaveChanges() {
     if (!supabase || !user) return
     if (pendingUploads.length === 0) return
@@ -424,7 +477,8 @@ export default function AdminPage() {
             <p className="admin-media-note">{pendingUploads.length} file(s) queued for save.</p>
           ) : null}
           <p className="admin-media-note">
-            Uploads are saved with the button below. Embedded and Delete apply immediately to each image.
+            Uploads are saved with the button below. Embedded, Rename, and Delete apply immediately to each
+            image.
           </p>
           <p className="admin-media-note">
             Recommended: JPG/PNG/WebP, under 10MB each. Filenames are normalized automatically.
@@ -449,38 +503,95 @@ export default function AdminPage() {
                 <Image src={item.publicUrl} alt={item.name} fill sizes="(max-width: 768px) 100vw, 33vw" />
               </div>
               <div className="admin-media-meta">
-                <p className="admin-media-name">{item.name}</p>
-                <p className="admin-media-note">
-                  {item.folderLabel} · {item.size ? `${Math.round(item.size / 1024)} KB` : '—'}
-                </p>
+                {renamingPath === item.path ? (
+                  <form
+                    className="admin-rename-form"
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      void handleRename(item)
+                    }}
+                  >
+                    <label className="contact-form-label" htmlFor={`rename-${item.path}`}>
+                      New filename
+                    </label>
+                    <input
+                      id={`rename-${item.path}`}
+                      type="text"
+                      className="contact-form-input"
+                      value={renameValue}
+                      onChange={(e) => setRenameValue(e.target.value)}
+                      disabled={busyPath === item.path}
+                      autoFocus
+                      aria-describedby={`rename-hint-${item.path}`}
+                    />
+                    <p id={`rename-hint-${item.path}`} className="admin-media-note">
+                      Extension stays {item.name.match(/\.[a-zA-Z0-9]+$/)?.[0] ?? 'unchanged'}. No folders or
+                      path characters.
+                    </p>
+                    <div className="admin-media-actions admin-media-actions--inline">
+                      <button
+                        type="submit"
+                        className="admin-inline-btn"
+                        disabled={busyPath === item.path || !renameValue.trim()}
+                      >
+                        {busyPath === item.path ? 'Renaming…' : 'Save name'}
+                      </button>
+                      <button
+                        type="button"
+                        className="admin-inline-btn"
+                        disabled={busyPath === item.path}
+                        onClick={cancelRename}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <>
+                    <p className="admin-media-name">{item.name}</p>
+                    <p className="admin-media-note">
+                      {item.folderLabel} · {item.size ? `${Math.round(item.size / 1024)} KB` : '—'}
+                    </p>
+                  </>
+                )}
               </div>
-              <div className="admin-media-actions">
-                <label className="admin-toggle-row admin-toggle-row--compact">
-                  <input
-                    type="checkbox"
-                    checked={item.enabled}
-                    disabled={busyPath === item.path}
-                    onChange={(e) => handleToggleEnabled(item, e.target.checked)}
-                  />
-                  <span>{busyPath === item.path ? 'Updating…' : 'Embedded'}</span>
-                </label>
-                <button
-                  type="button"
-                  className="admin-inline-btn"
-                  disabled={Boolean(busyPath)}
-                  onClick={() => handleCopy(item.publicUrl)}
-                >
-                  Copy URL
-                </button>
-                <button
-                  type="button"
-                  className="admin-inline-btn admin-inline-btn--danger"
-                  disabled={Boolean(busyPath)}
-                  onClick={() => handleDelete(item.path)}
-                >
-                  {busyPath === item.path ? 'Working…' : 'Delete'}
-                </button>
-              </div>
+              {renamingPath === item.path ? null : (
+                <div className="admin-media-actions">
+                  <label className="admin-toggle-row admin-toggle-row--compact">
+                    <input
+                      type="checkbox"
+                      checked={item.enabled}
+                      disabled={busyPath === item.path}
+                      onChange={(e) => handleToggleEnabled(item, e.target.checked)}
+                    />
+                    <span>{busyPath === item.path ? 'Updating…' : 'Embedded'}</span>
+                  </label>
+                  <button
+                    type="button"
+                    className="admin-inline-btn"
+                    disabled={Boolean(busyPath)}
+                    onClick={() => startRename(item)}
+                  >
+                    Rename
+                  </button>
+                  <button
+                    type="button"
+                    className="admin-inline-btn"
+                    disabled={Boolean(busyPath)}
+                    onClick={() => handleCopy(item.publicUrl)}
+                  >
+                    Copy URL
+                  </button>
+                  <button
+                    type="button"
+                    className="admin-inline-btn admin-inline-btn--danger"
+                    disabled={Boolean(busyPath)}
+                    onClick={() => handleDelete(item.path)}
+                  >
+                    {busyPath === item.path ? 'Working…' : 'Delete'}
+                  </button>
+                </div>
+              )}
             </article>
           ))}
         </div>

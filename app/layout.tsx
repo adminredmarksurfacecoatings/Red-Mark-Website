@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import './globals-dealer.css'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
@@ -49,6 +51,8 @@ export default function RootLayout({
       <body>
         <GlobalMotionEffects />
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
