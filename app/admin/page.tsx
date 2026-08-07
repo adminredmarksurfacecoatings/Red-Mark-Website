@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { FormEvent, useEffect, useMemo, useState } from 'react'
+import { FormEvent, useEffect, useMemo, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react'
 import type { AuthUser } from '@supabase/supabase-js'
 import { createSupabaseBrowserClient } from '@/lib/supabase/client'
 import {
@@ -45,6 +45,7 @@ export default function AdminPage() {
   const [isSigningIn, setIsSigningIn] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   async function ensureStaffAccess(): Promise<boolean> {
     if (!supabase) return false
@@ -347,7 +348,95 @@ export default function AdminPage() {
     await supabase.auth.signOut()
     setUser(null)
     setItems([])
+    setLightboxIndex(null)
     setMessage('Signed out.')
+  }
+
+  const visibleItems = useMemo(
+    () => items.filter((item) => item.folderId === targetFolder),
+    [items, targetFolder],
+  )
+
+  useEffect(() => {
+    setLightboxIndex(null)
+  }, [targetFolder])
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    if (visibleItems.length === 0) {
+      setLightboxIndex(null)
+      return
+    }
+    if (lightboxIndex >= visibleItems.length) {
+      setLightboxIndex(visibleItems.length - 1)
+    }
+  }, [lightboxIndex, visibleItems.length])
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        setLightboxIndex(null)
+        return
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        setLightboxIndex((current) => {
+          if (current === null || visibleItems.length === 0) return current
+          return (current - 1 + visibleItems.length) % visibleItems.length
+        })
+        return
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        setLightboxIndex((current) => {
+          if (current === null || visibleItems.length === 0) return current
+          return (current + 1) % visibleItems.length
+        })
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [lightboxIndex, visibleItems.length])
+
+  function openLightbox(index: number) {
+    setLightboxIndex(index)
+  }
+
+  function closeLightbox() {
+    setLightboxIndex(null)
+  }
+
+  function showLightboxPrev() {
+    if (visibleItems.length === 0) return
+    setLightboxIndex((current) => {
+      if (current === null) return current
+      return (current - 1 + visibleItems.length) % visibleItems.length
+    })
+  }
+
+  function showLightboxNext() {
+    if (visibleItems.length === 0) return
+    setLightboxIndex((current) => {
+      if (current === null) return current
+      return (current + 1) % visibleItems.length
+    })
+  }
+
+  function onLightboxKeyDown(e: ReactKeyboardEvent<HTMLDivElement>) {
+    if (e.key === 'Escape') {
+      e.preventDefault()
+      closeLightbox()
+    }
   }
 
   if (isLoading) {
@@ -420,8 +509,11 @@ export default function AdminPage() {
     )
   }
 
-  const visibleItems = items.filter((item) => item.folderId === targetFolder)
   const hasPendingUploads = pendingUploads.length > 0
+  const lightboxItem =
+    lightboxIndex !== null && lightboxIndex >= 0 && lightboxIndex < visibleItems.length
+      ? visibleItems[lightboxIndex]
+      : null
 
   return (
     <section className="admin-page">
@@ -497,11 +589,16 @@ export default function AdminPage() {
         {error ? <p className="admin-auth-error">{error}</p> : null}
 
         <div className="admin-media-grid">
-          {visibleItems.map((item) => (
+          {visibleItems.map((item, index) => (
             <article key={item.path} className="admin-media-card">
-              <div className="admin-media-thumb">
+              <button
+                type="button"
+                className="admin-media-thumb"
+                onClick={() => openLightbox(index)}
+                aria-label={`View ${item.name} fullscreen`}
+              >
                 <Image src={item.publicUrl} alt={item.name} fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
+              </button>
               <div className="admin-media-meta">
                 {renamingPath === item.path ? (
                   <form
@@ -596,6 +693,63 @@ export default function AdminPage() {
           ))}
         </div>
       </div>
+
+      {lightboxItem && lightboxIndex !== null ? (
+        <div
+          className="admin-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Fullscreen image preview"
+          onKeyDown={onLightboxKeyDown}
+        >
+          <button
+            type="button"
+            className="admin-lightbox__backdrop"
+            aria-label="Close fullscreen preview"
+            onClick={closeLightbox}
+          />
+          <div className="admin-lightbox__toolbar">
+            <p className="admin-lightbox__caption">
+              {lightboxItem.name}
+              <span className="admin-lightbox__count">
+                {' '}
+                · {lightboxIndex + 1} / {visibleItems.length}
+              </span>
+            </p>
+            <div className="admin-lightbox__controls">
+              <button
+                type="button"
+                className="admin-lightbox__btn"
+                onClick={showLightboxPrev}
+                disabled={visibleItems.length <= 1}
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                className="admin-lightbox__btn"
+                onClick={showLightboxNext}
+                disabled={visibleItems.length <= 1}
+              >
+                Next
+              </button>
+              <button type="button" className="admin-lightbox__btn" onClick={closeLightbox}>
+                Close
+              </button>
+            </div>
+          </div>
+          <div className="admin-lightbox__stage">
+            <Image
+              src={lightboxItem.publicUrl}
+              alt={lightboxItem.name}
+              fill
+              sizes="100vw"
+              className="admin-lightbox__image"
+              priority
+            />
+          </div>
+        </div>
+      ) : null}
     </section>
   )
 }
