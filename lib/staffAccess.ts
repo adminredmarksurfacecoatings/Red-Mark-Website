@@ -6,7 +6,8 @@ export type StaffCheckResult =
 
 /**
  * Client-side staff check via Supabase RPC `is_staff()`.
- * Requires staff_allowlist + 20250630_harden_orders_security.sql.
+ * After 20260807_staff_is_authenticated.sql, staff = any authenticated user.
+ * Keep public signup disabled in Supabase Auth; create users in the Dashboard only.
  */
 export async function checkIsStaff(supabase: SupabaseClient): Promise<StaffCheckResult> {
   const { data, error } = await supabase.rpc('is_staff')
@@ -16,7 +17,7 @@ export async function checkIsStaff(supabase: SupabaseClient): Promise<StaffCheck
       return {
         ok: false,
         reason:
-          'Staff allowlist is not set up yet. Run supabase/migrations/20250630_harden_orders_security.sql in the Supabase SQL Editor, then add your login email to staff_allowlist.',
+          'Staff access is not set up yet. Run the Supabase migrations under supabase/migrations/ (through 20260807_staff_is_authenticated.sql) in the SQL Editor.',
       }
     }
     return { ok: false, reason: 'Could not verify staff access.' }
@@ -25,8 +26,7 @@ export async function checkIsStaff(supabase: SupabaseClient): Promise<StaffCheck
   if (!data) {
     return {
       ok: false,
-      reason:
-        'This account is not authorized. Ask an admin to add your email to staff_allowlist in Supabase.',
+      reason: 'This account is not authorized for staff access.',
     }
   }
 

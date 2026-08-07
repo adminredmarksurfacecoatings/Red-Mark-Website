@@ -14,9 +14,12 @@ That **only replaces a trigger definition**. It does **not** delete your `orders
 
 1. `20250628_create_orders.sql` — orders table
 2. `20250629_order_notifications.sql` — notifications + trigger
-3. `20250630_harden_orders_security.sql` — **staff allowlist + locked-down RLS**
+3. `20250630_harden_orders_security.sql` — staff RLS via `is_staff()` (originally used `staff_allowlist`)
+4. `20260807_staff_is_authenticated.sql` — **`is_staff()` = any authenticated user** (allowlist no longer required)
 
-After step 3, **only emails in `staff_allowlist` can access orders**. Edit the `INSERT` at the top of step 3 with your real Supabase Auth login emails.
+After step 4, any user who can sign in with Supabase Auth can access orders/media admin and pass RLS. Control access by who you create in Authentication → Users (and by keeping public sign-up off).
+
+The `staff_allowlist` table may still exist from step 3; it is unused after step 4 and can be left in place.
 
 ## Enable Realtime (Dashboard)
 
@@ -33,7 +36,7 @@ Authentication → **Providers** → Email:
 - The website has **sign-in only** — no register / create-account UI
 - Create staff users in Dashboard → Authentication → Users → **Add user**, or invite them
 - Use strong passwords for staff accounts
-- Only emails listed in `staff_allowlist` can open media or orders admin
+- Any Auth user you create can open media or orders admin
 
 ## Vercel env (optional)
 
@@ -45,11 +48,11 @@ ORDERS_ALERT_EMAIL=info@redmarksurfacecoatings.com
 
 | Layer | Protection |
 |-------|------------|
-| `/admin` (media) | Login + staff allowlist (`is_staff()`) |
-| `/admin/orders` | Login + staff allowlist; not indexed by search engines |
-| `/api/revalidate-media` | Staff session required |
+| `/admin` (media) | Login required (`is_staff()` = authenticated) |
+| `/admin/orders` | Login required; not indexed by search engines |
+| `/api/revalidate-media` | Authenticated staff session required |
 | `/api/orders/notify` | Staff session + order must exist + input sanitized |
-| Database RLS | Staff allowlist only (`is_staff()`) |
+| Database RLS | Authenticated users only (`is_staff()`) |
 | Notifications | Inserts only via DB trigger; staff can mark read |
 | Email alerts | Server-side only; never exposed to public |
 | Public forms | FormSubmit honeypot field; CAPTCHA left off (by product choice) |
@@ -63,10 +66,7 @@ ORDERS_ALERT_EMAIL=info@redmarksurfacecoatings.com
 
 ## Add a new staff member
 
-```sql
-insert into public.staff_allowlist (email)
-values ('newperson@yourcompany.com')
-on conflict (email) do nothing;
-```
+1. Supabase Dashboard → Authentication → Users → **Add user**
+2. Use that email/password on `/admin` or `/admin/orders`
 
-Use the **same email** they use to sign in on `/admin/orders`.
+No allowlist SQL insert is needed after `20260807_staff_is_authenticated.sql`.
