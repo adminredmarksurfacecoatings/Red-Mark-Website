@@ -19,7 +19,11 @@ export const metadata: Metadata = {
   description:
     'Architectural mineral finishes and wall textures with depth, durability, and refined character for interiors and exteriors across India.',
   icons: {
-    icon: '/Logo.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   // Intentionally minimal OG defaults — each page should call createPageMetadata()
   // so title/description/url are unique. These only apply if a route omits OG.

@@ -11,7 +11,7 @@ function rgbToHex(r, g, b) {
 
 async function analyzeLogo() {
   try {
-    const logoPath = path.join(__dirname, '..', 'public', 'Logo.PNG');
+    const logoPath = path.join(__dirname, '..', 'public', 'Logo.svg');
     
     if (!fs.existsSync(logoPath)) {
       console.error('Logo file not found at:', logoPath);
