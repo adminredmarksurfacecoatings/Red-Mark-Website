@@ -11,6 +11,7 @@ const PUBLIC_MEDIA_PATHS = [
   '/finishes/exterior/pebble-finish',
   '/finishes/interior',
   '/finishes/interior/create-art',
+  '/finishes/interior/farry',
   '/finishes/all',
   '/collections/interior',
   '/collections/exterior',

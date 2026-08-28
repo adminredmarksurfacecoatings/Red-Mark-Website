@@ -39,6 +39,12 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
           <p className="stone-finish-shades__intro">{config.shadesSection.intro}</p>
         </div>
 
+        {config.shadesSection.note ? (
+          <div className="stone-finish-shades__warning" role="alert">
+            <p className="stone-finish-shades__warning-text">{config.shadesSection.note}</p>
+          </div>
+        ) : null}
+
         {config.shadeGroups && config.shadeGroups.length > 0 ? (
           <div className="stone-finish-shades__groups">
             {config.shadeGroups.map((group) => (
@@ -66,6 +72,23 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
           color: #2b2b2b;
           letter-spacing: -0.01em;
           margin: 0 0 2rem;
+        }
+
+        .stone-finish-shades__warning {
+          margin: -1.25rem 0 2.5rem;
+          max-width: 46rem;
+          padding: 1rem 1.15rem;
+          border-left: 3px solid #8b4513;
+          background: rgba(139, 69, 19, 0.06);
+        }
+
+        .stone-finish-shades__warning-text {
+          margin: 0;
+          font-size: 0.95rem;
+          line-height: 1.55;
+          color: #4a3a32;
+          font-family: 'Inter', sans-serif;
+          font-weight: 400;
         }
 
         @media (max-width: 768px) {

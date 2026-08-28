@@ -25,6 +25,7 @@ export const DEALER_FINISH_INTERESTS = [
   'Stone Finish',
   'Pebble Finish',
   'Create Art',
+  'Farry',
   'Mineral Textures',
   'Decorative Coatings',
   'Not sure yet',

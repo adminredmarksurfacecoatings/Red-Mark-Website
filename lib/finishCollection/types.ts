@@ -50,6 +50,8 @@ export type FinishCollectionConfig = {
     eyebrow: string
     heading: string
     intro: string
+    /** Optional warning shown above the shade grid (e.g. photography accuracy) */
+    note?: string
   }
   ctaSection: {
     eyebrow: string

@@ -15,6 +15,18 @@ export type FinishCatalogEntry = {
 
 export const FINISH_CATALOG: FinishCatalogEntry[] = [
   {
+    slug: 'farry',
+    eyebrow: 'FARRY',
+    title: 'Farry',
+    description:
+      'High-shine interior wall texture finishes with luminous reflective depth — sixteen carefully curated shades.',
+    href: '/finishes/interior/farry',
+    image: '/Shadecards/farry/shade-card/cover.webp',
+    available: true,
+    applications: ['interior'],
+    featured: true,
+  },
+  {
     slug: 'stone-finish',
     eyebrow: 'STONE FINISH',
     title: 'Stone Finish',
@@ -36,7 +48,6 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     image: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
     available: true,
     applications: ['interior', 'exterior'],
-    featured: true,
   },
   {
     slug: 'create-art',

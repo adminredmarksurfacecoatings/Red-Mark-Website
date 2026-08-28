@@ -32,6 +32,7 @@ const PAGES: PageEntry[] = [
   { path: '/finishes/exterior/stone-finish', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/finishes/exterior/pebble-finish', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/finishes/interior/create-art', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/finishes/interior/farry', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/finishes/exterior/mineral-textures', changeFrequency: 'yearly', priority: 0.4 },
   { path: '/finishes/exterior/decorative-exterior-finishes', changeFrequency: 'yearly', priority: 0.4 },
 

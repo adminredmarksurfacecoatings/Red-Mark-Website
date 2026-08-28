@@ -8,7 +8,7 @@ import { createPageMetadata } from '@/lib/seo'
 export const metadata: Metadata = createPageMetadata({
   title: 'Interior Wall Textures & Mineral Finishes',
   description:
-    'Explore Red Mark interior wall textures and mineral finishes — Create Art and decorative coatings crafted for refined residential and commercial interiors.',
+    'Explore Red Mark interior wall textures and mineral finishes — Create Art, Farry, and decorative coatings crafted for refined residential and commercial interiors.',
   path: '/finishes/interior',
   image: '/home_grid_1.png',
   imageAlt: 'Interior mineral wall texture by Red Mark',
