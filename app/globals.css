@@ -1271,7 +1271,14 @@ body.image-modal-open .site-nav {
 .home-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0) 70%);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.16) 28%,
+      rgba(0, 0, 0, 0) 52%
+    ),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0) 70%);
   z-index: 1;
   pointer-events: none;
 }
@@ -1381,6 +1388,13 @@ body.image-modal-open .site-nav {
 }
 
 .home-hero__scroll.scroll-indicator {
+  background: #ffffff66;
+  border-radius: 999px;
+  color: #000;
+  padding: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   animation: heroScrollBounce 3s ease-in-out infinite;
 }
 
