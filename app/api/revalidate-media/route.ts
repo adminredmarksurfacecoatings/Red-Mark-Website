@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
-import { assertStaffSession } from '@/lib/staffAccess'
+import { assertStaffSession } from '@/lib/assertStaffSession'
 
 const PUBLIC_MEDIA_PATHS = [
   '/',
