@@ -1,13 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
+import FeaturedFinishesSection from '@/components/home/FeaturedFinishesSection'
 import { getCollectionsForNav } from '@/lib/collections'
-import {
-  formatFinishApplications,
-  getPrimaryFeaturedFinish,
-  getSecondaryFeaturedFinishes,
-} from '@/lib/finishCatalog'
+import Image from 'next/image'
 
 const sectionHeadingStyle = {
   fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -46,154 +42,13 @@ const cardBodyStyle = {
   letterSpacing: '0.01em',
 }
 
-function ApplicationBadge({ label }: { label: string }) {
-  return (
-    <span
-      style={{
-        display: 'inline-block',
-        fontSize: '0.625rem',
-        fontFamily: "'Inter', sans-serif",
-        fontWeight: 400,
-        color: '#8B4513',
-        textTransform: 'uppercase',
-        letterSpacing: '0.12em',
-        marginBottom: '0.65rem',
-      }}
-    >
-      {label}
-    </span>
-  )
-}
-
 export default function SectionThree() {
-  const primaryFeatured = getPrimaryFeaturedFinish()
-  const secondaryFeatured = getSecondaryFeaturedFinishes()
   const collections = getCollectionsForNav()
 
   return (
     <section className="page-section home-finishes-section" style={{ backgroundColor: '#F8F4EE' }}>
       <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
-        {primaryFeatured ? (
-          <div className="home-finishes-block">
-            <h2 style={sectionHeadingStyle}>Featured Collections</h2>
-
-            <div className="featured-finishes-editorial">
-              <Link
-                href={primaryFeatured.href}
-                className="collection-card collection-card-featured"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'transform 0.35s ease',
-                  cursor: 'pointer',
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    aspectRatio: '1.18/1',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    borderRadius: '4px',
-                    marginBottom: '28px',
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
-                  }}
-                >
-                  <Image
-                    src={primaryFeatured.image}
-                    alt={primaryFeatured.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    quality={75}
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-
-                <ApplicationBadge label={formatFinishApplications(primaryFeatured.applications)} />
-                <div style={eyebrowStyle}>{primaryFeatured.eyebrow}</div>
-
-                <h3
-                  style={{
-                    ...cardTitleStyle,
-                    fontSize: 'clamp(1.9rem, 2.6vw, 2.4rem)',
-                    lineHeight: 1.2,
-                    marginBottom: '0.8rem',
-                  }}
-                >
-                  {primaryFeatured.title}
-                </h3>
-                <p style={cardBodyStyle}>{primaryFeatured.description}</p>
-              </Link>
-
-              {secondaryFeatured.length > 0 ? (
-                <div style={{ display: 'grid', gap: '2.6rem' }}>
-                  {secondaryFeatured.map((finish) => (
-                    <Link
-                      key={finish.slug}
-                      href={finish.href}
-                      className="collection-card"
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        transition: 'transform 0.35s ease',
-                        cursor: 'pointer',
-                        color: 'inherit',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '100%',
-                          aspectRatio: '16/11',
-                          position: 'relative',
-                          overflow: 'hidden',
-                          borderRadius: '4px',
-                          marginBottom: '20px',
-                          boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
-                        }}
-                      >
-                        <Image
-                          src={finish.image}
-                          alt={finish.title}
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 35vw"
-                          quality={75}
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </div>
-
-                      <ApplicationBadge label={formatFinishApplications(finish.applications)} />
-                      <div style={eyebrowStyle}>{finish.eyebrow}</div>
-
-                      <h3
-                        style={{
-                          ...cardTitleStyle,
-                          fontSize: 'clamp(1.4rem, 1.9vw, 1.7rem)',
-                          lineHeight: 1.3,
-                          marginBottom: '0.6rem',
-                        }}
-                      >
-                        {finish.title}
-                      </h3>
-                      <p
-                        style={{
-                          ...cardBodyStyle,
-                          fontSize: '0.9375rem',
-                          lineHeight: 1.6,
-                          marginTop: 0,
-                        }}
-                      >
-                        {finish.description}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </div>
-        ) : null}
+        <FeaturedFinishesSection />
 
         <div className="home-finishes-block home-finishes-block--collections">
           <h2
@@ -308,15 +163,6 @@ export default function SectionThree() {
           margin-top: 5.5rem;
         }
 
-        .featured-finishes-editorial {
-          display: grid;
-          grid-template-columns: 1.65fr 1fr;
-          gap: 3.25rem;
-          margin-left: 10vw;
-          margin-right: 10vw;
-          align-items: start;
-        }
-
         .application-collections-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -330,17 +176,11 @@ export default function SectionThree() {
           margin-left: 10vw;
         }
 
-        .collection-card:hover,
-        .collection-card-featured:hover {
+        .collection-card:hover {
           transform: translateY(-4px);
         }
 
         @media (max-width: 1024px) {
-          .featured-finishes-editorial {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-          }
-
           .application-collections-grid {
             grid-template-columns: 1fr;
             gap: 2.5rem;
@@ -348,7 +188,6 @@ export default function SectionThree() {
         }
 
         @media (max-width: 768px) {
-          .featured-finishes-editorial,
           .application-collections-grid {
             margin-left: 0;
             margin-right: 0;

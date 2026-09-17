@@ -14,7 +14,6 @@ const primaryLinks = [
 
 const menuLinks = [
   ...primaryLinks,
-  { href: '/find-a-dealer', label: 'Find a Dealer' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -31,7 +30,6 @@ export default function Navbar() {
     pathname === '/contact' ||
     pathname === '/thank-you' ||
     pathname === '/catalogues' ||
-    pathname === '/find-a-dealer' ||
     pathname?.startsWith('/for-professionals') ||
     pathname?.startsWith('/collections') ||
     pathname?.startsWith('/finishes/exterior') ||
@@ -115,13 +113,6 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/find-a-dealer"
-            style={{ color: navTextColor }}
-            className={`nav-link site-nav__link site-nav__link--dealer${pathname === '/find-a-dealer' ? ' active' : ''}`}
-          >
-            Find a Dealer
-          </Link>
-          <Link
             href="/contact"
             className={`btn nav-contact-btn${isTransparentNav ? ' nav-contact-btn--light' : ''}`}
           >
@@ -153,9 +144,6 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/for-professionals/dealers" className="site-nav__drawer-link">
-              Become a Dealer
-            </Link>
           </div>
         </div>
       ) : null}

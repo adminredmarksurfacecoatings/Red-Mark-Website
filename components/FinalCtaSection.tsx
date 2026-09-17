@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import ContactWhatsAppActions from '@/components/ContactWhatsAppActions'
 
 export default function FinalCtaSection() {
   return (
@@ -9,17 +10,23 @@ export default function FinalCtaSection() {
         <div className="final-cta-section__inner">
           <h2 className="final-cta-section__heading">Ready to Specify or Source a Finish?</h2>
           <p className="final-cta-section__text">
-            Professionals can request samples and project support directly. Homeowners can get
-            connected with an authorized dealer for local availability.
+            Reach out for samples, project support, or finish guidance — we typically respond within
+            24 hours.
           </p>
-          <div className="final-cta-section__actions">
-            <Link href="/contact?audience=architect" className="btn final-cta-btn">
-              Request Project Support
+          <ContactWhatsAppActions
+            className="final-cta-section__actions contact-whatsapp-actions"
+            contactLabel="Contact Us →"
+            whatsappLabel="WhatsApp →"
+            contactClassName="btn final-cta-btn"
+            whatsappClassName="final-cta-section__secondary"
+          />
+          <p className="final-cta-section__alt">
+            Or browse{' '}
+            <Link href="/finishes" className="final-cta-section__inline-link">
+              finishes
             </Link>
-            <Link href="/find-a-dealer" className="final-cta-section__secondary">
-              Get Connected →
-            </Link>
-          </div>
+            .
+          </p>
         </div>
       </div>
     </section>

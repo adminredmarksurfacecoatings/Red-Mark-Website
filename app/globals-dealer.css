@@ -390,6 +390,44 @@
   margin-bottom: 1.35rem;
 }
 
+.contact-page-sidebar__phones {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-page-sidebar__reach {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-whatsapp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.stone-finish-cta__contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+  align-items: center;
+}
+
+.final-cta-section__alt {
+  margin-top: 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #6a6a6a;
+}
+
+.final-cta-section__inline-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .contact-page-sidebar__label {
   display: block;
   font-family: 'Inter', sans-serif;
@@ -979,8 +1017,14 @@
     gap: 2.5rem;
   }
 
-  .contact-page-quick-links {
-    grid-template-columns: 1fr;
+  /* Mobile: sidebar (phones → WhatsApp) stacks above the form */
+  .contact-page-sidebar__phones {
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-page-sidebar .whatsapp-inquiry-btn {
+    margin-top: 0.35rem;
+    width: fit-content;
   }
 }
 

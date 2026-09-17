@@ -11,9 +11,6 @@ export default function Footer() {
           <div>
             <h3 className="site-footer__brand">Red Mark Surface Coatings</h3>
             <p className="site-footer__tagline">{BRAND_SHORT}</p>
-            <p className="site-footer__dealer-note">
-              Manufactured by Red Mark. Supplied through authorized dealers across India.
-            </p>
           </div>
 
           <div>
@@ -28,12 +25,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="site-footer__heading">Professionals & Dealers</h4>
+            <h4 className="site-footer__heading">Professionals</h4>
             <ul className="site-footer__list">
               <li><Link href="/for-professionals" className="footer-link">For Professionals</Link></li>
               <li><Link href="/for-professionals/architects" className="footer-link">Architect Resources</Link></li>
-              <li><Link href="/find-a-dealer" className="footer-link">Find a Dealer</Link></li>
-              <li><Link href="/for-professionals/dealers" className="footer-link">Become a Dealer</Link></li>
+              <li><Link href="/for-professionals/builders" className="footer-link">Builders</Link></li>
+              <li><Link href="/for-professionals/dealers" className="footer-link">Dealer Partnerships</Link></li>
             </ul>
           </div>
         </div>

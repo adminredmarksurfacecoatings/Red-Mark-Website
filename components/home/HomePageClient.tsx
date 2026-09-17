@@ -11,7 +11,6 @@ import FeatureHighlightSection from '@/components/FeatureHighlightSection'
 import ForProfessionalsMiniSection from '@/components/ForProfessionalsMiniSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
 import BrochureDownloadSection from '@/components/BrochureDownloadSection'
-import DealerNetworkSection from '@/components/home/DealerNetworkSection'
 import HomeFinishesGrid from '@/components/home/HomeFinishesGrid'
 import NotFoundRedirectPopup from '@/components/NotFoundRedirectPopup'
 
@@ -35,7 +34,6 @@ export default function HomePageClient({ finishesImages }: HomePageClientProps) 
       <MidPageCtaSection />
       <FeatureHighlightSection />
       <ForProfessionalsMiniSection />
-      <DealerNetworkSection />
       <FinalCtaSection />
     </div>
   )

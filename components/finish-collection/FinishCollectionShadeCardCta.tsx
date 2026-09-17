@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ContactWhatsAppActions from '@/components/ContactWhatsAppActions'
 import FinishCollectionAssetImage from '@/components/finish-collection/FinishCollectionAssetImage'
 import type { FinishCollectionConfig } from '@/lib/finishCollection/types'
 
@@ -56,12 +57,13 @@ export default function FinishCollectionShadeCardCta({ config }: FinishCollectio
             <Link href={config.requestSampleHref} className="stone-finish-cta__sample">
               Request Sample
             </Link>
-            <Link
-              href={`/find-a-dealer?finish=${encodeURIComponent(config.title)}`}
-              className="stone-finish-cta__dealer"
-            >
-              Get Connected
-            </Link>
+            <ContactWhatsAppActions
+              className="stone-finish-cta__contact-actions contact-whatsapp-actions"
+              contactLabel="Contact Us"
+              whatsappLabel="WhatsApp"
+              contactClassName="stone-finish-cta__sample"
+              whatsappClassName="stone-finish-cta__dealer"
+            />
           </div>
         </div>
       </div>

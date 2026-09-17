@@ -38,7 +38,6 @@ const PAGES: PageEntry[] = [
 
   // Connect / professionals
   { path: '/contact', changeFrequency: 'monthly', priority: 0.7 },
-  { path: '/find-a-dealer', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/for-professionals', changeFrequency: 'monthly', priority: 0.65 },
   { path: '/for-professionals/architects', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/for-professionals/builders', changeFrequency: 'monthly', priority: 0.6 },

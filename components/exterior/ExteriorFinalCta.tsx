@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import ContactWhatsAppActions from '@/components/ContactWhatsAppActions'
 
 export default function ExteriorFinalCta() {
   return (
@@ -12,14 +12,13 @@ export default function ExteriorFinalCta() {
           Our team can recommend finishes based on project type, climate, and design direction.
         </p>
 
-        <div className="exterior-landing-final__actions">
-          <Link href="/contact?audience=architect" className="btn exterior-landing-final__btn">
-            Request Project Support →
-          </Link>
-          <Link href="/find-a-dealer" className="exterior-landing-final__secondary">
-            Get Connected
-          </Link>
-        </div>
+        <ContactWhatsAppActions
+          className="exterior-landing-final__actions contact-whatsapp-actions"
+          contactLabel="Contact Us →"
+          whatsappLabel="WhatsApp →"
+          contactClassName="btn exterior-landing-final__btn"
+          whatsappClassName="exterior-landing-final__secondary"
+        />
       </div>
     </section>
   )

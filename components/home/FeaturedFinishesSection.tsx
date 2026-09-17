@@ -1,0 +1,247 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import {
+  formatFinishApplications,
+  getPrimaryFeaturedFinish,
+  getSecondaryFeaturedFinishes,
+} from '@/lib/finishCatalog'
+
+const sectionHeadingStyle = {
+  fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+  fontFamily: "'Cormorant Garamond', serif",
+  fontWeight: 500,
+  color: '#2B2B2B',
+  lineHeight: 1.2,
+  letterSpacing: '-0.02em',
+  marginBottom: '3rem',
+  marginLeft: '10vw',
+} as const
+
+const eyebrowStyle = {
+  fontSize: '0.6875rem',
+  fontFamily: "'Inter', sans-serif",
+  fontWeight: 400,
+  color: '#6A6A6A',
+  textTransform: 'uppercase' as const,
+  letterSpacing: '0.15em',
+  marginBottom: '0.5rem',
+}
+
+const cardTitleStyle = {
+  fontFamily: "'Cormorant Garamond', serif",
+  fontWeight: 500,
+  color: '#2B2B2B',
+  letterSpacing: '-0.015em',
+}
+
+const cardBodyStyle = {
+  fontSize: '0.98rem',
+  fontFamily: "'Inter', sans-serif",
+  fontWeight: 300,
+  color: '#4A4A4A',
+  lineHeight: 1.7,
+  letterSpacing: '0.01em',
+}
+
+function ApplicationBadge({ label }: { label: string }) {
+  return (
+    <span
+      style={{
+        display: 'inline-block',
+        fontSize: '0.625rem',
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: 400,
+        color: '#8B4513',
+        textTransform: 'uppercase',
+        letterSpacing: '0.12em',
+        marginBottom: '0.65rem',
+      }}
+    >
+      {label}
+    </span>
+  )
+}
+
+type FeaturedFinishesSectionProps = {
+  /** When true, wrap in a full homepage-style section background. */
+  standalone?: boolean
+  heading?: string
+}
+
+export default function FeaturedFinishesSection({
+  standalone = false,
+  heading = 'Featured Collections',
+}: FeaturedFinishesSectionProps) {
+  const primaryFeatured = getPrimaryFeaturedFinish()
+  const secondaryFeatured = getSecondaryFeaturedFinishes()
+
+  if (!primaryFeatured) return null
+
+  const content = (
+    <div className="home-finishes-block">
+      <h2 style={sectionHeadingStyle}>{heading}</h2>
+
+      <div className="featured-finishes-editorial">
+        <Link
+          href={primaryFeatured.href}
+          className="collection-card collection-card-featured"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            transition: 'transform 0.35s ease',
+            cursor: 'pointer',
+            color: 'inherit',
+            textDecoration: 'none',
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              aspectRatio: '1.18/1',
+              position: 'relative',
+              overflow: 'hidden',
+              borderRadius: '4px',
+              marginBottom: '28px',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+            }}
+          >
+            <Image
+              src={primaryFeatured.image}
+              alt={primaryFeatured.title}
+              fill
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              quality={75}
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+
+          <ApplicationBadge label={formatFinishApplications(primaryFeatured.applications)} />
+          <div style={eyebrowStyle}>{primaryFeatured.eyebrow}</div>
+
+          <h3
+            style={{
+              ...cardTitleStyle,
+              fontSize: 'clamp(1.9rem, 2.6vw, 2.4rem)',
+              lineHeight: 1.2,
+              marginBottom: '0.8rem',
+            }}
+          >
+            {primaryFeatured.title}
+          </h3>
+          <p style={cardBodyStyle}>{primaryFeatured.description}</p>
+        </Link>
+
+        {secondaryFeatured.length > 0 ? (
+          <div style={{ display: 'grid', gap: '2.6rem' }}>
+            {secondaryFeatured.map((finish) => (
+              <Link
+                key={finish.slug}
+                href={finish.href}
+                className="collection-card"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'transform 0.35s ease',
+                  cursor: 'pointer',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                <div
+                  style={{
+                    width: '100%',
+                    aspectRatio: '16/11',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    borderRadius: '4px',
+                    marginBottom: '20px',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+                  }}
+                >
+                  <Image
+                    src={finish.image}
+                    alt={finish.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 35vw"
+                    quality={75}
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+
+                <ApplicationBadge label={formatFinishApplications(finish.applications)} />
+                <div style={eyebrowStyle}>{finish.eyebrow}</div>
+
+                <h3
+                  style={{
+                    ...cardTitleStyle,
+                    fontSize: 'clamp(1.4rem, 1.9vw, 1.7rem)',
+                    lineHeight: 1.3,
+                    marginBottom: '0.6rem',
+                  }}
+                >
+                  {finish.title}
+                </h3>
+                <p
+                  style={{
+                    ...cardBodyStyle,
+                    fontSize: '0.9375rem',
+                    lineHeight: 1.6,
+                    marginTop: 0,
+                  }}
+                >
+                  {finish.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        ) : null}
+      </div>
+
+      <style jsx>{`
+        .featured-finishes-editorial {
+          display: grid;
+          grid-template-columns: 1.65fr 1fr;
+          gap: 3.25rem;
+          margin-left: 10vw;
+          margin-right: 10vw;
+          align-items: start;
+        }
+
+        .collection-card:hover,
+        .collection-card-featured:hover {
+          transform: translateY(-4px);
+        }
+
+        @media (max-width: 1024px) {
+          .featured-finishes-editorial {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .featured-finishes-editorial {
+            margin-left: 0;
+            margin-right: 0;
+          }
+
+          h2 {
+            margin-left: 0 !important;
+          }
+        }
+      `}</style>
+    </div>
+  )
+
+  if (!standalone) return content
+
+  return (
+    <section className="page-section home-finishes-section" style={{ backgroundColor: '#F8F4EE' }}>
+      <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
+        {content}
+      </div>
+    </section>
+  )
+}

@@ -1,21 +1,24 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import ContactFormSection from '@/components/contact/ContactFormSection'
+import SimpleContactForm from '@/components/contact/SimpleContactForm'
 import { BRAND_TAGLINE } from '@/lib/brand'
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_CANADA,
+  CONTACT_PHONE_CANADA_DISPLAY,
+  CONTACT_PHONE_INDIA,
+  CONTACT_PHONE_INDIA_DISPLAY,
+  CONTACT_WHATSAPP_HREF,
+} from '@/lib/contact'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Contact for Projects, Dealers & Enquiries',
+  title: 'Contact for Projects & Enquiries',
   description:
-    'Contact Red Mark Surface Coatings for architect and builder project support, dealer partnerships, sample requests, or homeowner enquiries through our dealer network.',
+    'Contact Red Mark Surface Coatings for project support, samples, finish guidance, or general enquiries. Call, WhatsApp, or send a short message.',
   path: '/contact',
 })
 
 export default function ContactPage() {
-  const whatsappHref =
-    'https://wa.me/918968310500?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20surface%20finishes.%20I%E2%80%99d%20like%20to%20discuss%20a%20project.'
-
   return (
     <>
       <section className="page-section page-section--first contact-page-hero">
@@ -23,46 +26,8 @@ export default function ContactPage() {
           <h1 className="contact-page-hero__heading">Contact</h1>
           <p className="contact-page-hero__lead">{BRAND_TAGLINE}</p>
           <p className="contact-page-hero__support">
-            Architects, builders, and commercial projects work directly with Red Mark. Homeowners are
-            typically connected through authorized local dealers.
+            Tell us about your project — we typically respond within 24 hours.
           </p>
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <div className="contact-page-quick-links">
-            <Link href="/find-a-dealer" className="contact-page-quick-links__card">
-              <span className="contact-page-quick-links__eyebrow">Homeowners</span>
-              <strong>Get Connected to a Dealer</strong>
-              <span>Request your local authorized partner</span>
-            </Link>
-            <Link href="/contact?audience=architect" className="contact-page-quick-links__card">
-              <span className="contact-page-quick-links__eyebrow">Professionals</span>
-              <strong>Request Project Support</strong>
-              <span>Samples, specs, and technical guidance</span>
-            </Link>
-            <Link href="/for-professionals/dealers" className="contact-page-quick-links__card">
-              <span className="contact-page-quick-links__eyebrow">Dealers</span>
-              <strong>Become a Dealer</strong>
-              <span>Distribution partnerships</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <div className="contact-page-feature-image">
-            <Image
-              src="/Finishes/mediterranean-textured-wall-arched-loggia.png"
-              alt="Red Mark Surface Coatings"
-              fill
-              sizes="100vw"
-              quality={75}
-              style={{ objectFit: 'cover', filter: 'brightness(0.96) saturate(0.95)' }}
-            />
-          </div>
         </div>
       </section>
 
@@ -71,49 +36,51 @@ export default function ContactPage() {
           <div className="contact-page-sidebar">
             <h2 className="contact-page-sidebar__heading">Get in Touch</h2>
             <p className="contact-page-sidebar__text">
-              Choose your enquiry type in the form. This helps us route your message to the right team
-              — or to your nearest authorized dealer when appropriate.
+              Prefer to talk? Call or message us on WhatsApp, or send a short enquiry with the form.
             </p>
 
-            <div className="contact-page-sidebar__block">
-              <span className="contact-page-sidebar__label">Email</span>
-              <a href="mailto:info@redmarksurfacecoatings.com" className="collection-link">
-                info@redmarksurfacecoatings.com
+            <div className="contact-page-sidebar__reach">
+              <div className="contact-page-sidebar__block">
+                <span className="contact-page-sidebar__label">Email</span>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="collection-link">
+                  {CONTACT_EMAIL}
+                </a>
+              </div>
+
+              <div className="contact-page-sidebar__phones">
+                <div className="contact-page-sidebar__block">
+                  <span className="contact-page-sidebar__label">Phone — India</span>
+                  <a href={`tel:${CONTACT_PHONE_INDIA}`} className="collection-link">
+                    {CONTACT_PHONE_INDIA_DISPLAY}
+                  </a>
+                </div>
+
+                <div className="contact-page-sidebar__block">
+                  <span className="contact-page-sidebar__label">Phone — Canada</span>
+                  <a href={`tel:${CONTACT_PHONE_CANADA}`} className="collection-link">
+                    {CONTACT_PHONE_CANADA_DISPLAY}
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href={CONTACT_WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-inquiry-btn"
+                aria-label="WhatsApp Inquiry: chat now"
+              >
+                WhatsApp Inquiry →
               </a>
             </div>
-
-            <div className="contact-page-sidebar__block">
-              <span className="contact-page-sidebar__label">Phone — India</span>
-              <a href="tel:+918968310500" className="collection-link">
-                +91 89683 10500
-              </a>
-            </div>
-
-            <div className="contact-page-sidebar__block">
-              <span className="contact-page-sidebar__label">Phone — Canada</span>
-              <a href="tel:+15144464255" className="collection-link">
-                +1 514 446 4255
-              </a>
-            </div>
-
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whatsapp-inquiry-btn"
-              aria-label="WhatsApp Inquiry: chat now"
-            >
-              WhatsApp Inquiry →
-            </a>
           </div>
 
           <div>
-            <h3 className="contact-page-form__heading">Project Enquiry</h3>
+            <h3 className="contact-page-form__heading">Send a Message</h3>
             <p className="contact-page-form__intro">
-              Tell us who you are and what you need. Large homeowner projects may also receive Red
-              Mark technical support alongside dealer fulfillment.
+              A few details are enough — we will follow up with next steps.
             </p>
-            <ContactFormSection />
+            <SimpleContactForm />
           </div>
         </div>
       </section>
