@@ -100,7 +100,7 @@ export default function DealersPage() {
             marginLeft: '10vw',
             marginRight: '10vw',
           }}
-          className="finishes-grid"
+          className="finishes-grid dealer-benefits-grid"
           >
             {whyBecomeADealer.map((item) => (
               <div

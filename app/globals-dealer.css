@@ -1065,3 +1065,10 @@
     margin-right: 0;
   }
 }
+
+/* Keep dealer benefits inside narrow screens without changing desktop columns. */
+@media (max-width: 640px) {
+  .dealer-benefits-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

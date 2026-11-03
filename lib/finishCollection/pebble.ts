@@ -1,9 +1,8 @@
 import type { FinishCollectionConfig, FinishRequestSampleConfig } from '@/lib/finishCollection/types'
-import { shadeCardPdfPath, shadeImagePath } from '@/lib/finishCollection/types'
+import { shadeCardPdfPath } from '@/lib/finishCollection/types'
 import { shadecardCoverPath } from '@/lib/shadecards'
 
 const COLLECTION_SLUG = 'pebble-finish'
-const PAGE_ASSET_BASE = '/Finishes/exterior/pebble-finish'
 const SHADE_CARD_FILE = 'Pebble SC.pdf'
 
 const fallbackTextures = [
@@ -39,7 +38,8 @@ const shadeDefinitions = [
 
 const shades = shadeDefinitions.map((shade, index) => ({
   ...shade,
-  image: shadeImagePath(COLLECTION_SLUG, shade.code),
+  // Use the existing display image until final pebble swatch assets are supplied.
+  image: fallbackTextures[index],
   fallbackImage: fallbackTextures[index],
 }))
 
@@ -53,7 +53,7 @@ export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   requestSampleHref: '/finishes/exterior/pebble-finish/request-sample',
   heroLead:
     'Granular mineral textures crafted for interior and exterior walls, facades, and architectural surfaces — offering visual richness, durability, and enduring appeal.',
-  heroImage: `${PAGE_ASSET_BASE}/hero/hero.webp`,
+  heroImage: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   heroImageFallback: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   heroImageAlt: 'Pebble finish on interior and exterior architectural surfaces',
   shadeCardSectionId: 'pebble-finish-shade-card',

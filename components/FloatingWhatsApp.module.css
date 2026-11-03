@@ -1,0 +1,42 @@
+.button {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  text-decoration: none;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.button:hover {
+  background: #128c4a;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+.button:focus-visible {
+  outline: 3px solid #2b2b2b;
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .button {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

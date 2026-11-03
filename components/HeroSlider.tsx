@@ -84,7 +84,7 @@ export default function HeroSlider() {
               src={slide.src}
               alt=""
               fill
-              priority={index <= 2}
+              priority={index === 0}
               unoptimized
               className="home-hero__bg-img"
               sizes="100vw"

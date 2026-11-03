@@ -5,6 +5,7 @@ import './globals.css'
 import './globals-dealer.css'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 import SiteChrome from '@/components/SiteChrome'
+import FloatingWhatsApp from '@/components/FloatingWhatsApp'
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body>
         <GlobalMotionEffects />
         <SiteChrome>{children}</SiteChrome>
+        <FloatingWhatsApp />
         <Analytics />
         <SpeedInsights />
       </body>
