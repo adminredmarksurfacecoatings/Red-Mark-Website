@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useDialogFocus } from '@/lib/useDialogFocus'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -22,6 +23,8 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const menuRef = useRef<HTMLDivElement>(null)
+  useDialogFocus(menuRef, isMenuOpen, () => setIsMenuOpen(false))
 
   const isStructuredPage =
     pathname === '/finishes' ||
@@ -46,7 +49,7 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 50)
     }
     handleScroll()
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isStructuredPage])
 
@@ -133,7 +136,7 @@ export default function Navbar() {
       </div>
 
       {isMenuOpen ? (
-        <div className="site-nav__drawer" role="dialog" aria-label="Site menu">
+        <div ref={menuRef} tabIndex={-1} className="site-nav__drawer" role="dialog" aria-modal="true" aria-label="Site menu">
           <div className="site-nav__drawer-panel">
             {menuLinks.map((link) => (
               <Link

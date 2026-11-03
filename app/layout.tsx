@@ -5,7 +5,9 @@ import './globals.css'
 import './globals-dealer.css'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 import SiteChrome from '@/components/SiteChrome'
+import FloatingWhatsApp from '@/components/FloatingWhatsApp'
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/seo'
+import { CONTACT_EMAIL, CONTACT_PHONE_INDIA } from '@/lib/contact'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -53,8 +55,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <a href="#main-content" className="skip-link">Skip to content</a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: SITE_NAME,
+            url: SITE_URL,
+            logo: new URL('/Logo.svg', SITE_URL).href,
+            email: CONTACT_EMAIL,
+            telephone: CONTACT_PHONE_INDIA,
+          }).replace(/</g, '\\u003c') }}
+        />
         <GlobalMotionEffects />
         <SiteChrome>{children}</SiteChrome>
+        <FloatingWhatsApp />
         <Analytics />
         <SpeedInsights />
       </body>

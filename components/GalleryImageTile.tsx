@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { isRemoteStorageImage } from '@/lib/imageUtils'
-import { useCachedImageSrc } from '@/lib/useCachedImageSrc'
 
 type GalleryImageTileProps = {
   src: string
@@ -33,11 +32,20 @@ export default function GalleryImageTile({
   sizes = '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw',
   onClick,
 }: GalleryImageTileProps) {
-  const displaySrc = useCachedImageSrc(src)
+  const displaySrc = src
   const [loaded, setLoaded] = useState(false)
   const tileRef = useRef<HTMLDivElement>(null)
   const { width, height } = aspectRatioDimensions(aspectRatio)
-  const isBlob = displaySrc.startsWith('blob:')
+  const isSupabaseImage = (() => {
+    if (!isRemoteStorageImage(src)) return false
+    try {
+      const imageUrl = new URL(src)
+      const configuredUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+      return configuredUrl
+        ? imageUrl.hostname === new URL(configuredUrl).hostname
+        : imageUrl.hostname.endsWith('.supabase.co')
+    } catch { return false }
+  })()
 
   useEffect(() => {
     setLoaded(false)
@@ -73,33 +81,18 @@ export default function GalleryImageTile({
             RM
           </span>
         </div>
-        {isBlob ? (
-          // Cached blob URLs bypass next/image optimizer
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={displaySrc}
-            alt={alt}
-            width={width}
-            height={height}
-            loading="lazy"
-            decoding="async"
-            className={`gallery-image-tile__img${loaded ? ' is-loaded' : ''}`}
-            onLoad={() => setLoaded(true)}
-          />
-        ) : (
           <Image
             src={displaySrc}
             alt={alt}
             width={width}
             height={height}
             loading="lazy"
-            unoptimized={isRemoteStorageImage(displaySrc)}
+            unoptimized={isRemoteStorageImage(displaySrc) && !isSupabaseImage}
             sizes={sizes}
             quality={70}
             className={`gallery-image-tile__img${loaded ? ' is-loaded' : ''}`}
             onLoad={() => setLoaded(true)}
           />
-        )}
       </div>
     </div>
   )

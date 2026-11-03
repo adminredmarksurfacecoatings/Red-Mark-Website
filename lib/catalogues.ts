@@ -27,6 +27,62 @@ export const CATALOGUES: CatalogueItem[] = [
     badge: '2026 Edition',
     featured: true,
   },
+  {
+    "id": "stone-finish",
+    "title": "Stone Finish Shade Card",
+    "description": "Exterior stone-inspired finishes.",
+    "pdf": "/Shadecards/stone-finish/shade-card/Stone%20finish%20SC.pdf",
+    "downloadName": "stone-finish-shade-card.pdf",
+    "cover": "/Shadecards/stone-finish/shade-card/cover.webp",
+    "coverWidth": 4385,
+    "coverHeight": 5260,
+    "meta": [
+      "Shade Card",
+      "PDF"
+    ]
+  },
+  {
+    "id": "pebble-finish",
+    "title": "Pebble Finish Shade Card",
+    "description": "Granular textures for interior and exterior surfaces.",
+    "pdf": "/Shadecards/pebble-finish/shade-card/Pebble%20SC.pdf",
+    "downloadName": "pebble-finish-shade-card.pdf",
+    "cover": "/Shadecards/pebble-finish/shade-card/cover.webp",
+    "coverWidth": 4142,
+    "coverHeight": 4937,
+    "meta": [
+      "Shade Card",
+      "PDF"
+    ]
+  },
+  {
+    "id": "farry",
+    "title": "Farry Shade Card",
+    "description": "High-shine interior finishes in sixteen shades.",
+    "pdf": "/Shadecards/farry/shade-card/Farry%20SC.pdf",
+    "downloadName": "farry-shade-card.pdf",
+    "cover": "/Shadecards/farry/shade-card/cover.webp",
+    "coverWidth": 1194,
+    "coverHeight": 1687,
+    "meta": [
+      "Shade Card",
+      "PDF"
+    ]
+  },
+  {
+    "id": "create-art",
+    "title": "Create Art Shade Card",
+    "description": "Slate, Dropway, and Subaru interior texture families.",
+    "pdf": "/Shadecards/create-art/shade-card/Create%20art%20SC.pdf",
+    "downloadName": "create-art-shade-card.pdf",
+    "cover": "/Shadecards/create-art/shade-card/cover.webp",
+    "coverWidth": 4025,
+    "coverHeight": 5017,
+    "meta": [
+      "Shade Card",
+      "PDF"
+    ]
+  },
 ]
 
 export function getFeaturedCatalogue() {

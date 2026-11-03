@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import styles from './ShadeActions.module.css'
 import { useState } from 'react'
 
 type FinishCollectionShadeSwatchProps = {
@@ -8,6 +10,8 @@ type FinishCollectionShadeSwatchProps = {
   name: string
   image: string
   fallbackImage: string
+  requestSampleHref: string
+  onPreview: (src: string) => void
 }
 
 export default function FinishCollectionShadeSwatch({
@@ -15,17 +19,24 @@ export default function FinishCollectionShadeSwatch({
   name,
   image,
   fallbackImage,
+  requestSampleHref,
+  onPreview,
 }: FinishCollectionShadeSwatchProps) {
   const [src, setSrc] = useState(image)
 
   return (
     <article className="stone-finish-shade">
-      <div className="stone-finish-shade__swatch">
+      <button
+        type="button"
+        className={`stone-finish-shade__swatch ${styles.preview}`}
+        onClick={() => onPreview(src)}
+        aria-label={`Preview ${code} — ${name}`}
+      >
         <Image
           src={src}
           alt={`${name} finish texture`}
           fill
-          sizes="(max-width: 640px) 33vw, (max-width: 1024px) 20vw, 12vw"
+          sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 16vw"
           quality={75}
           className="stone-finish-shade__image"
           onError={() => {
@@ -39,11 +50,18 @@ export default function FinishCollectionShadeSwatch({
             }
           }}
         />
-      </div>
+      </button>
       <p className="stone-finish-shade__label">
         <span className="stone-finish-shade__code">{code}</span>
         <span className="stone-finish-shade__name">{name}</span>
       </p>
+      <Link
+        href={`${requestSampleHref}?shade=${encodeURIComponent(code)}`}
+        className={styles.sample}
+        aria-label={`Request sample of ${code} — ${name}`}
+      >
+        Request sample →
+      </Link>
     </article>
   )
 }

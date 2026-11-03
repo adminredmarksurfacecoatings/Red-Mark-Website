@@ -28,7 +28,7 @@ const whyBecomeADealer = [
 
 export default function DealersPage() {
   return (
-    <>
+    <div className="editorial-page">
       {/* Section 1 — Hero */}
       <section className="page-section page-section--first" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
@@ -100,7 +100,7 @@ export default function DealersPage() {
             marginLeft: '10vw',
             marginRight: '10vw',
           }}
-          className="finishes-grid"
+          className="finishes-grid dealer-benefits-grid"
           >
             {whyBecomeADealer.map((item) => (
               <div
@@ -224,6 +224,6 @@ export default function DealersPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   )
 }

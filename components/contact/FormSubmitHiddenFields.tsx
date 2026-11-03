@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 type FormSubmitHiddenFieldsProps = {
   subject: string
   autoresponse?: string
@@ -7,7 +11,12 @@ export default function FormSubmitHiddenFields({
   subject,
   autoresponse = 'Thank you for contacting Red Mark Surface Coatings. Our team will review your enquiry and respond shortly.',
 }: FormSubmitHiddenFieldsProps) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '')
+  const [siteUrl, setSiteUrl] = useState(configuredUrl || 'https://www.redmarksurfacecoatings.com')
+
+  useEffect(() => {
+    if (!configuredUrl) setSiteUrl(window.location.origin)
+  }, [configuredUrl])
 
   return (
     <>

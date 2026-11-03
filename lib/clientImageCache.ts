@@ -55,7 +55,7 @@ export async function getOrCacheImageUrl(src: string): Promise<string> {
     if (!response.ok) return src
 
     const blob = await response.blob()
-    if (!blob.type.startsWith('image/') && blob.size === 0) return src
+    if (!blob.type.startsWith('image/') || blob.size === 0) return src
 
     const headers = new Headers({
       'Content-Type': blob.type || 'image/jpeg',

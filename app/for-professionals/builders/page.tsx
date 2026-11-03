@@ -27,7 +27,7 @@ const whatBuildersNeed = [
 
 export default function BuildersPage() {
   return (
-    <>
+    <div className="editorial-page">
       {/* Section 1 — Hero */}
       <section className="page-section page-section--first" style={{ backgroundColor: 'var(--bg-primary)', textAlign: 'center' }}>
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
@@ -198,6 +198,6 @@ export default function BuildersPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   )
 }

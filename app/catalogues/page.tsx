@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import BrochureDownloadSection from '@/components/BrochureDownloadSection'
-import FeaturedFinishesSection from '@/components/home/FeaturedFinishesSection'
+import CatalogueCard from '@/components/CatalogueCard'
+import { getAdditionalCatalogues } from '@/lib/catalogues'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
@@ -29,7 +30,14 @@ export default function CataloguesPage() {
 
       <BrochureDownloadSection />
 
-      <FeaturedFinishesSection standalone />
+      <section className="page-section" aria-labelledby="shade-cards-heading">
+        <div className="container catalogue-library">
+          <h2 id="shade-cards-heading" className="catalogues-grid-section__heading">Collection Shade Cards</h2>
+          <div className="catalogues-grid">
+            {getAdditionalCatalogues().map(item => <CatalogueCard key={item.id} item={item} />)}
+          </div>
+        </div>
+      </section>
     </>
   )
 }

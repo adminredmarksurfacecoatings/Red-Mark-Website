@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+import ImageModal from '@/components/ImageModal'
 import FinishCollectionShadeSwatch from '@/components/finish-collection/FinishCollectionShadeSwatch'
 import type { FinishCollectionConfig, FinishShade } from '@/lib/finishCollection/types'
 
@@ -7,8 +9,10 @@ type FinishCollectionShadesGridProps = {
   config: FinishCollectionConfig
 }
 
-function ShadeGrid({ shades }: { shades: FinishShade[] }) {
+function ShadeGrid({ shades, requestSampleHref }: { shades: FinishShade[]; requestSampleHref: string }) {
+  const [preview, setPreview] = useState<{ src: string; alt: string } | null>(null)
   return (
+    <>
     <div className="stone-finish-shades__grid">
       {shades.map((shade) => (
         <FinishCollectionShadeSwatch
@@ -17,9 +21,19 @@ function ShadeGrid({ shades }: { shades: FinishShade[] }) {
           name={shade.name}
           image={shade.image}
           fallbackImage={shade.fallbackImage}
+          requestSampleHref={requestSampleHref}
+          onPreview={(src) => setPreview({ src, alt: `${shade.code} — ${shade.name}` })}
         />
       ))}
     </div>
+    <ImageModal
+      isOpen={preview !== null}
+      images={preview ? [preview] : []}
+      currentIndex={0}
+      onNavigate={() => {}}
+      onClose={() => setPreview(null)}
+    />
+    </>
   )
 }
 
@@ -50,12 +64,12 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
             {config.shadeGroups.map((group) => (
               <div key={group.id} className="stone-finish-shades__group">
                 <h3 className="stone-finish-shades__group-heading">{group.heading}</h3>
-                <ShadeGrid shades={group.shades} />
+                <ShadeGrid shades={group.shades} requestSampleHref={config.requestSampleHref} />
               </div>
             ))}
           </div>
         ) : (
-          <ShadeGrid shades={config.shades} />
+          <ShadeGrid shades={config.shades} requestSampleHref={config.requestSampleHref} />
         )}
       </div>
 

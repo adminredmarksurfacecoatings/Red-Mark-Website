@@ -1,13 +1,7 @@
-'use client'
-
 import { Suspense } from 'react'
 import HeroSlider from '@/components/HeroSlider'
-import SectionTwo from '@/components/SectionTwo'
 import SectionThree from '@/components/SectionThree'
-import BreakSection from '@/components/BreakSection'
 import WhyRedMarkSection from '@/components/WhyRedMarkSection'
-import MidPageCtaSection from '@/components/MidPageCtaSection'
-import FeatureHighlightSection from '@/components/FeatureHighlightSection'
 import ForProfessionalsMiniSection from '@/components/ForProfessionalsMiniSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
 import BrochureDownloadSection from '@/components/BrochureDownloadSection'
@@ -25,14 +19,10 @@ export default function HomePageClient({ finishesImages }: HomePageClientProps) 
         <NotFoundRedirectPopup />
       </Suspense>
       <HeroSlider />
-      <HomeFinishesGrid images={finishesImages} />
       <SectionThree />
-      <SectionTwo />
+      <HomeFinishesGrid images={finishesImages} />
       <BrochureDownloadSection showCataloguesLink />
-      <BreakSection />
       <WhyRedMarkSection />
-      <MidPageCtaSection />
-      <FeatureHighlightSection />
       <ForProfessionalsMiniSection />
       <FinalCtaSection />
     </div>

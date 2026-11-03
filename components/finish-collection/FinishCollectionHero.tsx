@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CONTACT_WHATSAPP_NUMBER } from '@/lib/contact'
 import FinishCollectionAssetImage from '@/components/finish-collection/FinishCollectionAssetImage'
 import FinishCollectionBreadcrumbs from '@/components/finish-collection/FinishCollectionBreadcrumbs'
 import type { FinishCollectionConfig, FinishFeatureIcon } from '@/lib/finishCollection/types'
@@ -73,16 +74,18 @@ export default function FinishCollectionHero({ config }: FinishCollectionHeroPro
 
             <div className="stone-finish-hero__actions">
               <a
-                href={config.shadeCard.pdf}
+                href={`https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello, I’m interested in ${config.title}. Could you help me choose a finish?`)}`}
                 className="btn stone-finish-hero__download"
-                download={config.shadeCard.downloadName}
+                target="_blank" rel="noopener noreferrer"
               >
-                <DownloadIcon />
-                Download Shade Card
+                Ask us on WhatsApp →
               </a>
               <Link href={config.requestSampleHref} className="stone-finish-hero__sample">
                 Request Sample
               </Link>
+              <a href={config.shadeCard.pdf} download={config.shadeCard.downloadName} className="stone-finish-hero__sample">
+                Download Shade Card
+              </a>
             </div>
           </div>
 
@@ -102,19 +105,5 @@ export default function FinishCollectionHero({ config }: FinishCollectionHeroPro
         </div>
       </div>
     </section>
-  )
-}
-
-function DownloadIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path
-        d="M8 2.5v7.5M5 7l3 3 3-3M3 12.5h10"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   )
 }

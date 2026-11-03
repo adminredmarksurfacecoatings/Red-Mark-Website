@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
-import { getCollection, type CollectionSlug } from '@/lib/collections'
+import { CONTACT_WHATSAPP_HREF } from '@/lib/contact'
+import { useEffect, useState } from 'react'
+import type { CollectionSlug } from '@/lib/collections'
 
 type HeroSlide = {
   src: string
@@ -40,11 +41,6 @@ export default function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [zoomKeys, setZoomKeys] = useState(() => HERO_SLIDES.map(() => 0))
 
-  const activeSlide = HERO_SLIDES[activeIndex]
-  const activeCollection = useMemo(
-    () => getCollection(activeSlide.collection)!,
-    [activeSlide.collection]
-  )
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -84,8 +80,8 @@ export default function HeroSlider() {
               src={slide.src}
               alt=""
               fill
-              priority={index <= 2}
-              unoptimized
+              priority={index === 0}
+              quality={85}
               className="home-hero__bg-img"
               sizes="100vw"
               style={{
@@ -99,17 +95,18 @@ export default function HeroSlider() {
 
       <div className="home-hero__overlay" />
 
-      <div key={activeIndex} className="home-hero__content home-hero__content--fade">
-        <h1 className="home-hero__heading">{activeCollection.title}</h1>
+      <div className="home-hero__content home-hero__content--fade">
+        <p className="home-hero__eyebrow">Red Mark Surface Coatings</p>
+        <h1 className="home-hero__heading">Character in every surface.</h1>
 
-        <p className="home-hero__description">{activeCollection.description}</p>
+        <p className="home-hero__description">Architectural wall textures and mineral finishes for interiors and exteriors. Explore the range or speak with us about your space.</p>
 
         <div className="home-hero__accent" />
 
         <div className="home-hero__actions">
-          <Link href={activeCollection.href} className="home-hero__cta">
-            Explore {activeCollection.title} →
-          </Link>
+          <a href={CONTACT_WHATSAPP_HREF} className="home-hero__cta home-hero__cta--whatsapp" target="_blank" rel="noopener noreferrer">
+            Talk to us on WhatsApp →
+          </a>
           <Link href="/finishes" className="home-hero__cta home-hero__cta--secondary">
             Explore all finishes →
           </Link>

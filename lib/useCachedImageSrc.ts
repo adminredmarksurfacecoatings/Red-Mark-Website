@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { getOrCacheImageUrl } from '@/lib/clientImageCache'
+import { isRemoteStorageImage } from '@/lib/imageUtils'
 
 /**
- * Resolves src through the 24h on-device image cache.
+ * Resolves remote images through the 24h on-device image cache.
  * Falls back to the original URL immediately, then swaps to a cached blob when ready.
  */
 export function useCachedImageSrc(src: string) {
@@ -15,6 +16,10 @@ export function useCachedImageSrc(src: string) {
     let objectUrl: string | null = null
 
     setDisplaySrc(src)
+
+    // Local images already use Next's responsive optimizer and browser cache.
+    // Fetching the original here downloads it again and bypasses lazy loading.
+    if (!isRemoteStorageImage(src)) return
 
     void (async () => {
       const next = await getOrCacheImageUrl(src)

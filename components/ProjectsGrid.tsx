@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import ImageModal from '@/components/ImageModal'
 import GalleryImageTile from '@/components/GalleryImageTile'
@@ -55,11 +55,12 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
 
   const imageList = images !== undefined && images.length > 0 ? images : fallbackProjectImages
 
-  const allProjects: ProjectItem[] = imageList.map((image, index) => ({
+  // Keep the batch input stable when opening a preview or loading more images.
+  const allProjects = useMemo<ProjectItem[]>(() => imageList.map((image, index) => ({
     id: index + 1,
     image,
     aspectRatio: index % 2 === 0 ? '3/4' : '4/3',
-  }))
+  })), [imageList])
 
   const { visibleItems, sentinelRef, hasMore } = useInfiniteBatch(allProjects)
 

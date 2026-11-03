@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import FormSubmitHiddenFields from '@/components/contact/FormSubmitHiddenFields'
+import { CONTACT_WHATSAPP_NUMBER } from '@/lib/contact'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import type { CountryCode } from 'libphonenumber-js'
@@ -176,6 +178,14 @@ export default function RequestSampleForm({ config, initialShadeCode }: RequestS
         </p>
       </header>
 
+      <div className="sample-terms">
+        <strong>Free samples up to 1 kg per item.</strong>
+        <p>Delivery is charged separately at the courier’s actual rate. We’ll confirm the delivery charge with you before dispatch.</p>
+        <a href={`https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello, I would like a sample of ${config.title}${selectedShade ? ` — ${selectedShade.code} (${selectedShade.name})` : ''}. Please confirm the delivery charge.`)}`} target="_blank" rel="noopener noreferrer">
+          Arrange your sample on WhatsApp →
+        </a>
+        <p>Or send your request using the form below.</p>
+      </div>
       <div className="request-sample__layout">
         <form
           className="contact-form request-sample__form"
@@ -200,23 +210,9 @@ export default function RequestSampleForm({ config, initialShadeCode }: RequestS
             aria-hidden
           />
 
-          <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
-          <input
-            type="hidden"
-            name="_next"
-            value={`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/thank-you`}
-          />
-          <input type="hidden" name="_captcha" value="false" />
-          <input
-            type="hidden"
-            name="_subject"
-            value={config.formSubject}
-          />
-          <input type="hidden" name="_template" value="table" />
-          <input
-            type="hidden"
-            name="_autoresponse"
-            value="Thank you for your sample request. Our team will confirm availability and delivery details shortly."
+          <FormSubmitHiddenFields
+            subject={config.formSubject}
+            autoresponse="Thank you for your sample request. Our team will confirm availability and delivery details shortly."
           />
 
           <p className="contact-form-hint">

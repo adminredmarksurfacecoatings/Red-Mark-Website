@@ -1,31 +1,24 @@
-'use client'
-
 import Link from 'next/link'
-import ContactWhatsAppActions from '@/components/ContactWhatsAppActions'
+import { CONTACT_WHATSAPP_HREF } from '@/lib/contact'
 
 export default function FinalCtaSection() {
   return (
     <section className="page-section final-cta-section">
       <div className="container final-cta-section__container">
         <div className="final-cta-section__inner">
-          <h2 className="final-cta-section__heading">Ready to Specify or Source a Finish?</h2>
+          <h2 className="final-cta-section__heading">Find the right finish for your space.</h2>
           <p className="final-cta-section__text">
-            Reach out for samples, project support, or finish guidance — we typically respond within
-            24 hours.
+            Tell us what you’re planning. We can help with finish selection, samples, and project enquiries.
+            Samples are free up to 1 kg per item; delivery is charged separately at the courier’s actual rate.
           </p>
-          <ContactWhatsAppActions
-            className="final-cta-section__actions contact-whatsapp-actions"
-            contactLabel="Contact Us →"
-            whatsappLabel="WhatsApp →"
-            contactClassName="btn final-cta-btn"
-            whatsappClassName="final-cta-section__secondary"
-          />
+          <div className="final-cta-section__actions">
+            <a href={CONTACT_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="btn final-cta-btn">
+              Talk to us on WhatsApp →
+            </a>
+            <Link href="/finishes" className="final-cta-section__secondary">Choose a finish & request a sample →</Link>
+          </div>
           <p className="final-cta-section__alt">
-            Or browse{' '}
-            <Link href="/finishes" className="final-cta-section__inline-link">
-              finishes
-            </Link>
-            .
+            Prefer a form? <Link href="/contact" className="final-cta-section__inline-link">Send an enquiry</Link>.
           </p>
         </div>
       </div>

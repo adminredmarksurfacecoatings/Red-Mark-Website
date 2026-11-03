@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { createPortal } from 'react-dom'
+import { useDialogFocus } from '@/lib/useDialogFocus'
 
 type ModalImage = {
   src: string
@@ -24,6 +25,8 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
   const [slideDir, setSlideDir] = useState<'next' | 'prev' | null>(null)
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
   const swipedRef = useRef(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  useDialogFocus(dialogRef, isOpen && isMounted, onClose)
 
   useEffect(() => {
     setIsMounted(true)
@@ -37,9 +40,6 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose()
-      }
       if (event.key === 'ArrowRight' && images.length > 1) {
         setSlideDir('next')
         onNavigate((currentIndex + 1) % images.length)
@@ -113,6 +113,9 @@ export default function ImageModal({ isOpen, images, currentIndex, onNavigate, o
 
   const modalContent = (
     <div
+      ref={dialogRef}
+      tabIndex={-1}
+      aria-label={activeImage.alt}
       className="image-modal-overlay"
       role="dialog"
       aria-modal="true"

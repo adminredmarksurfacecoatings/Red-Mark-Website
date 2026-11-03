@@ -1,0 +1,24 @@
+.preview {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.sample {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 0.35rem;
+  color: var(--oxide-red);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.preview:focus-visible,
+.sample:focus-visible {
+  outline: 2px solid var(--oxide-red);
+  outline-offset: 4px;
+}
