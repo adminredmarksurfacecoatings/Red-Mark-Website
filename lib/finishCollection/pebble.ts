@@ -113,7 +113,6 @@ export const PEBBLE_FINISH_REQUEST_SAMPLE: FinishRequestSampleConfig = {
   backHref: '/finishes/exterior/pebble-finish',
   breadcrumbLabel: 'Pebble Finish',
   requestSampleHref: '/finishes/exterior/pebble-finish/request-sample',
-  formSubject: 'Pebble Finish sample request — Red Mark website',
   shadeCodePattern: /PB-\d{3}/i,
   shades,
 }

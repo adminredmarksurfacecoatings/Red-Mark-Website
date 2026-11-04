@@ -116,7 +116,6 @@ export const FARRY_REQUEST_SAMPLE: FinishRequestSampleConfig = {
   collectionHubHref: '/finishes/interior',
   collectionHubLabel: 'Interior Collection',
   requestSampleHref: '/finishes/interior/farry/request-sample',
-  formSubject: 'Farry sample request — Red Mark website',
   shadeCodePattern: /FA-\d{3}/i,
   shades,
 }

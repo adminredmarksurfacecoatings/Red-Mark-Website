@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { whatsappHref } from '@/lib/contact'
 import type { Metadata } from 'next'
 import FinishesMasonry from '@/components/FinishesMasonry'
 import { createPageMetadata } from '@/lib/seo'
@@ -45,6 +47,22 @@ export default async function FinishesPage() {
             Architectural mineral surfaces crafted for depth, durability, and refined character.
           </p>
         </div>
+      </section>
+
+      <section id="samples" className="sample-picker container" aria-labelledby="sample-title">
+        <h2 id="sample-title">Request a free sample</h2>
+        <p>Choose a collection. Samples are free up to 1 kg per item. We’ll confirm the courier charge before dispatch.</p>
+        <div className="sample-picker__choices">
+          {[
+            ['Stone Finish', 'Exterior', 'exterior/stone-finish'],
+            ['Pebble Finish', 'Exterior', 'exterior/pebble-finish'],
+            ['Farry', 'Interior', 'interior/farry'],
+            ['Create Art', 'Interior', 'interior/create-art'],
+          ].map(([name, area, path]) => (
+            <Link key={path} href={`/finishes/${path}/request-sample`}><small>{area}</small><strong>{name} →</strong></Link>
+          ))}
+        </div>
+        <a className="collection-link" href={whatsappHref('Hi Red Mark, I would like a free texture sample. Can you help me choose a finish?')}>Help me choose on WhatsApp →</a>
       </section>
 
       <FinishesMasonry images={finishesImages} />

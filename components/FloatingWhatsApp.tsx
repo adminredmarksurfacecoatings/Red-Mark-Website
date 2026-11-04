@@ -1,10 +1,10 @@
-import { CONTACT_WHATSAPP_NUMBER } from '@/lib/contact'
+import { CONTACT_WHATSAPP_HREF } from '@/lib/contact'
 import styles from './FloatingWhatsApp.module.css'
 
 export default function FloatingWhatsApp() {
   return (
     <a
-      href={`https://wa.me/${CONTACT_WHATSAPP_NUMBER}`}
+      href={CONTACT_WHATSAPP_HREF}
       className={styles.button}
       target="_blank"
       rel="noopener noreferrer"

@@ -132,7 +132,6 @@ export const CREATE_ART_REQUEST_SAMPLE: FinishRequestSampleConfig = {
   collectionHubHref: '/finishes/interior',
   collectionHubLabel: 'Interior Collection',
   requestSampleHref: '/finishes/interior/create-art/request-sample',
-  formSubject: 'Create Art sample request — Red Mark website',
   shadeCodePattern: /(SL|DR|SU)-\d{2}/i,
   shades,
 }

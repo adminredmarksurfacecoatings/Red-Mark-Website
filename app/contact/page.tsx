@@ -78,7 +78,7 @@ export default function ContactPage() {
           <div>
             <h3 className="contact-page-form__heading">Send a Message</h3>
             <p className="contact-page-form__intro">
-              A few details are enough — we will follow up with next steps.
+              Tell us about your project, then continue to WhatsApp.
             </p>
             <SimpleContactForm />
           </div>

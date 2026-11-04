@@ -149,7 +149,6 @@ export const STONE_FINISH_REQUEST_SAMPLE: FinishRequestSampleConfig = {
   collectionHubHref: '/finishes/exterior',
   collectionHubLabel: 'Exterior Collection',
   requestSampleHref: '/finishes/exterior/stone-finish/request-sample',
-  formSubject: 'Stone Finish sample request — Red Mark website',
   shadeCodePattern: /ST-\d{3}/i,
   shades,
 }

@@ -70,7 +70,6 @@ export type FinishRequestSampleConfig = {
   collectionHubHref?: string
   collectionHubLabel?: string
   requestSampleHref: string
-  formSubject: string
   shadeCodePattern: RegExp
   shades: FinishShade[]
 }

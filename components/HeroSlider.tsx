@@ -107,8 +107,8 @@ export default function HeroSlider() {
           <a href={CONTACT_WHATSAPP_HREF} className="home-hero__cta home-hero__cta--whatsapp" target="_blank" rel="noopener noreferrer">
             Talk to us on WhatsApp →
           </a>
-          <Link href="/finishes" className="home-hero__cta home-hero__cta--secondary">
-            Explore all finishes →
+          <Link href="/finishes#samples" className="home-hero__cta home-hero__cta--secondary">
+            Request a free sample →
           </Link>
         </div>
       </div>

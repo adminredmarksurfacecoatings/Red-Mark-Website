@@ -1,30 +1,21 @@
 'use client'
 
-import FormSubmitHiddenFields from '@/components/contact/FormSubmitHiddenFields'
+import { openWhatsAppEnquiry } from './openWhatsAppEnquiry'
 
-/** Short contact form — name, phone, email, city, message. Honeypot kept for spam. */
 export default function SimpleContactForm() {
   return (
     <form
       className="contact-form"
-      action="https://formsubmit.co/info@redmarksurfacecoatings.com"
-      method="POST"
+      onSubmit={(event) => openWhatsAppEnquiry(event, 'Hi Red Mark, I have a project enquiry.')}
     >
-      <FormSubmitHiddenFields subject="Website enquiry — Red Mark Surface Coatings" />
-
-      <p className="contact-form-hint">
-        Fields marked with <span className="contact-form-required-star">*</span> are required.
-      </p>
-
       <div>
         <label htmlFor="name" className="contact-form-label">
-          Name <span className="contact-form-required-star">*</span>
+          Name (optional)
         </label>
         <input
           type="text"
           id="name"
-          name="name"
-          required
+          name="Name"
           autoComplete="name"
           placeholder="Your full name"
           className="contact-form-input"
@@ -32,29 +23,13 @@ export default function SimpleContactForm() {
       </div>
 
       <div>
-        <label htmlFor="phone" className="contact-form-label">
-          Phone <span className="contact-form-required-star">*</span>
-        </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          required
-          autoComplete="tel"
-          inputMode="tel"
-          placeholder="+91 98765 43210"
-          className="contact-form-input"
-        />
-      </div>
-
-      <div>
         <label htmlFor="email" className="contact-form-label">
-          Email
+          Email (optional)
         </label>
         <input
           type="email"
           id="email"
-          name="email"
+          name="Email"
           autoComplete="email"
           placeholder="you@email.com"
           className="contact-form-input"
@@ -63,12 +38,12 @@ export default function SimpleContactForm() {
 
       <div>
         <label htmlFor="city" className="contact-form-label">
-          City
+          City (optional)
         </label>
         <input
           type="text"
           id="city"
-          name="city"
+          name="City"
           autoComplete="address-level2"
           placeholder="City"
           className="contact-form-input"
@@ -77,11 +52,11 @@ export default function SimpleContactForm() {
 
       <div>
         <label htmlFor="message" className="contact-form-label">
-          Message
+          Your question
         </label>
         <textarea
           id="message"
-          name="message"
+          name="Message" required maxLength={1200}
           rows={5}
           placeholder="Tell us about your project or enquiry…"
           className="contact-form-textarea"
@@ -89,11 +64,11 @@ export default function SimpleContactForm() {
       </div>
 
       <button type="submit" className="contact-form-submit">
-        Send Enquiry →
+        Continue to WhatsApp →
       </button>
 
       <p className="contact-form-trust">
-        We typically respond within 24 hours. Your details remain confidential.
+        Review your message in WhatsApp and tap Send.
       </p>
     </form>
   )

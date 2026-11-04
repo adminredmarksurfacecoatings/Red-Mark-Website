@@ -10,9 +10,9 @@ import { pdf } from 'pdf-to-img'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
-const PDF_PATH = path.join(ROOT, 'public/brochure/redmark-collection-book-2026.pdf')
-const OUT_JPG = path.join(ROOT, 'public/brochure/collection-book-cover.jpg')
-const OUT_WEBP = path.join(ROOT, 'public/brochure/collection-book-cover.webp')
+const PDF_PATH = path.join(ROOT, 'public/brochure/redmark-collection-book-2026-revised.pdf')
+const OUT_JPG = path.join(ROOT, 'public/brochure/collection-book-cover-revised.jpg')
+const OUT_WEBP = path.join(ROOT, 'public/brochure/collection-book-cover-revised.webp')
 
 async function main() {
   if (!fs.existsSync(PDF_PATH)) {

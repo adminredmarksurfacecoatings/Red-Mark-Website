@@ -2,8 +2,11 @@
 
 export const CONTACT_WHATSAPP_NUMBER = '918968310500'
 
-export const CONTACT_WHATSAPP_HREF =
-  'https://wa.me/918968310500?text=Hello%2C%20I%E2%80%99m%20interested%20in%20your%20surface%20finishes.%20I%E2%80%99d%20like%20to%20discuss%20a%20project.'
+export function whatsappHref(message: string) {
+  return `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+}
+
+export const CONTACT_WHATSAPP_HREF = whatsappHref('Hi Red Mark, I have a question about a wall texture. Can you help me choose a finish?')
 
 export const CONTACT_EMAIL = 'info@redmarksurfacecoatings.com'
 export const CONTACT_PHONE_INDIA = '+918968310500'

@@ -1,3 +1,4 @@
 # Normalize line endings across OSes
 * text=auto eol=lf
 
+*.pdf binary

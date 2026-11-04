@@ -15,10 +15,10 @@ export default function FinalCtaSection() {
             <a href={CONTACT_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="btn final-cta-btn">
               Talk to us on WhatsApp →
             </a>
-            <Link href="/finishes" className="final-cta-section__secondary">Choose a finish & request a sample →</Link>
+            <Link href="/finishes#samples" className="final-cta-section__secondary">Request a free sample →</Link>
           </div>
           <p className="final-cta-section__alt">
-            Prefer a form? <Link href="/contact" className="final-cta-section__inline-link">Send an enquiry</Link>.
+            Have project details to share? <Link href="/contact" className="final-cta-section__inline-link">Send an enquiry</Link>.
           </p>
         </div>
       </div>
