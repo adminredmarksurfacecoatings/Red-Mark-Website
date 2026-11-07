@@ -1092,10 +1092,3 @@
   .sample-terms { padding: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-.sample-picker { scroll-margin-top: 6rem; padding-block: 2rem 3rem; }
-.sample-picker h2 { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.1; margin-bottom: .65rem; }
-.sample-picker p { max-width: 56ch; line-height: 1.6; }
-.sample-picker__choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(145px, 100%), 1fr)); gap: .75rem; margin: 1.25rem 0; }
-.sample-picker__choices a { display: grid; gap: .35rem; padding: 1rem; border: 1px solid #cbbeb4; color: #362720; text-decoration: none; }
-.sample-picker__choices a:hover, .sample-picker__choices a:focus-visible { background: #f5efea; border-color: #85453c; }

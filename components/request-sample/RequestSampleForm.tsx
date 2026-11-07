@@ -3,22 +3,24 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { openWhatsAppEnquiry } from '@/components/contact/openWhatsAppEnquiry'
-import { useState, useEffect } from 'react'
+import { SITE_URL } from '@/lib/seo'
+import { useState, useEffect, type ReactNode } from 'react'
 import { matchFinishShade, type FinishRequestSampleConfig } from '@/lib/finishCollection/types'
 
 type RequestSampleFormProps = {
   config: FinishRequestSampleConfig
   initialShadeCode?: string
+  collectionSelect?: ReactNode
 }
 
-export default function RequestSampleForm({ config, initialShadeCode }: RequestSampleFormProps) {
+export default function RequestSampleForm({ config, initialShadeCode, collectionSelect }: RequestSampleFormProps) {
   const matchShade = (query: string) =>
     matchFinishShade(config.shades, query, config.shadeCodePattern)
 
   const [shadeCode, setShadeCode] = useState(initialShadeCode ?? '')
   const selectedShade = shadeCode ? matchShade(shadeCode) : undefined
   const [previewSrc, setPreviewSrc] = useState(selectedShade?.image ?? '')
-  useEffect(() => setShadeCode(initialShadeCode ?? ''), [initialShadeCode])
+  useEffect(() => setShadeCode(initialShadeCode ?? ''), [initialShadeCode, config.slug])
   useEffect(() => setPreviewSrc(selectedShade?.image ?? ''), [selectedShade])
   const request = `Hi Red Mark, I would like a sample of ${config.title}${selectedShade ? ` — ${selectedShade.code} (${selectedShade.name})` : '. Please help me choose a shade'}. Please confirm the delivery charge.`
 
@@ -54,7 +56,7 @@ export default function RequestSampleForm({ config, initialShadeCode }: RequestS
         <p className="request-sample__eyebrow">{config.eyebrow}</p>
         <h1 className="request-sample__heading">Request a Sample</h1>
         <p className="request-sample__intro">
-          Choose a {config.title} shade or ask us to recommend one.
+          Choose a shade card, then a shade. Your preview appears alongside the form.
         </p>
       </header>
 
@@ -64,6 +66,10 @@ export default function RequestSampleForm({ config, initialShadeCode }: RequestS
       </div>
       <div className="request-sample__layout">
         <form className="contact-form request-sample__form" onSubmit={(event) => openWhatsAppEnquiry(event, request)}>
+          {collectionSelect}
+          {selectedShade && previewSrc && (
+            <input type="hidden" name={config.slug === 'pebble-finish' ? 'Illustrative reference image' : 'Shade image'} value={new URL(previewSrc, SITE_URL).href} />
+          )}
           <div>
             <label htmlFor="sample-shade" className="contact-form-label">Shade</label>
             <select id="sample-shade" className="contact-form-select" value={selectedShade?.code ?? ''} onChange={(event) => setShadeCode(event.target.value)}>
@@ -110,6 +116,9 @@ export default function RequestSampleForm({ config, initialShadeCode }: RequestS
                 <p className="request-sample__preview-code">{selectedShade.code}</p>
                 <h2 className="request-sample__preview-name">{selectedShade.name}</h2>
                 <p className="request-sample__preview-collection">{config.title} Collection</p>
+                {config.slug === 'pebble-finish' && <p className="contact-form-hint">Illustrative preview. Please confirm the actual Pebble shade with our team.</p>}
+                <a href={previewSrc} download className="collection-link">Download shade image</a>
+                <p className="contact-form-hint">Your WhatsApp draft includes this image’s link. You can also download and attach it in WhatsApp.</p>
               </>
             ) : (
               <div className="request-sample__preview-empty">

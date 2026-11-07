@@ -31,6 +31,7 @@ export default function Navbar() {
     pathname === '/projects' ||
     pathname === '/about' ||
     pathname === '/contact' ||
+    pathname === '/request-sample' ||
     pathname === '/thank-you' ||
     pathname === '/catalogues' ||
     pathname?.startsWith('/for-professionals') ||

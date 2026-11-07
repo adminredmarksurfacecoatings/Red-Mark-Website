@@ -37,6 +37,7 @@ const PAGES: PageEntry[] = [
   { path: '/finishes/exterior/decorative-exterior-finishes', changeFrequency: 'yearly', priority: 0.4 },
 
   // Connect / professionals
+  { path: '/request-sample', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/contact', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/for-professionals', changeFrequency: 'monthly', priority: 0.65 },
   { path: '/for-professionals/architects', changeFrequency: 'monthly', priority: 0.6 },
