@@ -77,15 +77,15 @@ const shades = shadeDefinitions.map((shade, index) => ({
 export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
   slug: 'stone-finish',
   title: 'Stone Finish',
-  collectionTitle: 'Stone Finish Collection',
-  eyebrow: 'Exterior Collection',
+  collectionTitle: "Stone Finish Marble Wall Texture",
+  eyebrow: 'Interior & Exterior Collection',
   breadcrumbLabel: 'Stone Finish',
   collectionHubHref: '/finishes/exterior',
   collectionHubLabel: 'Exterior Collection',
   pageHref: '/finishes/exterior/stone-finish',
   requestSampleHref: '/finishes/exterior/stone-finish/request-sample',
   heroLead:
-    'Timeless stone textures crafted for exterior walls, facades, and architectural surfaces — offering natural depth, weather resistance, and enduring appeal.',
+    "A rough marble texture for cemented interior and exterior walls, including mouldings. Stone Finish is especially suited to exteriors and is applied over a white primed base.",
   heroImage: HERO_IMAGE,
   heroImageFallback: HERO_IMAGE_FALLBACK,
   heroImageAlt:
@@ -101,32 +101,41 @@ export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
   },
   shades,
   specs: [
-    {
-      label: 'Ideal For',
-      value: 'Exterior Walls, Facades, Boundary Walls, Columns',
-      icon: 'ideal',
-    },
-    {
-      label: 'Finish Character',
-      value: 'Natural Stone Look with Subtle Texture & Depth',
-      icon: 'character',
-    },
-    {
-      label: 'Performance',
-      value: 'Weather Resistant, UV Stable, Efflorescence Resistant',
-      icon: 'performance',
-    },
-    {
-      label: 'Application',
-      value: 'Professional Application for Best Results',
-      icon: 'application',
-    },
-  ],
+  {
+    "label": "Suitable for",
+    "value": "Interior & exterior",
+    "icon": "ideal"
+  },
+  {
+    "label": "Pack size",
+    "value": "25 kg material + 6 kg chemical",
+    "icon": "character"
+  },
+  {
+    "label": "Approx. coverage",
+    "value": "140 sq ft per pack",
+    "icon": "performance"
+  },
+  {
+    "label": "Application",
+    "value": "2–3 coats: trowel, then spray",
+    "icon": "application"
+  }
+],
   heroFeatures: [
-    { label: 'Weather Resistant', icon: 'weather' },
-    { label: 'UV Stable & Fade Resistant', icon: 'uv' },
-    { label: 'Durable & Long Lasting', icon: 'durable' },
-  ],
+  {
+    "label": "Interior & Exterior",
+    "icon": "weather"
+  },
+  {
+    "label": "Rough Stone Texture",
+    "icon": "uv"
+  },
+  {
+    "label": "Suitable for Mouldings",
+    "icon": "durable"
+  }
+],
   shadesSection: {
     eyebrow: 'Stone Finish Shades',
     heading: 'Natural tones. Timeless appeal.',
@@ -135,7 +144,7 @@ export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
   ctaSection: {
     eyebrow: 'Explore the Complete Range',
     heading: 'Stone Finish Shade Card',
-    description: 'Download the printable shade card for specifications, references, and offline sharing.',
+    description: 'Download the printable shade card for shade references and offline sharing.',
   },
   specAriaLabel: 'Stone finish specifications',
 }
@@ -143,7 +152,7 @@ export const STONE_FINISH_COLLECTION: FinishCollectionConfig = {
 export const STONE_FINISH_REQUEST_SAMPLE: FinishRequestSampleConfig = {
   slug: 'stone-finish',
   title: 'Stone Finish',
-  eyebrow: 'Exterior Collection',
+  eyebrow: 'Interior & Exterior Collection',
   backHref: '/finishes/exterior/stone-finish',
   breadcrumbLabel: 'Stone Finish',
   collectionHubHref: '/finishes/exterior',

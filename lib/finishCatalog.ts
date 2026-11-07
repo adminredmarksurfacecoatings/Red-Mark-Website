@@ -19,7 +19,7 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     eyebrow: 'FARRY',
     title: 'Farry',
     description:
-      'High-shine interior wall texture finishes with luminous reflective depth — sixteen carefully curated shades.',
+      'High-sheen decorative finishes for interior walls, available in sixteen shades and 1 L or 4 L packs.',
     href: '/finishes/interior/farry',
     image: '/Shadecards/farry/shade-card/cover.webp',
     available: true,
@@ -31,11 +31,11 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     eyebrow: 'STONE FINISH',
     title: 'Stone Finish',
     description:
-      'Natural stone-inspired textures with depth, elegance, and lasting durability for exterior architecture.',
+      'Rough marble texture for interior and exterior cemented walls and mouldings, especially suited to exteriors.',
     href: '/finishes/exterior/stone-finish',
     image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.webp',
     available: true,
-    applications: ['exterior'],
+    applications: ['interior', 'exterior'],
     featured: true,
   },
   {
@@ -43,7 +43,7 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     eyebrow: 'PEBBLE FINISH',
     title: 'Pebble Finish',
     description:
-      'Granular mineral textures designed for visual richness across interior and exterior applications.',
+      'A smoother marble texture for interior and exterior cemented walls, applied in two trowel coats.',
     href: '/finishes/exterior/pebble-finish',
     image: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
     available: true,
@@ -54,32 +54,11 @@ export const FINISH_CATALOG: FinishCatalogEntry[] = [
     eyebrow: 'CREATE ART',
     title: 'Create Art',
     description:
-      'Expressive decorative textures for interior feature walls — Slate, Dropway, and Subaru families with artisan depth.',
+      'Decorative interior and exterior textures using white design material, TC 200 sealer and Oxido colour coat.',
     href: '/finishes/interior/create-art',
     image: '/Shadecards/create-art/shade-card/cover.webp',
     available: true,
-    applications: ['interior'],
-  },
-  {
-    slug: 'mineral-textures',
-    eyebrow: 'MINERAL TEXTURES',
-    title: 'Mineral Textures',
-    description:
-      'Architectural finishes inspired by natural materials and handcrafted surfaces.',
-    href: '/finishes/exterior/mineral-textures',
-    image: '/Finishes/cream-stucco-outdoor-living-wicker-patio.png',
-    available: false,
-    applications: ['exterior'],
-  },
-  {
-    slug: 'decorative-exterior-finishes',
-    eyebrow: 'DECORATIVE EXTERIOR FINISHES',
-    title: 'Decorative Exterior Finishes',
-    description: 'Statement textures and specialty finishes for premium projects.',
-    href: '/finishes/exterior/decorative-exterior-finishes',
-    image: '/section_2.png',
-    available: false,
-    applications: ['exterior'],
+    applications: ['interior', 'exterior'],
   },
 ]
 

@@ -1,0 +1,15 @@
+.section { background: var(--bg-primary, #faf9f6); }
+.header { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; margin-bottom: .75rem; }
+.header h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.2; }
+.header p, .grid p, .sample p { line-height: 1.7; color: #4a4a4a; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem; }
+.grid article { border-top: 1px solid #d8d3cb; padding-top: 1.25rem; }
+.grid h3, .sample h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: .65rem; line-height: 1.5; }
+.sample { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 2.5rem; padding: 1.5rem; background: #f0ede7; }
+.sample p { max-width: 42rem; }
+.sample a { flex-shrink: 0; }
+@media (max-width: 700px) { .header, .grid { grid-template-columns: 1fr; } .sample { flex-direction: column; align-items: flex-start; } }
+
+.compare { margin-top: 2rem; line-height: 1.8; }
+.compare a { text-decoration: underline; text-underline-offset: .2em; }

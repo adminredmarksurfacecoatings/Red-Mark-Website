@@ -9,7 +9,7 @@ type FinishCollectionShadesGridProps = {
   config: FinishCollectionConfig
 }
 
-function ShadeGrid({ shades, requestSampleHref }: { shades: FinishShade[]; requestSampleHref: string }) {
+function ShadeGrid({ shades, requestSampleHref, collectionName }: { shades: FinishShade[]; requestSampleHref: string; collectionName: string }) {
   const [preview, setPreview] = useState<{ src: string; alt: string } | null>(null)
   return (
     <>
@@ -17,6 +17,7 @@ function ShadeGrid({ shades, requestSampleHref }: { shades: FinishShade[]; reque
       {shades.map((shade) => (
         <FinishCollectionShadeSwatch
           key={shade.code}
+          collectionName={collectionName}
           code={shade.code}
           name={shade.name}
           image={shade.image}
@@ -64,12 +65,12 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
             {config.shadeGroups.map((group) => (
               <div key={group.id} className="stone-finish-shades__group">
                 <h3 className="stone-finish-shades__group-heading">{group.heading}</h3>
-                <ShadeGrid shades={group.shades} requestSampleHref={config.requestSampleHref} />
+                <ShadeGrid collectionName={config.collectionTitle} shades={group.shades} requestSampleHref={config.requestSampleHref} />
               </div>
             ))}
           </div>
         ) : (
-          <ShadeGrid shades={config.shades} requestSampleHref={config.requestSampleHref} />
+          <ShadeGrid collectionName={config.collectionTitle} shades={config.shades} requestSampleHref={config.requestSampleHref} />
         )}
       </div>
 

@@ -78,7 +78,7 @@ export function createPageMetadata({
       ? {
           robots: {
             index: false,
-            follow: false,
+            follow: true,
           },
         }
       : {}),

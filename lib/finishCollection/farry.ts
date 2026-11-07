@@ -43,7 +43,7 @@ const shades: FinishShade[] = shadeDefinitions.map((shade, index) => ({
 export const FARRY_COLLECTION: FinishCollectionConfig = {
   slug: 'farry',
   title: 'Farry',
-  collectionTitle: 'Farry Collection',
+  collectionTitle: "Farry High-Sheen Interior Finish",
   eyebrow: 'Interior Collection',
   breadcrumbLabel: 'Farry',
   collectionHubHref: '/finishes/interior',
@@ -51,10 +51,10 @@ export const FARRY_COLLECTION: FinishCollectionConfig = {
   pageHref: '/finishes/interior/farry',
   requestSampleHref: '/finishes/interior/farry/request-sample',
   heroLead:
-    'High-shine wall texture finishes with luminous depth and reflective character — crafted for interiors that call for a refined, light-responsive surface.',
+    "A decorative finish for interior walls with a pronounced sheen rather than a glitter or sparkle effect. Explore sixteen shades and choose a physical sample to assess the finish in your own light.",
   heroImage: shadecardCoverPath(COLLECTION_SLUG),
   heroImageFallback: '/home_hero_interior_1.png',
-  heroImageAlt: 'Farry high-shine wall texture finish by Red Mark',
+  heroImageAlt: 'Farry high-sheen wall texture finish by Red Mark',
   shadeCardSectionId: 'farry-shade-card',
   shadeCard: {
     pdf: shadeCardPdfPath(COLLECTION_SLUG, SHADE_CARD_FILE),
@@ -66,43 +66,52 @@ export const FARRY_COLLECTION: FinishCollectionConfig = {
   },
   shades,
   specs: [
-    {
-      label: 'Ideal For',
-      value: 'Interior Feature Walls, Lobbies, Retail, Hospitality Spaces',
-      icon: 'ideal',
-    },
-    {
-      label: 'Finish Character',
-      value: 'High-Shine Textured Surface with Luminous Reflective Depth',
-      icon: 'character',
-    },
-    {
-      label: 'Performance',
-      value: 'Durable Interior Coating with Professional Application',
-      icon: 'performance',
-    },
-    {
-      label: 'Application',
-      value: 'Professional Application for Best Results',
-      icon: 'application',
-    },
-  ],
+  {
+    "label": "Suitable for",
+    "value": "Interior only",
+    "icon": "ideal"
+  },
+  {
+    "label": "Pack sizes",
+    "value": "1 L & 4 L",
+    "icon": "character"
+  },
+  {
+    "label": "Approx. coverage",
+    "value": "50–60 sq ft per litre",
+    "icon": "performance"
+  },
+  {
+    "label": "Finish character",
+    "value": "High sheen, without a sparkle effect",
+    "icon": "application"
+  }
+],
   heroFeatures: [
-    { label: 'High-Shine Character', icon: 'uv' },
-    { label: 'Light-Responsive Depth', icon: 'weather' },
-    { label: 'Interior Feature Ready', icon: 'durable' },
-  ],
+  {
+    "label": "Interior Only",
+    "icon": "weather"
+  },
+  {
+    "label": "High-Sheen Finish",
+    "icon": "uv"
+  },
+  {
+    "label": "Sixteen Shades",
+    "icon": "durable"
+  }
+],
   shadesSection: {
     eyebrow: 'Farry Shades',
     heading: 'Sixteen luminous expressions.',
     intro:
-      'A curated range of high-shine Farry textures — from cool silvers and pearls to soft rose and lilac lustres.',
-    note: 'Warning: Due to the high-shine finish, the shades shown in these photographs are not accurate. Request a physical sample for true colour reference.',
+      'A curated range of high-sheen Farry textures — from cool silvers and pearls to soft rose and lilac lustres.',
+    note: 'Warning: Due to the high-sheen finish, the shades shown in these photographs are not accurate. Request a physical sample for true colour reference.',
   },
   ctaSection: {
     eyebrow: 'Explore the Complete Range',
     heading: 'Farry Shade Card',
-    description: 'Download the Farry front page for specifications, references, and offline sharing.',
+    description: 'Download the Farry front page for shade references and offline sharing.',
   },
   specAriaLabel: 'Farry specifications',
 }

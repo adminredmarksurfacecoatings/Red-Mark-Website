@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
-export default function LegacyStoneCollectionPage() {
-  redirect('/collections/interior')
+export default function LegacyCollectionPage() {
+  permanentRedirect('/finishes/exterior/stone-finish')
 }

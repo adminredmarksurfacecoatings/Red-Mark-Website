@@ -17,6 +17,7 @@ export default function Footer() {
             <h4 className="site-footer__heading">Explore</h4>
             <ul className="site-footer__list">
               <li><Link href="/finishes" className="footer-link">Finishes</Link></li>
+              <li><Link href="/request-sample" className="footer-link">Request a sample</Link></li>
               <li><Link href="/projects" className="footer-link">Projects</Link></li>
               <li><Link href="/catalogues" className="footer-link">Catalogues</Link></li>
               <li><Link href="/about" className="footer-link">About</Link></li>

@@ -6,7 +6,7 @@ import { createPageMetadata } from '@/lib/seo'
 export const metadata: Metadata = createPageMetadata({
   title: 'Request a Farry Sample',
   description:
-    'Request a physical sample of Red Mark Farry high-shine interior shades. Select your shade, preview the swatch, and submit for delivery through our dealer network.',
+    'Request a physical sample of Red Mark Farry high-sheen interior shades. Select your shade, preview the swatch, and submit for delivery through our dealer network.',
   path: '/finishes/interior/farry/request-sample',
   image: '/Shadecards/farry/shade-card/cover.jpg',
   imageAlt: 'Request a Red Mark Farry sample',

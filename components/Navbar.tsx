@@ -74,6 +74,7 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={isTransparentNav ? 'site-nav nav--transparent' : 'site-nav nav--solid'}
       style={{
         position: navPosition,
@@ -110,6 +111,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={pathname === link.href ? 'page' : undefined}
               style={{ color: navTextColor }}
               className={`nav-link site-nav__link${pathname === link.href || pathname?.startsWith(`${link.href}/`) ? ' active' : ''}`}
             >
@@ -129,6 +131,7 @@ export default function Navbar() {
           onClick={() => setIsMenuOpen((open) => !open)}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMenuOpen}
+          aria-controls={isMenuOpen ? 'site-menu' : undefined}
           className="site-nav__menu-btn"
           style={{ color: navTextColor }}
         >
@@ -137,12 +140,14 @@ export default function Navbar() {
       </div>
 
       {isMenuOpen ? (
-        <div ref={menuRef} tabIndex={-1} className="site-nav__drawer" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div id="site-menu" ref={menuRef} tabIndex={-1} className="site-nav__drawer" role="dialog" aria-modal="true" aria-label="Site menu">
           <div className="site-nav__drawer-panel">
+            <button type="button" className="site-nav__drawer-close" onClick={() => setIsMenuOpen(false)}>Close menu</button>
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+              aria-current={pathname === link.href ? 'page' : undefined}
                 className={`site-nav__drawer-link${pathname === link.href ? ' is-active' : ''}`}
               >
                 {link.label}

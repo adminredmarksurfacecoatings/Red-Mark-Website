@@ -6,6 +6,7 @@ import styles from './ShadeActions.module.css'
 import { useState } from 'react'
 
 type FinishCollectionShadeSwatchProps = {
+  collectionName: string
   code: string
   name: string
   image: string
@@ -15,6 +16,7 @@ type FinishCollectionShadeSwatchProps = {
 }
 
 export default function FinishCollectionShadeSwatch({
+  collectionName,
   code,
   name,
   image,
@@ -34,7 +36,7 @@ export default function FinishCollectionShadeSwatch({
       >
         <Image
           src={src}
-          alt={`${name} finish texture`}
+          alt={`${collectionName}: ${name} (${code}) shade sample`}
           fill
           sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 16vw"
           quality={75}

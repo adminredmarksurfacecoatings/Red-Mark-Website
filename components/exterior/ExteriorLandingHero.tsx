@@ -18,11 +18,11 @@ export default function ExteriorLandingHero() {
 
             <p className="exterior-landing-hero__lead">
               Explore Red Mark&apos;s curated range of exterior surface finishes crafted for
-              durability, weather resistance, texture, and timeless architectural appeal.
+              texture, depth, and architectural character.
             </p>
 
             <p className="exterior-landing-hero__support">
-              Mineral textures, stone finishes, pebble finishes, and decorative exterior coatings
+              Stone Finish, Pebble Finish and Create Art textures
               for residential, commercial, and hospitality projects.
             </p>
 

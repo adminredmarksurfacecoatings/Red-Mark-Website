@@ -6,9 +6,10 @@ import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Mineral Finishes & Wall Texture Collections',
+  title: 'Marble Textures & Wall Finishes in India | Red Mark',
+  absoluteTitle: true,
   description:
-    'Explore Red Mark mineral finish collections — layered wall textures with tonal depth for interiors and exteriors. Browse selected surfaces and project imagery.',
+    'Explore marble textures with Stone and Pebble Finish, Create Art decorative textures and Farry interior sheen. Browse texture inspiration for interior and exterior walls.',
   path: '/finishes',
   image: '/home_grid_2.png',
   imageAlt: 'Red Mark mineral finish collection surfaces',
@@ -29,7 +30,7 @@ export default async function FinishesPage() {
             letterSpacing: '-0.02em',
             marginBottom: '3rem',
           }}>
-            Finishes
+            Wall Textures & Finishes
           </h1>
           
           <p style={{
@@ -42,7 +43,7 @@ export default async function FinishesPage() {
             maxWidth: '700px',
             margin: '0 auto',
           }}>
-            Architectural mineral surfaces crafted for depth, durability, and refined character.
+            Explore marble textures and decorative wall finishes for interiors and exteriors.
           </p>
         </div>
       </section>

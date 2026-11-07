@@ -25,18 +25,18 @@ export const EXTERIOR_SUB_COLLECTIONS: ExteriorSubCollection[] = getExteriorFini
 
 export const EXTERIOR_WHY_CHOOSE = [
   {
-    title: 'Weather Resistant',
-    description: 'Designed for changing climates.',
+    title: 'Exterior Applications',
+    description: 'Stone Finish, Pebble Finish and Create Art for exterior walls.',
     icon: 'weather' as const,
   },
   {
-    title: 'UV Stable',
-    description: 'Long-lasting colour performance.',
+    title: 'Finish Choice',
+    description: 'Compare rough stone, smoother pebble and decorative designs.',
     icon: 'uv' as const,
   },
   {
-    title: 'Durable Surface',
-    description: 'Built for everyday exposure.',
+    title: 'Preparation Guidance',
+    description: 'Plan the base and application for your selected finish.',
     icon: 'durable' as const,
   },
   {
@@ -56,16 +56,6 @@ export const EXTERIOR_FEATURED_PROJECTS = [
     name: 'Commercial Facade',
     finish: 'Pebble Finish',
     image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.webp',
-  },
-  {
-    name: 'Resort Exterior',
-    finish: 'Mineral Textures',
-    image: '/section_2.png',
-  },
-  {
-    name: 'Boundary Wall',
-    finish: 'Decorative Exterior',
-    image: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   },
 ]
 

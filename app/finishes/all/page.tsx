@@ -8,7 +8,7 @@ import { createPageMetadata } from '@/lib/seo'
 export const metadata: Metadata = createPageMetadata({
   title: 'All Finish Collections — Interior & Exterior',
   description:
-    'Browse the complete Red Mark range — stone, pebble, Create Art, Farry, mineral textures, and decorative coatings for interior and exterior applications.',
+    'Browse the complete Red Mark range — Stone Finish, Pebble Finish, Create Art and Farry for interior and exterior applications.',
   path: '/finishes/all',
   image: '/home_grid_3.png',
   imageAlt: 'Complete Red Mark finish collections overview',
@@ -23,7 +23,7 @@ export default function AllFinishesPage() {
         eyebrow="All Collections"
         heading="The Complete Red Mark Finish Range"
         lead="Explore every Red Mark finish collection in one place — from exterior stone systems to interior and exterior pebble textures."
-        support="Stone, pebble, mineral, and decorative finishes curated for architects, designers, and builders."
+        support="Stone Finish, Pebble Finish and Create Art for interiors and exteriors; Farry for interiors."
         image="/home_grid_3.png"
         imageAlt="Curated architectural finish collections"
         browseHref="#explore-all-collections"

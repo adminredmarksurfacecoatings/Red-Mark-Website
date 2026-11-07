@@ -3346,3 +3346,23 @@ a.btn {
     padding: 0 1.5rem;
   }
 }
+
+/* Visible keyboard focus across public controls, including custom form inputs. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #874444 !important;
+  outline-offset: 4px;
+}
+.site-nav__drawer-close {
+  align-self: flex-end;
+  min-height: 44px;
+  padding: .6rem 1rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+main [id] { scroll-margin-top: 130px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+}

@@ -33,8 +33,6 @@ const PAGES: PageEntry[] = [
   { path: '/finishes/exterior/pebble-finish', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/finishes/interior/create-art', changeFrequency: 'monthly', priority: 0.85 },
   { path: '/finishes/interior/farry', changeFrequency: 'monthly', priority: 0.85 },
-  { path: '/finishes/exterior/mineral-textures', changeFrequency: 'yearly', priority: 0.4 },
-  { path: '/finishes/exterior/decorative-exterior-finishes', changeFrequency: 'yearly', priority: 0.4 },
 
   // Connect / professionals
   { path: '/request-sample', changeFrequency: 'monthly', priority: 0.7 },
@@ -46,11 +44,10 @@ const PAGES: PageEntry[] = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date()
+  // Omit lastModified until actual per-page content update dates are available.
 
   return PAGES.map(({ path, changeFrequency, priority }) => ({
     url: absUrl(path),
-    lastModified,
     changeFrequency,
     priority,
   }))

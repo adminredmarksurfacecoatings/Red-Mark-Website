@@ -46,13 +46,13 @@ const shades = shadeDefinitions.map((shade, index) => ({
 export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   slug: 'pebble-finish',
   title: 'Pebble Finish',
-  collectionTitle: 'Pebble Finish Collection',
+  collectionTitle: "Pebble Finish Marble Wall Texture",
   eyebrow: 'Interior & Exterior Collection',
   breadcrumbLabel: 'Pebble Finish',
   pageHref: '/finishes/exterior/pebble-finish',
   requestSampleHref: '/finishes/exterior/pebble-finish/request-sample',
   heroLead:
-    'Granular mineral textures crafted for interior and exterior walls, facades, and architectural surfaces — offering visual richness, durability, and enduring appeal.',
+    "A marble texture with a smoother surface than Stone Finish, for interior and exterior cemented walls. Pebble Finish is applied in two trowel coats over a white primed base.",
   heroImage: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   heroImageFallback: '/Finishes/mediterranean-textured-wall-arched-loggia.png',
   heroImageAlt: 'Pebble finish on interior and exterior architectural surfaces',
@@ -67,32 +67,41 @@ export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   },
   shades,
   specs: [
-    {
-      label: 'Ideal For',
-      value: 'Interior Walls, Exterior Facades, Feature Walls, Commercial Spaces',
-      icon: 'ideal',
-    },
-    {
-      label: 'Finish Character',
-      value: 'Granular Pebble Texture with Natural Mineral Depth',
-      icon: 'character',
-    },
-    {
-      label: 'Performance',
-      value: 'Weather Resistant, UV Stable, Efflorescence Resistant',
-      icon: 'performance',
-    },
-    {
-      label: 'Application',
-      value: 'Professional Application for Best Results',
-      icon: 'application',
-    },
-  ],
+  {
+    "label": "Suitable for",
+    "value": "Interior & exterior",
+    "icon": "ideal"
+  },
+  {
+    "label": "Pack size",
+    "value": "25 kg + 5 kg pack",
+    "icon": "character"
+  },
+  {
+    "label": "Approx. coverage",
+    "value": "140 sq ft per pack",
+    "icon": "performance"
+  },
+  {
+    "label": "Application",
+    "value": "2 coats with a trowel",
+    "icon": "application"
+  }
+],
   heroFeatures: [
-    { label: 'Weather Resistant', icon: 'weather' },
-    { label: 'UV Stable & Fade Resistant', icon: 'uv' },
-    { label: 'Durable & Long Lasting', icon: 'durable' },
-  ],
+  {
+    "label": "Interior & Exterior",
+    "icon": "weather"
+  },
+  {
+    "label": "Smoother Texture",
+    "icon": "uv"
+  },
+  {
+    "label": "Trowel Applied",
+    "icon": "durable"
+  }
+],
   shadesSection: {
     eyebrow: 'Pebble Finish Shades',
     heading: 'Granular tones. Rich texture.',
@@ -101,7 +110,7 @@ export const PEBBLE_FINISH_COLLECTION: FinishCollectionConfig = {
   ctaSection: {
     eyebrow: 'Explore the Complete Range',
     heading: 'Pebble Finish Shade Card',
-    description: 'Download the printable shade card for specifications, references, and offline sharing.',
+    description: 'Download the printable shade card for shade references and offline sharing.',
   },
   specAriaLabel: 'Pebble finish specifications',
 }

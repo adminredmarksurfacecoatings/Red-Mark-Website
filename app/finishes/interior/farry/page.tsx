@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import FinishCollectionDetails from '@/components/finish-collection/FinishCollectionDetails'
 import FinishCollectionHero from '@/components/finish-collection/FinishCollectionHero'
 import FinishCollectionShadeCardCta from '@/components/finish-collection/FinishCollectionShadeCardCta'
 import FinishCollectionShadesGrid from '@/components/finish-collection/FinishCollectionShadesGrid'
@@ -7,20 +8,21 @@ import { FARRY_COLLECTION } from '@/lib/finishCollection/farry'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Farry High-Shine Wall Texture Finishes — 16 Shades',
+  title: "Farry High-Sheen Interior Finish",
   description:
-    'Red Mark Farry — high-shine interior wall texture finishes in sixteen luminous shades. Explore the range, download the Farry shade card, and request a physical sample for true colour.',
+    "High-sheen interior wall finish in sixteen shades. Available in 1 L and 4 L packs, covering approximately 50–60 sq ft per litre. Explore samples.",
   path: '/finishes/interior/farry',
   image: '/Shadecards/farry/shade-card/cover.jpg',
-  imageAlt: 'Farry high-shine wall texture finishes by Red Mark',
+  imageAlt: 'Farry high-sheen wall texture finishes by Red Mark',
 })
 
 export default function FarryPage() {
   return (
     <>
       <FinishCollectionHero config={FARRY_COLLECTION} />
-      <FinishCollectionShadesGrid config={FARRY_COLLECTION} />
       <FinishCollectionSpecBar config={FARRY_COLLECTION} />
+      <FinishCollectionDetails config={FARRY_COLLECTION} />
+      <FinishCollectionShadesGrid config={FARRY_COLLECTION} />
       <FinishCollectionShadeCardCta config={FARRY_COLLECTION} />
     </>
   )

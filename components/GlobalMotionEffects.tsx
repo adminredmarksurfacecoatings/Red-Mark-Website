@@ -62,6 +62,7 @@ export default function GlobalMotionEffects() {
 
     return () => {
       observer.disconnect()
+      targets.forEach((node) => node.classList.remove('motion-reveal-target', 'motion-reveal-visible'))
     }
   }, [pathname])
 

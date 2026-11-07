@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 
-export default function LegacyExteriorCollectionPage() {
-  redirect('/finishes/exterior')
+export default function LegacyCollectionPage() {
+  permanentRedirect('/finishes/exterior')
 }

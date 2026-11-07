@@ -55,15 +55,15 @@ const shades = [...slateShades, ...dropwayShades, ...subaruShades]
 export const CREATE_ART_COLLECTION: FinishCollectionConfig = {
   slug: 'create-art',
   title: 'Create Art',
-  collectionTitle: 'Create Art Collection',
-  eyebrow: 'Interior Collection',
+  collectionTitle: "Create Art Decorative Wall Texture",
+  eyebrow: 'Interior & Exterior Collection',
   breadcrumbLabel: 'Create Art',
   collectionHubHref: '/finishes/interior',
   collectionHubLabel: 'Interior Collection',
   pageHref: '/finishes/interior/create-art',
   requestSampleHref: '/finishes/interior/create-art/request-sample',
   heroLead:
-    'Expressive decorative textures for interior walls and feature surfaces — crafted for designers who want material depth, artisan character, and a refined architectural finish.',
+    "Create textured designs indoors or outdoors with a three-product system: white design material, TC 200 sealer and Oxido colour coat. Start with a smooth, white base.",
   heroImage: shadecardCoverPath(COLLECTION_SLUG),
   heroImageFallback: '/home_hero_interior_1.png',
   heroImageAlt: 'Create Art textured finish in a contemporary interior',
@@ -83,42 +83,51 @@ export const CREATE_ART_COLLECTION: FinishCollectionConfig = {
     { id: 'subaru', heading: 'Subaru', shades: subaruShades },
   ],
   specs: [
-    {
-      label: 'Ideal For',
-      value: 'Interior Feature Walls, Lobbies, Retail, Hospitality Spaces',
-      icon: 'ideal',
-    },
-    {
-      label: 'Finish Character',
-      value: 'Artisan Textures with Layered Depth and Visual Movement',
-      icon: 'character',
-    },
-    {
-      label: 'Performance',
-      value: 'Durable Interior Coating with Professional Application',
-      icon: 'performance',
-    },
-    {
-      label: 'Application',
-      value: 'Professional Application for Best Results',
-      icon: 'application',
-    },
-  ],
+  {
+    "label": "Suitable for",
+    "value": "Interior & exterior",
+    "icon": "ideal"
+  },
+  {
+    "label": "Design material",
+    "value": "25 kg bucket",
+    "icon": "character"
+  },
+  {
+    "label": "Approx. coverage",
+    "value": "150–200 sq ft per 25 kg, design dependent",
+    "icon": "performance"
+  },
+  {
+    "label": "System",
+    "value": "Design material → TC 200 → Oxido",
+    "icon": "application"
+  }
+],
   heroFeatures: [
-    { label: 'Designer-Led Finishes', icon: 'weather' },
-    { label: 'Rich Tactile Depth', icon: 'uv' },
-    { label: 'Interior Feature Ready', icon: 'durable' },
-  ],
+  {
+    "label": "Interior & Exterior",
+    "icon": "weather"
+  },
+  {
+    "label": "Three-Product System",
+    "icon": "uv"
+  },
+  {
+    "label": "Design-Led Texture",
+    "icon": "durable"
+  }
+],
   shadesSection: {
     eyebrow: 'Create Art Shades',
     heading: 'Three families. Twelve expressions.',
     intro:
-      'Slate, Dropway, and Subaru — curated decorative textures for interiors that call for character and craft.',
+      'Slate, Dropway, and Subaru — decorative textures for interior and exterior walls.',
   },
   ctaSection: {
     eyebrow: 'Explore the Complete Range',
     heading: 'Create Art Shade Card',
-    description: 'Download the printable shade card for specifications, references, and offline sharing.',
+    description: 'Download the printable shade card for shade references and offline sharing.',
   },
   specAriaLabel: 'Create Art specifications',
 }
@@ -126,7 +135,7 @@ export const CREATE_ART_COLLECTION: FinishCollectionConfig = {
 export const CREATE_ART_REQUEST_SAMPLE: FinishRequestSampleConfig = {
   slug: 'create-art',
   title: 'Create Art',
-  eyebrow: 'Interior Collection',
+  eyebrow: 'Interior & Exterior Collection',
   backHref: '/finishes/interior/create-art',
   breadcrumbLabel: 'Create Art',
   collectionHubHref: '/finishes/interior',

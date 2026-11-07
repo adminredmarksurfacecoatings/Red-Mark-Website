@@ -55,7 +55,7 @@ export default function FinishSubCollectionGrid({
                   </p>
                 ) : null}
 
-                <p className="exterior-landing-card__eyebrow">{collection.eyebrow}</p>
+                <h3 className="exterior-landing-card__eyebrow">{collection.eyebrow}</h3>
 
                 <p className="exterior-landing-card__description">{collection.description}</p>
 

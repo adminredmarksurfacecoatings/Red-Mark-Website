@@ -6,10 +6,10 @@ import { fetchFinishesPageImages } from '@/lib/supabase/mediaLibrary'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Red Mark Surface Coatings | Architectural Wall Textures & Mineral Finishes India',
+  title: 'Wall Textures & Decorative Finishes in India | Red Mark',
   absoluteTitle: true,
   description:
-    'Red Mark crafts architectural mineral finishes and wall textures for homes and projects across India — stone, pebble, and decorative surfaces with lasting depth and performance.',
+    'Explore marble texture wall coatings, Stone Finish, Pebble Finish, Create Art and Farry. Compare shades and request free texture samples from Red Mark in India.',
   path: '/',
   image: '/Stone_hero.png',
   imageAlt: 'Red Mark architectural wall texture and mineral finish',
