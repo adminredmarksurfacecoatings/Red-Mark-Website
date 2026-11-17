@@ -31,7 +31,7 @@ export default function NotFound() {
             fontSize: 'clamp(2.5rem, 6vw, 4rem)',
             fontWeight: 500,
             letterSpacing: '-0.02em',
-            color: '#2B2B2B',
+            color: 'var(--palette-2b2b2b)',
             marginBottom: '1rem',
           }}
         >
@@ -43,7 +43,7 @@ export default function NotFound() {
             fontSize: '1rem',
             fontWeight: 300,
             lineHeight: 1.8,
-            color: '#4A4A4A',
+            color: 'var(--palette-4a4a4a)',
           }}
         >
           Redirecting you to the home page…

@@ -20,7 +20,7 @@ export default function BreakSection() {
             fontWeight: 500,
             lineHeight: 1.15,
             letterSpacing: '-0.02em',
-            color: '#222222',
+            color: 'var(--palette-222222)',
             marginBottom: '1.3rem',
           }}
         >
@@ -32,7 +32,7 @@ export default function BreakSection() {
           style={{
             fontSize: '0.92rem',
             fontFamily: "'Inter', sans-serif",
-            color: 'rgba(43, 43, 43, 0.66)',
+            color: 'var(--palette-rgba434343066)',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
           }}

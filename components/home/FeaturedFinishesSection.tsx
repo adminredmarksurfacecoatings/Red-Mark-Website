@@ -12,7 +12,7 @@ const sectionHeadingStyle = {
   fontSize: 'clamp(2.5rem, 5vw, 4rem)',
   fontFamily: "'Cormorant Garamond', serif",
   fontWeight: 500,
-  color: '#2B2B2B',
+  color: 'var(--palette-2b2b2b)',
   lineHeight: 1.2,
   letterSpacing: '-0.02em',
   marginBottom: '3rem',
@@ -23,7 +23,7 @@ const eyebrowStyle = {
   fontSize: '0.6875rem',
   fontFamily: "'Inter', sans-serif",
   fontWeight: 400,
-  color: '#6A6A6A',
+  color: 'var(--palette-6a6a6a)',
   textTransform: 'uppercase' as const,
   letterSpacing: '0.15em',
   marginBottom: '0.5rem',
@@ -32,7 +32,7 @@ const eyebrowStyle = {
 const cardTitleStyle = {
   fontFamily: "'Cormorant Garamond', serif",
   fontWeight: 500,
-  color: '#2B2B2B',
+  color: 'var(--palette-2b2b2b)',
   letterSpacing: '-0.015em',
 }
 
@@ -40,7 +40,7 @@ const cardBodyStyle = {
   fontSize: '0.98rem',
   fontFamily: "'Inter', sans-serif",
   fontWeight: 300,
-  color: '#4A4A4A',
+  color: 'var(--palette-4a4a4a)',
   lineHeight: 1.7,
   letterSpacing: '0.01em',
 }
@@ -238,7 +238,7 @@ export default function FeaturedFinishesSection({
   if (!standalone) return content
 
   return (
-    <section className="page-section home-finishes-section" style={{ backgroundColor: '#F8F4EE' }}>
+    <section className="page-section home-finishes-section" style={{ backgroundColor: 'var(--palette-f8f4ee)' }}>
       <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
         {content}
       </div>

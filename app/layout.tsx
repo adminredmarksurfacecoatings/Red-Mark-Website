@@ -3,6 +3,8 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import './globals-dealer.css'
+import './theme.css'
+import { THEME_INIT_SCRIPT } from '@/lib/theme'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 import SiteChrome from '@/components/SiteChrome'
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'
@@ -53,7 +55,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} /></head>
       <body>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <script

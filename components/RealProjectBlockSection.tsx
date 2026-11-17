@@ -61,7 +61,7 @@ export default function RealProjectBlockSection() {
                 fontSize: 'clamp(1.25rem, 2.1vw, 1.7rem)',
                 fontFamily: "'Cormorant Garamond', serif",
                 fontWeight: 500,
-                color: '#2B2B2B',
+                color: 'var(--palette-2b2b2b)',
                 lineHeight: 1.25,
                 letterSpacing: '-0.01em',
                 textAlign: 'left',

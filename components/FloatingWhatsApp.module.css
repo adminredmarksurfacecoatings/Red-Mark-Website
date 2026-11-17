@@ -8,7 +8,7 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--palette-rgba255255255035);
   border-radius: 50%;
   background: #25d366;
   color: #fff;

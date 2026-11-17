@@ -75,7 +75,7 @@ export default function ProjectsPreview({ onImageClick }: ProjectsPreviewProps) 
             fontSize: 'clamp(2.5rem, 5vw, 4rem)',
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 500,
-            color: '#2B2B2B',
+            color: 'var(--palette-2b2b2b)',
             lineHeight: 1.2,
             letterSpacing: '-0.02em',
           }}>
@@ -88,7 +88,7 @@ export default function ProjectsPreview({ onImageClick }: ProjectsPreviewProps) 
               fontSize: '0.9375rem',
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
-              color: '#2B2B2B',
+              color: 'var(--palette-2b2b2b)',
               textDecoration: 'none',
               position: 'relative',
               transition: 'color 0.2s ease',

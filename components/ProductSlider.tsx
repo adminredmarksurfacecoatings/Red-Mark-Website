@@ -114,7 +114,7 @@ export default function ProductSlider() {
           {products.map((product) => (
             <div key={product.id} className="keen-slider__slide">
               <div style={{
-                background: 'linear-gradient(135deg, #FFFFFF 0%, #FFF5F5 100%)',
+                background: 'linear-gradient(135deg, var(--palette-ffffff) 0%, #FFF5F5 100%)',
                 borderRadius: '8px',
                 overflow: 'hidden',
                 border: '1px solid var(--border-color)',

@@ -99,7 +99,7 @@ export default function MineralFinishGrid({ images }: MineralFinishGridProps) {
             fontSize: 'clamp(1.25rem, 1.75vw, 1.5rem)',
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 500,
-            color: '#2B2B2B',
+            color: 'var(--palette-2b2b2b)',
             lineHeight: 1.3,
             letterSpacing: '-0.01em',
             textAlign: 'center',

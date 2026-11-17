@@ -91,7 +91,7 @@ export default function SelectedProjects() {
           fontSize: 'clamp(2.5rem, 5vw, 4rem)',
           fontFamily: "'Cormorant Garamond', serif",
           fontWeight: 500,
-          color: '#2B2B2B',
+          color: 'var(--palette-2b2b2b)',
           lineHeight: 1.2,
           letterSpacing: '-0.02em',
           marginBottom: '4rem',

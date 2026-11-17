@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 import { BRAND_SHORT } from '@/lib/brand'
 
 export default function Footer() {
@@ -36,6 +37,7 @@ export default function Footer() {
           </div>
         </div>
 
+        <ThemeToggle />
         <div className="site-footer__bottom">
           <p>© {new Date().getFullYear()} Red Mark Surface Coatings. All rights reserved.</p>
           <p>Crafted for enduring architecture — interior and exterior.</p>

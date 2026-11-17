@@ -94,7 +94,7 @@ export default function HomeFinishesGrid({ images }: HomeFinishesGridProps) {
           font-size: clamp(2.25rem, 4.5vw, 3.5rem);
           font-family: 'Cormorant Garamond', serif;
           font-weight: 500;
-          color: #2b2b2b;
+          color: var(--palette-2b2b2b);
           line-height: 1.2;
           letter-spacing: -0.02em;
           margin: 0 0 0.85rem;
@@ -104,7 +104,7 @@ export default function HomeFinishesGrid({ images }: HomeFinishesGridProps) {
           font-family: 'Inter', sans-serif;
           font-size: clamp(0.95rem, 1.1vw, 1.05rem);
           font-weight: 300;
-          color: #4a4a4a;
+          color: var(--palette-4a4a4a);
           line-height: 1.75;
           letter-spacing: 0.01em;
           margin: 0;
@@ -125,10 +125,10 @@ export default function HomeFinishesGrid({ images }: HomeFinishesGridProps) {
           font-family: 'Inter', sans-serif;
           font-size: 0.875rem;
           font-weight: 400;
-          color: #2b2b2b;
+          color: var(--palette-2b2b2b);
           letter-spacing: 0.06em;
           text-decoration: none;
-          border-bottom: 1px solid rgba(43, 43, 43, 0.35);
+          border-bottom: 1px solid var(--palette-rgba434343035);
           padding-bottom: 2px;
         }
 

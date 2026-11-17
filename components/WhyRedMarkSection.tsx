@@ -16,7 +16,7 @@ export default function WhyRedMarkSection() {
             fontSize: 'clamp(2.2rem, 4.2vw, 3.5rem)',
             fontFamily: "'Cormorant Garamond', serif",
             fontWeight: 500,
-            color: '#2B2B2B',
+            color: 'var(--palette-2b2b2b)',
             textAlign: 'center',
             lineHeight: 1.2,
             letterSpacing: '-0.02em',
@@ -48,7 +48,7 @@ export default function WhyRedMarkSection() {
                   fontSize: '1rem',
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 300,
-                  color: '#4A4A4A',
+                  color: 'var(--palette-4a4a4a)',
                   lineHeight: 1.8,
                   letterSpacing: '0.01em',
                 }}

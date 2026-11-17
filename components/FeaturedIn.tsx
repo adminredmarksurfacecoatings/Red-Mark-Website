@@ -35,7 +35,7 @@ export default function FeaturedIn() {
 
   return (
     <section className="section" style={{
-      background: 'linear-gradient(135deg, #FFFFFF 0%, #FFEBEE 100%)',
+      background: 'var(--featured-background)',
       borderTop: '1px solid var(--border-color)',
       borderBottom: '1px solid var(--border-color)',
     }}>

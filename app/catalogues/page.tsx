@@ -16,7 +16,7 @@ export default function CataloguesPage() {
     <>
       <section
         className="page-section page-section--first catalogues-hero"
-        style={{ backgroundColor: '#f7f4ef', textAlign: 'center' }}
+        style={{ backgroundColor: 'var(--palette-f7f4ef)', textAlign: 'center' }}
       >
         <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
           <p className="catalogues-hero__eyebrow">Product Literature</p>

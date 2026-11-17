@@ -84,7 +84,7 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
           font-family: 'Cormorant Garamond', serif;
           font-size: clamp(1.75rem, 2.4vw, 2.25rem);
           font-weight: 500;
-          color: #2b2b2b;
+          color: var(--palette-2b2b2b);
           letter-spacing: -0.01em;
           margin: 0 0 2rem;
         }
@@ -101,7 +101,7 @@ export default function FinishCollectionShadesGrid({ config }: FinishCollectionS
           margin: 0;
           font-size: 0.95rem;
           line-height: 1.55;
-          color: #4a3a32;
+          color: var(--palette-4a3a32);
           font-family: 'Inter', sans-serif;
           font-weight: 400;
         }

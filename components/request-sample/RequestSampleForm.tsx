@@ -94,7 +94,7 @@ export default function RequestSampleForm({ config, initialShadeCode, collection
               <>
                 <div className="request-sample__preview-swatch">
                   <Image
-                    src={previewSrc}
+                    src={previewSrc || selectedShade.image}
                     alt={`${selectedShade.name} swatch`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 420px"

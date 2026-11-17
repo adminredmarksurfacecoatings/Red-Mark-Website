@@ -32,7 +32,7 @@ export default function GallerySection() {
               key={item.id}
               style={{
                 aspectRatio: '4/3',
-                background: 'linear-gradient(135deg, #FFFFFF 0%, #FFF5F5 100%)',
+                background: 'linear-gradient(135deg, var(--palette-ffffff) 0%, #FFF5F5 100%)',
                 borderRadius: '8px',
                 border: '1px solid var(--border-color)',
                 position: 'relative',

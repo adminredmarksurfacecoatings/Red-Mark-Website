@@ -2,7 +2,7 @@
 
 export default function MicroTestimonialSection() {
   return (
-    <section className="page-section" style={{ backgroundColor: '#F8F4EE', textAlign: 'center' }}>
+    <section className="page-section" style={{ backgroundColor: 'var(--palette-f8f4ee)', textAlign: 'center' }}>
       <div className="container" style={{ margin: '0 auto', padding: '0 4rem' }}>
         <blockquote
           style={{
@@ -10,7 +10,7 @@ export default function MicroTestimonialSection() {
             fontFamily: "'Cormorant Garamond', serif",
             fontStyle: 'italic',
             fontWeight: 500,
-            color: '#2B2B2B',
+            color: 'var(--palette-2b2b2b)',
             lineHeight: 1.35,
             letterSpacing: '-0.01em',
             maxWidth: '760px',
@@ -23,7 +23,7 @@ export default function MicroTestimonialSection() {
           style={{
             fontSize: '0.85rem',
             fontFamily: "'Inter', sans-serif",
-            color: '#6A6A6A',
+            color: 'var(--palette-6a6a6a)',
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
           }}

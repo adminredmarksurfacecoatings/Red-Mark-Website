@@ -5,6 +5,7 @@ import Link from 'next/link'
 import ImageModal from '@/components/ImageModal'
 import GalleryImageTile from '@/components/GalleryImageTile'
 import { useInfiniteBatch } from '@/lib/useInfiniteBatch'
+import projectImages from '@/lib/project-images.json'
 
 const fallbackProjectImages = [
   '/Finishes/ochre-mineral-wall-texture-living-room.png',
@@ -18,9 +19,16 @@ const fallbackProjectImages = [
   '/Finishes/blue-venetian-plaster-living-room-wall.png',
 ]
 
+// Match exact source filenames so media visibility and ordering still follow the admin library.
+function optimizedProject(src: string): { src: string; alt: string } | undefined {
+  const filename = decodeURIComponent(src.split('/').pop()?.split('?')[0] ?? '')
+  return (projectImages as Record<string, { src: string; alt: string }>)[filename]
+}
+
 type ProjectItem = {
   id: number
   image: string
+  alt: string
   aspectRatio: '3/4' | '4/3'
 }
 
@@ -41,7 +49,7 @@ function ProjectColumn({
         <GalleryImageTile
           key={project.id}
           src={project.image}
-          alt={`Project ${project.id}`}
+          alt={project.alt}
           aspectRatio={project.aspectRatio}
           onClick={() => onImageClick(project.id)}
         />
@@ -58,7 +66,8 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
   // Keep the batch input stable when opening a preview or loading more images.
   const allProjects = useMemo<ProjectItem[]>(() => imageList.map((image, index) => ({
     id: index + 1,
-    image,
+    image: optimizedProject(image)?.src ?? image,
+    alt: optimizedProject(image)?.alt ?? `Red Mark architectural wall texture project ${index + 1}`,
     aspectRatio: index % 2 === 0 ? '3/4' : '4/3',
   })), [imageList])
 
@@ -66,7 +75,7 @@ export default function ProjectsGrid({ images }: ProjectsGridProps) {
 
   const gallery = allProjects.map((project) => ({
     src: project.image,
-    alt: `Project ${project.id}`,
+    alt: project.alt,
   }))
 
   if (allProjects.length === 0) {
