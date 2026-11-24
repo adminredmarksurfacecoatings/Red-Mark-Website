@@ -6,7 +6,7 @@ import { createPageMetadata } from '@/lib/seo'
 export const metadata: Metadata = createPageMetadata({
   title: 'Request a Create Art Sample',
   description:
-    'Request a physical sample of Red Mark Create Art interior shades. Select your shade, preview the swatch, and submit for delivery through our dealer network.',
+    'Request a physical sample of Red Mark Create Art interior shades. Select your shade, preview the swatch, and discuss availability and delivery on WhatsApp.',
   path: '/finishes/interior/create-art/request-sample',
   image: '/home_hero_interior_1.png',
   imageAlt: 'Request a Red Mark Create Art sample',

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import './globals-dealer.css'
 import './theme.css'
+import './legal-accessibility.css'
 import { THEME_INIT_SCRIPT } from '@/lib/theme'
+import { BUSINESS_ADDRESS } from '@/lib/business'
 import GlobalMotionEffects from '@/components/GlobalMotionEffects'
 import SiteChrome from '@/components/SiteChrome'
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    'Architectural mineral finishes and wall textures with depth, durability, and refined character for interiors and exteriors across India.',
+    'Architectural wall textures and decorative finishes for interiors and exteriors. Explore shades and request samples from Red Mark.',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -69,13 +69,12 @@ export default function RootLayout({
             logo: new URL('/Logo.svg', SITE_URL).href,
             email: CONTACT_EMAIL,
             telephone: CONTACT_PHONE_INDIA,
+            address: BUSINESS_ADDRESS,
           }).replace(/</g, '\\u003c') }}
         />
         <GlobalMotionEffects />
         <SiteChrome>{children}</SiteChrome>
         <FloatingWhatsApp />
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   )

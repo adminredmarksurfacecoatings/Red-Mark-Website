@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import ImageModal from '@/components/ImageModal'
+import { imageDescription } from '@/lib/imageDescription'
 import GalleryImageTile from '@/components/GalleryImageTile'
 import { useInfiniteBatch } from '@/lib/useInfiniteBatch'
 
@@ -46,7 +47,7 @@ function MasonryColumn({ images, getAspectRatio, altOffset, onImageClick }: Maso
         <GalleryImageTile
           key={image}
           src={image}
-          alt={`Project ${altOffset + index + 1}`}
+          alt={imageDescription(image, altOffset + index)}
           aspectRatio={getAspectRatio(index)}
           onClick={() => onImageClick(image)}
         />
@@ -106,7 +107,7 @@ export default function FinishesMasonry({ images }: FinishesMasonryProps) {
   const column1Images = visibleItems.filter((_, i) => i % 3 === 0)
   const column2Images = visibleItems.filter((_, i) => i % 3 === 1)
   const column3Images = visibleItems.filter((_, i) => i % 3 === 2)
-  const gallery = sourceImages.map((image, index) => ({ src: image, alt: `Project ${index + 1}` }))
+  const gallery = sourceImages.map((image, index) => ({ src: image, alt: imageDescription(image, index) }))
 
   const openImage = (src: string) => {
     setActiveImageIndex(sourceImages.findIndex((item) => item === src))

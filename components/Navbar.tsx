@@ -33,6 +33,7 @@ export default function Navbar() {
     pathname === '/contact' ||
     pathname === '/request-sample' ||
     pathname === '/thank-you' ||
+    ['/privacy-policy', '/terms-and-conditions', '/cookie-policy', '/refund-policy', '/accessibility'].includes(pathname || '') ||
     pathname === '/catalogues' ||
     pathname?.startsWith('/for-professionals') ||
     pathname?.startsWith('/collections') ||

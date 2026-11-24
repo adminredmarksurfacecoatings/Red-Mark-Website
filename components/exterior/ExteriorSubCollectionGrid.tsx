@@ -6,7 +6,7 @@ export default function ExteriorSubCollectionGrid() {
     <FinishSubCollectionGrid
       id="explore-exterior-collections"
       heading="Explore Exterior Collections"
-      intro="Each finish collection offers a unique material expression while maintaining the durability required for exterior applications."
+      intro="Compare the appearance and application requirements of each exterior finish."
       collections={getExteriorFinishCatalog()}
     />
   )

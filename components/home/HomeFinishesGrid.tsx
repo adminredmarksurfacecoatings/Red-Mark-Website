@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import GalleryImageTile from '@/components/GalleryImageTile'
 import ImageModal from '@/components/ImageModal'
+import { imageDescription } from '@/lib/imageDescription'
 import { useState } from 'react'
 
 const FALLBACK_IMAGES = [
@@ -36,7 +37,7 @@ export default function HomeFinishesGrid({ images }: HomeFinishesGridProps) {
 
   const gallery = source.map((src, index) => ({
     src,
-    alt: `Finish surface ${index + 1}`,
+    alt: imageDescription(src, index),
   }))
 
   return (

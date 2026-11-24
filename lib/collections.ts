@@ -25,7 +25,7 @@ export const COLLECTIONS: CollectionDefinition[] = [
   {
     slug: 'exterior',
     title: 'Exterior',
-    description: 'Durable surface systems engineered for enduring architectural exteriors.',
+    description: 'Explore wall textures for exterior applications.',
     image: '/home_grid_2.png',
     href: '/finishes/exterior',
     storageId: 'exterior',

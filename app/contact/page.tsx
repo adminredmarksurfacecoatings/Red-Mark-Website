@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { BUSINESS_OPERATOR, BUSINESS_ADDRESS } from '@/lib/business'
 import SimpleContactForm from '@/components/contact/SimpleContactForm'
 import { BRAND_TAGLINE } from '@/lib/brand'
 import {
@@ -26,7 +27,7 @@ export default function ContactPage() {
           <h1 className="contact-page-hero__heading">Contact</h1>
           <p className="contact-page-hero__lead">{BRAND_TAGLINE}</p>
           <p className="contact-page-hero__support">
-            Tell us about your project — we typically respond within 24 hours.
+            Tell us about your project or ask a question about a finish.
           </p>
         </div>
       </section>
@@ -34,7 +35,7 @@ export default function ContactPage() {
       <section className="page-section">
         <div className="container contact-page-grid material-detail-grid">
           <div className="contact-page-sidebar">
-            <h2 className="contact-page-sidebar__heading">Get in Touch</h2>
+            <h2 className="contact-page-sidebar__heading">Get in Touch</h2><p className="contact-page-sidebar__text">{BUSINESS_OPERATOR}</p><address className="contact-page-sidebar__text">{BUSINESS_ADDRESS}</address><p className="contact-page-sidebar__text">Privacy, complaints and returns: use the email or India phone below. Confirm return shipping before sending goods to us.</p>
             <p className="contact-page-sidebar__text">
               Prefer to talk? Call or message us on WhatsApp, or send a short enquiry with the form.
             </p>

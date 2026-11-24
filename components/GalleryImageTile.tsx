@@ -62,6 +62,7 @@ export default function GalleryImageTile({
       style={{ paddingBottom: aspectRatioPadding(aspectRatio) }}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
+      aria-label={onClick ? `View image: ${alt}` : undefined}
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={
         onClick

@@ -63,7 +63,7 @@ export default function StoneFinishHero() {
 
             <p className="stone-finish-hero__lead">
               Timeless stone textures crafted for exterior walls, facades, and architectural surfaces
-              — offering natural depth, weather resistance, and enduring appeal.
+              — with a rough textured appearance for exterior applications.
             </p>
 
             <ul className="stone-finish-hero__features">

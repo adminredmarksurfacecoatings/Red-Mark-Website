@@ -4,16 +4,16 @@ import Link from 'next/link'
 import { createPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'For Builders & Developers — Reliable Surface Systems',
+  title: 'For Builders & Developers — Surface Selection & Guidance',
   description:
-    'Durable mineral wall finishes with practical application guidance for residential and commercial projects. Consistent performance for builders and developers across India.',
+    'Wall finishes and application guidance for residential and commercial projects. Compare shades, preparation and sample options.',
   path: '/for-professionals/builders',
 })
 
 const whatBuildersNeed = [
   {
-    heading: 'Reliable Performance',
-    text: 'Finishes designed for durability and consistent application across large surfaces.',
+    heading: 'Surface Planning',
+    text: 'Discuss surface preparation, quantities and application plans for your project.',
   },
   {
     heading: 'Application Guidance',
@@ -21,7 +21,7 @@ const whatBuildersNeed = [
   },
   {
     heading: 'Project Coordination',
-    text: 'Working with builders to ensure finishes are delivered and applied efficiently within project timelines.',
+    text: 'Discuss material availability, dispatch arrangements and application sequencing with our team.',
   },
 ]
 

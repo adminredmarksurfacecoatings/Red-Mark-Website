@@ -83,11 +83,11 @@ export default function AboutPage() {
                 <p style={{
                   marginBottom: '1.5rem',
                 }}>
-                  Red Mark Surface Coatings was founded in 2006 by Rakesh Kumar, whose early career was shaped while working with a Japanese paint company. Years of hands-on experience with materials, finishes, and application techniques led to the idea of building an independent brand focused on textured surfaces and specialized coatings.
+                  Red Mark Surface Coatings is a Ludhiana-based business operated by Rakesh Kumar, offering textured wall finishes and decorative surface coatings.
                 </p>
                 
                 <p>
-                  What began as a small initiative gradually grew into a company dedicated to creating distinctive wall finishes and surface coatings for residential, commercial, and architectural projects.
+                  Our range includes Stone Finish, Pebble Finish, Create Art and Farry. Contact us to discuss the finish, shade and preparation suitable for your project.
                 </p>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function AboutPage() {
             }}>
               <Image
                 src="/Finishes/cream-stucco-outdoor-living-wicker-patio.png"
-                alt="Red Mark Surface Coatings"
+                alt="Cream textured walls surrounding an outdoor seating area"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 quality={75}
@@ -143,7 +143,7 @@ export default function AboutPage() {
             <p style={{
               marginBottom: '1.5rem',
             }}>
-              Today, Red Mark develops a wide range of mineral finishes, textures, and coating systems designed to transform interior and exterior surfaces. Each product is created with a focus on material depth, long-term performance, and refined aesthetics.
+              Today, Red Mark develops a wide range of mineral finishes, textures, and coating systems designed to transform interior and exterior surfaces. Each product is created with a focus on texture, colour, and the character of the finished surface.
             </p>
             
             <p>
@@ -178,7 +178,7 @@ export default function AboutPage() {
             maxWidth: '700px',
             margin: '0 auto 3rem',
           }}>
-            Over the years, Red Mark has built long-term relationships with architects, builders, designers, and homeowners who value surfaces that are both durable and visually distinctive.
+            Red Mark welcomes enquiries from architects, builders, designers and homeowners planning textured surfaces.
           </p>
           
           <p style={{

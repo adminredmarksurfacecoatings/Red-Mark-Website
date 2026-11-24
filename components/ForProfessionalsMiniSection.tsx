@@ -10,7 +10,7 @@ const professionalCards = [
   },
   {
     title: 'Builders & Developers',
-    description: 'Reliable coating systems and application guidance for project delivery.',
+    description: 'Finish selection and application guidance for project delivery.',
     href: '/for-professionals/builders',
   },
   {
@@ -32,7 +32,7 @@ export default function ForProfessionalsMiniSection() {
         <h2 className="for-pro-mini-section__heading">Designed for Professionals</h2>
         <p className="for-pro-mini-section__intro">
           Architects, builders, contractors, and dealers work with Red Mark for material depth,
-          technical guidance, and specification-ready finishes.
+          samples, and finish-selection guidance.
         </p>
 
         <div className="for-pro-mini-grid">

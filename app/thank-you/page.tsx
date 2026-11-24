@@ -39,7 +39,7 @@ export default function ThankYouPage() {
             maxWidth: '600px',
             margin: '0 auto 4rem',
           }}>
-            Your message has been sent successfully. Our team will review your inquiry and get back to you as soon as possible.
+            If you opened WhatsApp, review your draft and tap Send there. This website cannot confirm whether a WhatsApp message was delivered.
           </p>
 
           {/* Section 2 — Navigation Options */}

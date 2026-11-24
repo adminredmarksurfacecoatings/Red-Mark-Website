@@ -6,7 +6,7 @@ import { createPageMetadata } from '@/lib/seo'
 export const metadata: Metadata = createPageMetadata({
   title: 'Request a Pebble Finish Sample',
   description:
-    'Request a physical sample of Red Mark Pebble Finish shades. Select your shade code, preview the swatch, and submit for delivery through our dealer network.',
+    'Request a physical sample of Red Mark Pebble Finish shades. Select your shade code, preview the swatch, and discuss availability and delivery on WhatsApp.',
   path: '/finishes/exterior/pebble-finish/request-sample',
   image: '/home_hero_2.png',
   imageAlt: 'Request a Red Mark Pebble Finish sample',

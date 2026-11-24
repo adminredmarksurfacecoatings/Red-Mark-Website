@@ -1,5 +1,7 @@
 'use client'
 
+import FormConsent from '@/components/contact/FormConsent'
+
 import { openWhatsAppEnquiry } from './openWhatsAppEnquiry'
 
 export default function SimpleContactForm() {
@@ -22,21 +24,7 @@ export default function SimpleContactForm() {
         />
       </div>
 
-      <div>
-        <label htmlFor="email" className="contact-form-label">
-          Email (optional)
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="Email"
-          autoComplete="email"
-          placeholder="you@email.com"
-          className="contact-form-input"
-        />
-      </div>
-
-      <div>
+<div>
         <label htmlFor="city" className="contact-form-label">
           City (optional)
         </label>
@@ -63,6 +51,7 @@ export default function SimpleContactForm() {
         />
       </div>
 
+      <FormConsent />
       <button type="submit" className="contact-form-submit">
         Continue to WhatsApp →
       </button>

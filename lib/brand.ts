@@ -1,5 +1,5 @@
 export const BRAND_TAGLINE =
-  'Premium architectural finishes manufactured in India — crafted for depth, durability, and lasting character.'
+  'Architectural wall finishes from Red Mark — explore textures, shades and application options.'
 
 export const BRAND_SHORT =
-  'Crafted mineral finishes with depth, texture, and permanence for interiors and exteriors nationwide.'
+  'Wall textures and decorative finishes for interior and exterior projects.'

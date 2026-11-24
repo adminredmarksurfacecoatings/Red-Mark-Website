@@ -38,13 +38,14 @@ const HERO_SLIDES: HeroSlide[] = [
 const SLIDE_INTERVAL_MS = 9000
 
 export default function HeroSlider() {
+  const [paused, setPaused] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [zoomKeys, setZoomKeys] = useState(() => HERO_SLIDES.map(() => 0))
 
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduceMotion) return
+    if (reduceMotion || paused) return
 
     const intervalId = window.setInterval(() => {
       setActiveIndex((current) => {
@@ -59,17 +60,17 @@ export default function HeroSlider() {
     }, SLIDE_INTERVAL_MS)
 
     return () => window.clearInterval(intervalId)
-  }, [])
+  }, [paused])
 
   const scrollToNext = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: 'smooth',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     })
   }
 
   return (
-    <section className="home-hero">
+    <section className="home-hero" data-paused={paused}>
       <div className="home-hero__backgrounds" aria-hidden="true">
         {HERO_SLIDES.map((slide, index) => (
           <div
@@ -113,6 +114,7 @@ export default function HeroSlider() {
         </div>
       </div>
 
+      <button type="button" className="hero-pause" onClick={() => setPaused(!paused)} aria-pressed={paused}>{paused ? 'Resume background slideshow' : 'Pause background slideshow'}</button>
       <button
         type="button"
         onClick={scrollToNext}

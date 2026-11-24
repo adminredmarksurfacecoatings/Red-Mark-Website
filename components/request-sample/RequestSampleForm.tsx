@@ -1,5 +1,7 @@
 'use client'
 
+import FormConsent from '@/components/contact/FormConsent'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { openWhatsAppEnquiry } from '@/components/contact/openWhatsAppEnquiry'
@@ -85,7 +87,8 @@ export default function RequestSampleForm({ config, initialShadeCode, collection
             <label htmlFor="sample-notes" className="contact-form-label">Anything else? (optional)</label>
             <textarea id="sample-notes" name="Notes" rows={2} maxLength={1200} className="contact-form-textarea" />
           </div>
-          <button type="submit" className="contact-form-submit">Continue to WhatsApp →</button>
+          <FormConsent />
+      <button type="submit" className="contact-form-submit">Continue to WhatsApp →</button>
           <p className="contact-form-trust">Review your sample request in WhatsApp and tap Send.</p>
         </form>
         <aside className="request-sample__preview" aria-live="polite">

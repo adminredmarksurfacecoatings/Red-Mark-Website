@@ -18,7 +18,7 @@ const professionalGroups = [
   },
   {
     title: 'Builders',
-    description: 'Reliable coating systems and application guidance for residential and commercial projects.',
+    description: 'Finish selection and application guidance for residential and commercial projects.',
     href: '/for-professionals/builders',
   },
   {

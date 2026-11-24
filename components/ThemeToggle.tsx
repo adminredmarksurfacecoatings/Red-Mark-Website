@@ -23,8 +23,8 @@ export default function ThemeToggle() {
   }, [])
   function choose(value: ThemePreference) {
     setPreference(value)
-    try { localStorage.setItem(THEME_KEY, value) } catch {}
+    try { value === 'system' ? localStorage.removeItem(THEME_KEY) : localStorage.setItem(THEME_KEY, value) } catch {}
     window.dispatchEvent(new CustomEvent('redmark-theme', { detail: value }))
   }
-  return <div className="theme-control"><span id="theme-label">Appearance</span><div className="theme-options" role="group" aria-labelledby="theme-label">{(['system', 'light', 'dark'] as const).map(value => <button key={value} type="button" aria-pressed={preference === value} onClick={() => choose(value)}>{value === 'system' ? 'System' : value === 'light' ? 'Light' : 'Dark'}</button>)}</div><span className="theme-control__hint">System follows your device</span></div>
+  return <div className="theme-control"><span id="theme-label">Appearance</span><div className="theme-options" role="group" aria-labelledby="theme-label">{(['system', 'light', 'dark'] as const).map(value => <button key={value} type="button" aria-pressed={preference === value} onClick={() => choose(value)}>{value === 'system' ? 'System' : value === 'light' ? 'Light' : 'Dark'}</button>)}</div><span className="theme-control__hint">System follows your device. Choosing Light or Dark saves that preference on this device.</span></div>
 }

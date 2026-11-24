@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 export const metadata: Metadata = createPageMetadata({
   title: 'Wall Texture Projects Across India',
   description:
-    'Browse real wall texture and mineral finish projects across India — residential, commercial, and hospitality spaces finished with Red Mark surface coatings.',
+    'Browse Red Mark wall texture photographs and decorative finish references. Contact us to confirm the finish shown and discuss your project.',
   path: '/projects',
   image: '/home_grid_3.png',
   imageAlt: 'Red Mark wall texture project in India',
@@ -43,7 +43,7 @@ export default async function ProjectsPage() {
             maxWidth: '600px',
             margin: '0 auto',
           }}>
-            A selection of architectural spaces featuring our mineral surfaces.
+            A selection of wall texture photographs and finish references. Confirm the product and shade with us before specifying a finish.
           </p>
         </div>
       </section>

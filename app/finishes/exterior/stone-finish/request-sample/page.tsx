@@ -6,7 +6,7 @@ import { createPageMetadata } from '@/lib/seo'
 export const metadata: Metadata = createPageMetadata({
   title: 'Request a Stone Finish Sample',
   description:
-    'Request a physical sample of Red Mark Stone Finish shades. Select your shade code, preview the swatch, and submit for delivery through our dealer network.',
+    'Request a physical sample of Red Mark Stone Finish shades. Select your shade code, preview the swatch, and discuss availability and delivery on WhatsApp.',
   path: '/finishes/exterior/stone-finish/request-sample',
   image: '/Finishes/exterior/stone-finish/hero/stone-finish-exterior-facade-beige-grooved-wall.jpg',
   imageAlt: 'Request a Red Mark Stone Finish sample',

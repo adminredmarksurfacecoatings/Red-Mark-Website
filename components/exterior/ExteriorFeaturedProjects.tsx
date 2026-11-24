@@ -8,7 +8,7 @@ export default function ExteriorFeaturedProjects() {
     <section className="exterior-landing-projects page-section" aria-labelledby="exterior-projects-heading">
       <div className="exterior-landing-projects__container container">
         <h2 id="exterior-projects-heading" className="exterior-landing-projects__heading">
-          Exterior Applications
+          Exterior Design References
         </h2>
 
         <div className="exterior-landing-projects__grid">
@@ -25,7 +25,7 @@ export default function ExteriorFeaturedProjects() {
                 />
                 <figcaption className="exterior-landing-project__caption">
                   <span className="exterior-landing-project__name">{project.name}</span>
-                  <span className="exterior-landing-project__finish">{project.finish}</span>
+                  <span className="exterior-landing-project__finish">Illustrative finish reference</span>
                 </figcaption>
               </div>
             </figure>

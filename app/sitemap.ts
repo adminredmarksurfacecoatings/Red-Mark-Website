@@ -18,6 +18,11 @@ type PageEntry = {
  * Submit that URL in Google Search Console → Sitemaps.
  */
 const PAGES: PageEntry[] = [
+  { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/terms-and-conditions', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/cookie-policy', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/refund-policy', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/accessibility', changeFrequency: 'yearly', priority: 0.3 },
   // Core portfolio
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/projects', changeFrequency: 'weekly', priority: 0.9 },

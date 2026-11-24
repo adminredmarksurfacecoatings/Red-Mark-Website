@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer-main-grid site-footer__grid">
           <div>
             <h3 className="site-footer__brand">Red Mark Surface Coatings</h3>
-            <p className="site-footer__tagline">{BRAND_SHORT}</p>
+            <p className="site-footer__tagline">{BRAND_SHORT}</p><p className="site-footer__tagline">Ludhiana, Punjab, India · <Link href="/contact">Business details and contact</Link></p>
           </div>
 
           <div>
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <ThemeToggle />
+        <nav aria-label="Policies and accessibility" className="policy-links"><Link href="/privacy-policy">Privacy Policy</Link><Link href="/terms-and-conditions">Terms and Conditions</Link><Link href="/cookie-policy">Cookie Policy</Link><Link href="/refund-policy">Returns and Refund Policy</Link><Link href="/accessibility">Accessibility</Link></nav><ThemeToggle />
         <div className="site-footer__bottom">
           <p>© {new Date().getFullYear()} Red Mark Surface Coatings. All rights reserved.</p>
           <p>Crafted for enduring architecture — interior and exterior.</p>

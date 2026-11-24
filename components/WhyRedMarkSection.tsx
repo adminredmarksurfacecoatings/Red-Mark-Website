@@ -2,7 +2,7 @@
 
 const trustPoints = [
   'Hand-applied mineral finishes',
-  'Breathable and long-lasting surfaces',
+  'Stone, Pebble, Create Art and Farry finishes',
   'Custom textures for every project',
   'Crafted for architects, builders, and refined spaces',
 ]
